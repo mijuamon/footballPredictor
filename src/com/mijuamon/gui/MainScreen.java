@@ -1,6 +1,8 @@
 package com.mijuamon.gui;
 
+import com.mijuamon.core.Loader;
 import com.mijuamon.core.model.TeamModel;
+import static com.mijuamon.core.constants.Constants.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -204,6 +206,8 @@ public class MainScreen {
         chanceList.add(chance13);
         chanceList.add(chance14);
         chanceList.add(chance15);
+
+        Loader.loadInitialData(teams);
 
     }
 }
