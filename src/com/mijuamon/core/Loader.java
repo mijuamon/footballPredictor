@@ -7,6 +7,7 @@ import com.mijuamon.core.model.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -25,7 +26,7 @@ public class Loader {
         if(getPropertie("load.files")!=null && Boolean.parseBoolean(getPropertie("load.fileMode")))
         {
             LOG.warning("Modo Fichero");
-            teams = loadFile(TEAMS_DATA, new TeamModel());
+            teams = Arrays.asList(loadFile(TEAMS_DATA, new TeamModel()).split(";"));
 
         }
         else
@@ -36,7 +37,7 @@ public class Loader {
 
     }
 
-    private static List loadFile(String url, AbstractItemModel model) {
+    private static String loadFile(String url, AbstractItemModel model) {
 
         ArrayList output= new ArrayList<>();
         StringBuilder result = new StringBuilder("");

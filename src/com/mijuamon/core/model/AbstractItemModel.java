@@ -4,5 +4,5 @@ public interface AbstractItemModel {
 
 
 
-    void convert (String data, AbstractItemModel model);
+    static void convert(String data, AbstractItemModel model);
 }
