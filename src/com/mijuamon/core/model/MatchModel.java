@@ -48,4 +48,11 @@ public class MatchModel {
     }
 
 
+    public boolean equalMatch(TeamModel t1, TeamModel t2, boolean explicit) {
+        if (explicit) {
+            return (t1.equals(local) && visitor.equals(t2));
+        } else {
+            return (t1.equals(local) && visitor.equals(t2)) || (t1.equals(visitor) && t2.equals(local));
+        }
+    }
 }

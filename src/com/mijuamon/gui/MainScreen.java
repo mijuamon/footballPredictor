@@ -207,7 +207,7 @@ public class MainScreen {
         chanceList.add(chance14);
         chanceList.add(chance15);
 
-        Loader.loadInitialData(teams);
+        teams=Loader.loadInitialData();
 
     }
 }

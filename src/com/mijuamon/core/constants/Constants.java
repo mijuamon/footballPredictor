@@ -9,6 +9,7 @@ public class Constants {
 
     public static final String CONFIG_FILE = "../resources/configuration.properties";
     public static final String TEAMS_DATA = "../resources/data/teams.dat";
+    public static final String PLAYERS_DATA = "../resources/data/players.dat";
 
     public static Properties prop = new Properties();
     private static InputStream input = null;

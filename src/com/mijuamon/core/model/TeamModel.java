@@ -1,8 +1,10 @@
 package com.mijuamon.core.model;
 
+import com.mijuamon.core.exceptions.ConvertException;
+
 import java.util.List;
 
-public class TeamModel implements AbstractItemModel{
+public class TeamModel extends AbstractItemModel{
 
     private String name;
     private String id;
@@ -38,12 +40,28 @@ public class TeamModel implements AbstractItemModel{
     public void setId(String id) {
         this.id = id;
     }
-    public void convert (String data, AbstractItemModel model)
+    public void convert (String data)
     {
             String [] lista=data.split(";");
             if(lista.length==2)
             {
-                model= new TeamModel(lista[0],lista[1]);
+                this.setId(lista[0]);
+                this.setName(lista[1]);
             }
+            else
+            {
+                throw new ConvertException();
+            }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (o == this) return true;
+        if (!(o instanceof TeamModel)) {
+            return false;
+        }
+        TeamModel team = (TeamModel) o;
+        return team.name.equals(name);
     }
 }

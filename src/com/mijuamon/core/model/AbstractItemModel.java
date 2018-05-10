@@ -1,8 +1,8 @@
 package com.mijuamon.core.model;
 
-public interface AbstractItemModel {
+public  abstract class AbstractItemModel {
 
 
 
-    static void convert(String data, AbstractItemModel model);
+    public abstract void convert(String data);
 }
