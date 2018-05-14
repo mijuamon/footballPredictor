@@ -1,24 +1,26 @@
 package com.mijuamon.core.model;
 
-public class ScoreModel {
-    private MatchModel match;
-    private PlayerModel player;
+import com.mijuamon.core.exceptions.ConvertException;
+
+public class ScoreModel extends AbstractItemModel{
+    private String matchID;
+    private String playerID;
     private double score;
 
-    public MatchModel getMatch() {
-        return match;
+    public String getMatchID() {
+        return matchID;
     }
 
-    public void setMatch(MatchModel match) {
-        this.match = match;
+    public void setMatchID(String matchID) {
+        this.matchID = matchID;
     }
 
-    public PlayerModel getPlayer() {
-        return player;
+    public String getPlayerID() {
+        return playerID;
     }
 
-    public void setPlayer(PlayerModel player) {
-        this.player = player;
+    public void setPlayerID(String playerID) {
+        this.playerID = playerID;
     }
 
     public double getScore() {
@@ -30,4 +32,16 @@ public class ScoreModel {
     }
 
 
+    @Override
+    public void convert(String data) throws ConvertException {
+
+        String[] lista = data.split(";");
+        if (lista.length == 3) {
+            this.setMatchID(lista[0]);
+            this.setPlayerID(lista[1]);
+            this.setScore(Double.parseDouble(lista[2]));
+        } else {
+            throw new ConvertException(this.getClass().toString());
+        }
+    }
 }

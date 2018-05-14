@@ -1,26 +1,28 @@
 package com.mijuamon.core.model;
 
-public class MatchModel {
-    private TeamModel local;
-    private TeamModel visitor;
+import com.mijuamon.core.exceptions.ConvertException;
+
+public class MatchModel extends AbstractItemModel{
+    private String localId;
+    private String visitorId;
     private String result;
     private String journey;
     private String year;
 
-    public TeamModel getLocal() {
-        return local;
+    public String getLocalId() {
+        return localId;
     }
 
-    public void setLocal(TeamModel local) {
-        this.local = local;
+    public void setLocalId(String localId) {
+        this.localId = localId;
     }
 
-    public TeamModel getVisitor() {
-        return visitor;
+    public String getVisitorId() {
+        return visitorId;
     }
 
-    public void setVisitor(TeamModel visitor) {
-        this.visitor = visitor;
+    public void setVisitorId(String visitorId) {
+        this.visitorId = visitorId;
     }
 
     public String getResult() {
@@ -50,9 +52,23 @@ public class MatchModel {
 
     public boolean equalMatch(TeamModel t1, TeamModel t2, boolean explicit) {
         if (explicit) {
-            return (t1.equals(local) && visitor.equals(t2));
+            return (t1.equals(localId) && visitorId.equals(t2));
         } else {
-            return (t1.equals(local) && visitor.equals(t2)) || (t1.equals(visitor) && t2.equals(local));
+            return (t1.equals(localId) && visitorId.equals(t2)) || (t1.equals(visitorId) && t2.equals(localId));
+        }
+    }
+
+    @Override
+    public void convert(String data) throws ConvertException {
+        String[] lista = data.split(";");
+        if (lista.length == 5) {
+            this.setLocalId(lista[0]);
+            this.setVisitorId(lista[1]);
+            this.setResult(lista[2]);
+            this.setJourney(lista[3]);
+            this.setYear(lista[4]);
+        } else {
+            throw new ConvertException(this.getClass().toString());
         }
     }
 }

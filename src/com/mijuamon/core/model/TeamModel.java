@@ -4,7 +4,7 @@ import com.mijuamon.core.exceptions.ConvertException;
 
 import java.util.List;
 
-public class TeamModel extends AbstractItemModel{
+public class TeamModel extends AbstractItemModel {
 
     private String name;
     private String id;
@@ -16,6 +16,14 @@ public class TeamModel extends AbstractItemModel{
     public TeamModel(String id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public void addPlayer(PlayerModel player)
+    {
+        if(!players.contains(player))
+        {
+            players.add(player);
+        }
     }
 
     public String getName() {
@@ -33,6 +41,7 @@ public class TeamModel extends AbstractItemModel{
     public void setPlayers(List<PlayerModel> players) {
         this.players = players;
     }
+
     public String getId() {
         return id;
     }
@@ -40,18 +49,16 @@ public class TeamModel extends AbstractItemModel{
     public void setId(String id) {
         this.id = id;
     }
-    public void convert (String data)
-    {
-            String [] lista=data.split(";");
-            if(lista.length==2)
-            {
-                this.setId(lista[0]);
-                this.setName(lista[1]);
-            }
-            else
-            {
-                throw new ConvertException();
-            }
+
+    @Override
+    public void convert(String data) throws ConvertException {
+        String[] lista = data.split(";");
+        if (lista.length == 2) {
+            this.setId(lista[0]);
+            this.setName(lista[1]);
+        } else {
+            throw new ConvertException(this.getClass().toString());
+        }
     }
 
     @Override
