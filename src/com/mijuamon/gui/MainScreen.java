@@ -1,17 +1,17 @@
 package com.mijuamon.gui;
 
-import com.mijuamon.core.Loader;
+import com.mijuamon.core.loaders.Loader;
 import com.mijuamon.core.model.TeamModel;
-import static com.mijuamon.core.constants.Constants.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainScreen {
-    private JPanel panel;
+    public JPanel panel;
     private JPanel buttonsPanel;
     private JPanel journeyPanel;
     private JPanel calculatePanel;
@@ -113,6 +113,7 @@ public class MainScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TeamManagementDialog dialog = new TeamManagementDialog(teams);
+                dialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
                 dialog.pack();
                 dialog.setVisible(true);
             }
@@ -207,7 +208,8 @@ public class MainScreen {
         chanceList.add(chance14);
         chanceList.add(chance15);
 
-        teams=Loader.loadInitialData();
-
+        teams = Loader.loadInitialData();
+        System.out.println();
     }
+
 }

@@ -1,4 +1,4 @@
-package com.mijuamon.core;
+package com.mijuamon.core.loaders;
 
 import com.mijuamon.core.model.MatchModel;
 import com.mijuamon.core.model.PlayerModel;
@@ -18,9 +18,9 @@ public class Loader {
     protected List<ScoreModel> scores;
     protected List<MatchModel> matches;
 
-    public static List loadInitialData() {
+    public static List<TeamModel> loadInitialData() {
 
-        if (getPropertie("load.files") != null && Boolean.parseBoolean(getPropertie("load.fileMode"))) {
+        if (getPropertie("load.fileMode") != null && Boolean.parseBoolean(getPropertie("load.fileMode"))) {
             LOG.warning("Modo Fichero");
 
             return FileLoader.loadInitialData();

@@ -3,6 +3,7 @@ package com.mijuamon.gui;
 import com.mijuamon.core.model.TeamModel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
@@ -21,10 +22,13 @@ public class TeamManagementDialog extends JDialog {
     protected List<TeamModel> teams;
 
     public TeamManagementDialog(List<TeamModel> teams) {
-        this.teams=teams;
+        this.teams = teams;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+
+        teams.stream().forEach(team -> editTeamCB.addItem(team));
+
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -56,11 +60,16 @@ public class TeamManagementDialog extends JDialog {
 
     private void onOK() {
         // add your code here
-        dispose();
+        TeamModel selTeam = (TeamModel) editTeamCB.getSelectedItem();
+
+        TeamManagementEditDialog dialog = new TeamManagementEditDialog(selTeam);
+        dialog.pack();
+        dialog.setVisible(true);
     }
 
     private void onCancel() {
         // add your code here if necessary
         dispose();
     }
+
 }

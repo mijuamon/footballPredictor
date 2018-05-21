@@ -2,8 +2,10 @@ package com.mijuamon.core.model;
 
 import com.mijuamon.core.exceptions.ConvertException;
 
-public class MatchModel extends AbstractItemModel{
+public class MatchModel extends AbstractItemModel {
     private String localId;
+    private TeamModel local;
+    private TeamModel visitor;
     private String visitorId;
     private String result;
     private String journey;
@@ -49,6 +51,21 @@ public class MatchModel extends AbstractItemModel{
         this.year = year;
     }
 
+    public TeamModel getLocal() {
+        return local;
+    }
+
+    public void setLocal(TeamModel local) {
+        this.local = local;
+    }
+
+    public TeamModel getVisitor() {
+        return visitor;
+    }
+
+    public void setVisitor(TeamModel visitor) {
+        this.visitor = visitor;
+    }
 
     public boolean equalMatch(TeamModel t1, TeamModel t2, boolean explicit) {
         if (explicit) {

@@ -1,0 +1,20 @@
+
+Fsquid:S1604)"(Make this anonymous inner class a lambda(‚ş–—8îŸ¥ÿ·,
+]squid:S11618":Add the "@Override" annotation above this method signature(†§şıÿÿÿÿ8îŸ¥ÿ·,
+Ksquid:S1604>"(Make this anonymous inner class a lambda(ıĞ‰ÿÿÿÿÿ8îŸ¥ÿ·,
+Jsquid:S1612&",Replace this lambda with a method reference.(ğó£¼8îŸ¥ÿ·,
+qsquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(”ğ´„şÿÿÿÿ8‹†¢ÿ·,
+Psquid:S1135P"2Complete the task associated to this TODO comment.(¡ç‚Ï8îŸ¥ÿ·,
+Ksquid:S1604/"(Make this anonymous inner class a lambda(ò¨™Òıÿÿÿÿ8îŸ¥ÿ·,
+hsquid:UnusedPrivateMethodO"7Remove this unused private "createUIComponents" method.(Á›°çıÿÿÿÿ8ô¥ªÿ·,
+Tsquid:S1068"1Remove this unused "teamInfoPanel" private field.(ïäëİøÿÿÿÿ8ô¥ªÿ·,
+Rsquid:S1068"4Remove this unused "teamPlayersPanel" private field.(ñéş›8ô¥ªÿ·,
+Lsquid:S1068".Remove this unused "textField1" private field.(×ŒàÌ8ô¥ªÿ·,
+Nsquid:S1068"0Remove this unused "buttonsPanel" private field.(‘å£Ñ8ô¥ªÿ·,
+Vsquid:S1068"3Remove this unused "newPlayerButton" private field.(”Ü„çşÿÿÿÿ8ô¥ªÿ·,
+Qsquid:S1068".Remove this unused "editButton" private field.(¹Ó”ëùÿÿÿÿ8ô¥ªÿ·,
+Usquid:S1068"2Remove this unused "eliminarButton" private field.(‚ÇÂşÿÿÿÿ8ô¥ªÿ·,
+Vsquid:S1068"3Remove this unused "traspasarButton" private field.(®…­Ğıÿÿÿÿ8ô¥ªÿ·,
+Zsquid:S1068"7Remove this unused "cambiarNombreButton" private field.(«·œøÿÿÿÿ8ô¥ªÿ·,
+lsquid:UselessImportCheck"ARemove this unused import 'com.jgoodies.forms.layout.FormLayout'.(­áä‘8ô¥ªÿ·,
+qsquid:UselessImportCheck"FRemove this unused import 'com.jgoodies.forms.layout.CellConstraints'.(Œ–âì8ô¥ªÿ·,

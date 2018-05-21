@@ -2,13 +2,15 @@ package com.mijuamon.core.model;
 
 import com.mijuamon.core.exceptions.ConvertException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TeamModel extends AbstractItemModel {
 
     private String name;
     private String id;
-    private List<PlayerModel> players;
+    private List<PlayerModel> players= new ArrayList<>();
+    private List<MatchModel> matches= new ArrayList<>();
 
     public TeamModel() {
     }
@@ -18,10 +20,8 @@ public class TeamModel extends AbstractItemModel {
         this.name = name;
     }
 
-    public void addPlayer(PlayerModel player)
-    {
-        if(!players.contains(player))
-        {
+    public void addPlayer(PlayerModel player) {
+        if (!players.contains(player)) {
             players.add(player);
         }
     }
@@ -50,6 +50,14 @@ public class TeamModel extends AbstractItemModel {
         this.id = id;
     }
 
+    public List<MatchModel> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(List<MatchModel> matches) {
+        this.matches = matches;
+    }
+
     @Override
     public void convert(String data) throws ConvertException {
         String[] lista = data.split(";");
@@ -70,5 +78,10 @@ public class TeamModel extends AbstractItemModel {
         }
         TeamModel team = (TeamModel) o;
         return team.name.equals(name);
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

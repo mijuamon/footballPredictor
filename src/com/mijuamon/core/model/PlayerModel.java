@@ -2,12 +2,16 @@ package com.mijuamon.core.model;
 
 import com.mijuamon.core.exceptions.ConvertException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlayerModel extends AbstractItemModel
 {
     private String playerID;
     private String name;
     private String teamID;
-    private ScoreModel scores;
+    private TeamModel team;
+    private List<ScoreModel> scores= new ArrayList<>();
     private double scoreMedian;
 
     public String getPlayerID() {
@@ -34,11 +38,11 @@ public class PlayerModel extends AbstractItemModel
         this.scoreMedian = scoreMedian;
     }
 
-    public ScoreModel getScores() {
+    public List<ScoreModel> getScores() {
         return scores;
     }
 
-    public void setScores(ScoreModel scores) {
+    public void setScores(List<ScoreModel> scores) {
         this.scores = scores;
     }
 
@@ -50,18 +54,32 @@ public class PlayerModel extends AbstractItemModel
         this.teamID = teamID;
     }
 
+    public TeamModel getTeam() {
+        return team;
+    }
+
+    public void setTeam(TeamModel team) {
+        this.team = team;
+    }
+
     @Override
     public void convert(String data) throws ConvertException {
         String [] lista=data.split(";");
         if(lista.length==3)
         {
             this.setPlayerID(lista[0]);
-            this.setName(lista[1]);
-            this.setTeamID(lista[2]);
+            this.setTeamID(lista[1]);
+            this.setName(lista[2]);
+
         }
         else
         {
             throw new ConvertException(this.getClass().toString());
         }
+    }
+
+    @Override
+    public String toString(){
+        return getPlayerID();
     }
 }
