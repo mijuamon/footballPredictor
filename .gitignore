@@ -1,7 +1,3 @@
+\.idea
 
-
-\.idea/sonarlint/issuestore/f/4/f4b855a60a3e37f786be05605bb0db65425e5c75
-
-\.idea/sonarlint/issuestore/1/a/1a612c9e38362e2b70cbfcabe053e9e92a8692a8
-
-\.idea/sonarlint/issuestore/
+*.class

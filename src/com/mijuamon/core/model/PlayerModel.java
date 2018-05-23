@@ -80,6 +80,6 @@ public class PlayerModel extends AbstractItemModel
 
     @Override
     public String toString(){
-        return getPlayerID();
+        return getName();
     }
 }

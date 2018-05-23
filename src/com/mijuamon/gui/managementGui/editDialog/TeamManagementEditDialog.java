@@ -1,17 +1,18 @@
-package com.mijuamon.gui;
+package com.mijuamon.gui.managementGui.editDialog;
 
 import com.mijuamon.core.model.TeamModel;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.List;
 
 
 public class TeamManagementEditDialog extends JDialog {
-    private JPanel contentPane = new JPanel();
+    private JPanel contentPane;
     private JButton buttonOK;
     private JPanel teamInfoPanel;
     private JPanel teamPlayersPanel;
-    private JTextField textField1;
+    private JTextField teamTF;
     private JList playerJList;
     private JPanel buttonsPanel;
     private JButton newPlayerButton;
@@ -20,7 +21,7 @@ public class TeamManagementEditDialog extends JDialog {
     private JButton traspasarButton;
     private JButton cambiarNombreButton;
 
-    public TeamManagementEditDialog(TeamModel team) {
+    public TeamManagementEditDialog(TeamModel team, List<TeamModel> teams) {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -29,7 +30,7 @@ public class TeamManagementEditDialog extends JDialog {
         playerJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         playerJList.setLayoutOrientation(JList.VERTICAL);
 
-
+        teamTF.setText(team.getName());
         team.getPlayers().stream().forEach(x -> listModel.addElement(x));
         playerJList.setModel(listModel);
 
@@ -55,6 +56,38 @@ public class TeamManagementEditDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        //New Player Button
+        newPlayerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
+
+        //Edit Player Button
+        editButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
+
+        //Remove player button
+        eliminarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
+
+        //Move player button
+        traspasarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
     }
 
     private void onOK() {

@@ -1,9 +1,9 @@
-package com.mijuamon.gui;
+package com.mijuamon.gui.managementGui;
 
 import com.mijuamon.core.model.TeamModel;
+import com.mijuamon.gui.managementGui.editDialog.TeamManagementEditDialog;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
@@ -62,7 +62,7 @@ public class TeamManagementDialog extends JDialog {
         // add your code here
         TeamModel selTeam = (TeamModel) editTeamCB.getSelectedItem();
 
-        TeamManagementEditDialog dialog = new TeamManagementEditDialog(selTeam);
+        TeamManagementEditDialog dialog = new TeamManagementEditDialog(selTeam, teams);
         dialog.pack();
         dialog.setVisible(true);
     }

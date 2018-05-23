@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="" scope="PROVIDED">
+    <orderEntry type="module-library" exported="" scope="RUNTIME">
       <library>
         <CLASSES>
           <root url="jar://$APPLICATION_HOME_DIR$/lib/jgoodies-forms.jar!/" />
@@ -16,6 +16,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="jgoodies-forms" level="project" />
   </component>
 </module>

@@ -2,6 +2,7 @@ package com.mijuamon.gui;
 
 import com.mijuamon.core.loaders.Loader;
 import com.mijuamon.core.model.TeamModel;
+import com.mijuamon.gui.managementGui.TeamManagementDialog;
 
 import javax.swing.*;
 import java.awt.*;
