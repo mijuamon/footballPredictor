@@ -1,15 +1,0 @@
-
-Ksquid:S16046"(Make this anonymous inner class a lambda(ύΠ‰ÿÿÿÿÿ8‹†Άÿ·,
-Esquid:S1948"'Make "teams" transient or serializable.(Εάνδ8‹†Άÿ·,
-{squid:S00116"WRename this field "AsscentionCB" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‘²ύÿÿÿÿ8‹†Άÿ·,
-]squid:S11610":Add the "@Override" annotation above this method signature(†§ώύÿÿÿÿ8‹†Άÿ·,
-Fsquid:S1604!"(Make this anonymous inner class a lambda(‚ώ–—8‹†Άÿ·,
-qsquid:MaximumInheritanceDepth
-"<This class has 6 parents which is greater than 5 authorized.(ªΖΤÒψÿÿÿÿ8‹†Άÿ·,
-Ksquid:S1604'"(Make this anonymous inner class a lambda(ς¨™Òύÿÿÿÿ8‹†Άÿ·,
-Psquid:S1068"2Remove this unused "editRadioButon" private field.(Μ‹κ‹8¥¥ªÿ·,
-Usquid:S1068"7Remove this unused "newTeamRadioButtton" private field.(ΩΡ8¥¥ªÿ·,
-Ssquid:S1068"6Remove this unused "descendRadioButton" private field.(¶τ08¥¥ªÿ·,
-Tsquid:S1068"1Remove this unused "descendTeamCB" private field.(±ΙΫƒωÿÿÿÿ8¥¥ªÿ·,
-Wsquid:S1068"9Remove this unused "asscentionRadioButton" private field.(Δ‘‘σ8¥¥ªÿ·,
-Ssquid:S1068"0Remove this unused "AsscentionCB" private field.(‘²ύÿÿÿÿ8¥¥ªÿ·,

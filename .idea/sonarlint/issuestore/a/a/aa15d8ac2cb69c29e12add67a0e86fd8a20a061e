@@ -1,14 +1,0 @@
-
-Ksquid:S1604p"(Make this anonymous inner class a lambda(ªœÑ‰ÿÿÿÿÿ8Œ†¢ÿ·,
-\
-squid:S106Ô"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ8Œ†¢ÿ·,
-†"squid:ClassVariableVisibilityCheck"QMake panel a static final constant or non-public and provide accessors if needed.(á‘ß«8Œ†¢ÿ·,
-Nsquid:S1068"0Remove this unused "buttonsPanel" private field.(‘å£Ñ8Ó¦ªÿ·,
-Nsquid:S1068"0Remove this unused "journeyPanel" private field.(­¬™ğ8Ó¦ªÿ·,
-Usquid:S1068"2Remove this unused "calculatePanel" private field.(–‘Ó’ıÿÿÿÿ8Ó¦ªÿ·,
-Qsquid:S1068"3Remove this unused "calculateButton" private field.(ó®á8Ó¦ªÿ·,
-Wsquid:S1068"4Remove this unused "numberMatchPanel" private field.(îªÕùÿÿÿÿ8Ó¦ªÿ·,
-Lsquid:S1068#".Remove this unused "localPanel" private field.(ƒ¡¾ô8Ó¦ªÿ·,
-Rsquid:S1068$"/Remove this unused "chancePanel" private field.(”±òëøÿÿÿÿ8Ó¦ªÿ·,
-Msquid:S1068%"/Remove this unused "resultPanel" private field.(ìÏÉİ8Ó¦ªÿ·,
-Ssquid:S1068&"0Remove this unused "visitorPanel" private field.(‡Šõüÿÿÿÿ8Ó¦ªÿ·,
