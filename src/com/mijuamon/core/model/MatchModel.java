@@ -3,6 +3,7 @@ package com.mijuamon.core.model;
 import com.mijuamon.core.exceptions.ConvertException;
 
 public class MatchModel extends AbstractItemModel {
+    private String matchId;
     private String localId;
     private TeamModel local;
     private TeamModel visitor;
@@ -67,6 +68,14 @@ public class MatchModel extends AbstractItemModel {
         this.visitor = visitor;
     }
 
+    public String getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(String matchId) {
+        this.matchId = matchId;
+    }
+
     public boolean equalMatch(TeamModel t1, TeamModel t2, boolean explicit) {
         if (explicit) {
             return (t1.equals(localId) && visitorId.equals(t2));
@@ -79,11 +88,12 @@ public class MatchModel extends AbstractItemModel {
     public void convert(String data) throws ConvertException {
         String[] lista = data.split(";");
         if (lista.length == 5) {
-            this.setLocalId(lista[0]);
-            this.setVisitorId(lista[1]);
-            this.setResult(lista[2]);
-            this.setJourney(lista[3]);
-            this.setYear(lista[4]);
+            this.setMatchId(lista[0]);
+            this.setLocalId(lista[1]);
+            this.setVisitorId(lista[2]);
+            this.setResult(lista[3]);
+            this.setJourney(lista[4]);
+            this.setYear(lista[5]);
         } else {
             throw new ConvertException(this.getClass().toString());
         }

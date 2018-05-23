@@ -2,68 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38627576-f043-4230-a2c5-6d71cbea993b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/newEditDialog/playerManagementDialog.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/newEditDialog/playerManagementDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a612c9e38362e2b70cbfcabe053e9e92a8692a8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a612c9e38362e2b70cbfcabe053e9e92a8692a8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/e/de051a974a911f898c3ef3883c5cb0b9602f4468" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/e/de051a974a911f898c3ef3883c5cb0b9602f4468" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f4b855a60a3e37f786be05605bb0db65425e5c75" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f4b855a60a3e37f786be05605bb0db65425e5c75" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FootballPredictor.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/FootballPredictor.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FootballPredictor.iws" beforeDir="false" afterPath="$PROJECT_DIR$/FootballPredictor.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footballPredictor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/footballPredictor.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/intellij/uiDesigner/core/AbstractLayout.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/intellij/uiDesigner/core/DimensionInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/intellij/uiDesigner/core/GridConstraints.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/intellij/uiDesigner/core/GridLayoutManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/intellij/uiDesigner/core/HorizontalInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/intellij/uiDesigner/core/Spacer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/intellij/uiDesigner/core/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/intellij/uiDesigner/core/VerticalInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/core/constants/Constants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/core/exceptions/ConvertException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/core/file/fileLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/core/loaders/FileLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/core/loaders/Loader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/core/model/AbstractItemModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/core/model/MatchModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/core/model/PlayerModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/core/model/ScoreModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/core/model/TeamModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/core/test/Starter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/gui/MainScreen$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/gui/MainScreen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/gui/TeamManagementDialog$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/gui/TeamManagementDialog$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/gui/TeamManagementDialog$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/gui/TeamManagementDialog$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/gui/TeamManagementDialog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/gui/TeamManagementEditDialog$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/gui/TeamManagementEditDialog$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/gui/TeamManagementEditDialog$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FootballPredictor/com/mijuamon/gui/TeamManagementEditDialog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FootballPredictor/com/intellij/uiDesigner/core/AbstractLayout.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FootballPredictor/com/intellij/uiDesigner/core/DimensionInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FootballPredictor/com/intellij/uiDesigner/core/GridConstraints.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FootballPredictor/com/intellij/uiDesigner/core/GridLayoutManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FootballPredictor/com/intellij/uiDesigner/core/HorizontalInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FootballPredictor/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FootballPredictor/com/intellij/uiDesigner/core/Spacer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FootballPredictor/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FootballPredictor/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FootballPredictor/com/intellij/uiDesigner/core/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/FootballPredictor/com/intellij/uiDesigner/core/VerticalInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mijuamon/core/model/PlayerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mijuamon/core/model/PlayerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mijuamon/gui/MainScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mijuamon/gui/MainScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mijuamon/gui/TeamManagementDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/TeamManagementDialog.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mijuamon/gui/TeamManagementDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/TeamManagementDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mijuamon/gui/TeamManagementEditDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/TeamManagementEditDialog.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mijuamon/gui/TeamManagementEditDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/TeamManagementEditDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/data/matches.dat" beforeDir="false" afterPath="$PROJECT_DIR$/resources/data/matches.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mijuamon/core/model/MatchModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mijuamon/core/model/MatchModel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,18 +18,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="407">
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/constants/Constants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TeamManagementEditDialog.form" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/TeamManagementEditDialog.form">
           <provider selected="true" editor-type-id="ui-designer" />
@@ -98,7 +26,7 @@
       <file leaf-file-name="TeamManagementEditDialog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/TeamManagementEditDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1">
+            <state relative-caret-position="314">
               <caret line="33" column="57" lean-forward="true" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
             </state>
           </provider>
@@ -128,6 +56,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="MatchModel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/model/MatchModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="692">
+              <caret line="90" column="28" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="28" />
+              <folding>
+                <element signature="e#1423#1424#0" expanded="true" />
+                <element signature="e#1453#1454#0" expanded="true" />
+                <element signature="e#1499#1500#0" expanded="true" />
+                <element signature="e#1537#1538#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ScoreModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/model/ScoreModel.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -139,34 +82,30 @@
       </file>
       <file leaf-file-name="matches.dat" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/data/matches.dat">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+              <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="teams.dat" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/data/teams.dat">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="players.dat" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/data/players.dat">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="scores.dat" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/data/scores.dat">
           <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="PlayerModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/model/PlayerModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="82" column="24" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
-              <folding>
-                <element signature="e#1719#1720#0" expanded="true" />
-                <element signature="e#1751#1752#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
         </entry>
       </file>
     </leaf>
@@ -215,7 +154,6 @@
         <option value="$PROJECT_DIR$/src/com/mijuamon/core/exceptions/ConvertException.java" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/core/model/TeamModel.java" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/core/model/ScoreModel.java" />
-        <option value="$PROJECT_DIR$/src/com/mijuamon/core/model/MatchModel.java" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/core/FileLoader.java" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/core/constants/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/core/model/PlayerModel.java" />
@@ -229,6 +167,8 @@
         <option value="$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/newEditDialog/playerManagementDialog.form" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/newEditDialog/playerManagementDialog.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/resources/data/matches.dat" />
+        <option value="$PROJECT_DIR$/src/com/mijuamon/core/model/MatchModel.java" />
       </list>
     </option>
   </component>
@@ -241,7 +181,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="1920" />
     <option name="y" value="-2" />
     <option name="width" value="1920" />
@@ -276,6 +216,27 @@
               <item name="footballPredictor" type="b2602c69:ProjectViewProjectNode" />
               <item name="footballPredictor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="footballPredictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="footballPredictor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mijuamon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="footballPredictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="footballPredictor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mijuamon" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="footballPredictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="footballPredictor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mijuamon" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -387,15 +348,15 @@
       <workItem from="1526027112165" duration="4751000" />
       <workItem from="1526282229356" duration="451000" />
       <workItem from="1527063182374" duration="462000" />
-      <workItem from="1527063884252" duration="4976000" />
+      <workItem from="1527063884252" duration="6196000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36105000" />
+    <option name="totallyTimeSpent" value="37325000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
+    <frame x="1920" y="-2" width="1920" height="1082" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -405,11 +366,11 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.17283951" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.17283951" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23697917" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1578125" />
       <window_info anchor="bottom" id="SonarLint" order="10" weight="0.3273495" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="bottom" id="Hybris Console [Experimental]" order="15" />
@@ -495,16 +456,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/model/TeamModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/Loader.java" />
     <entry file="file://$PROJECT_DIR$/src/com/mijuamon/gui/MainScreen.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -640,13 +591,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/Loader.java" />
-    <entry file="file://$PROJECT_DIR$/resources/data/teams.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/model/TeamModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
@@ -654,13 +598,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/model/MatchModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="73" column="87" selection-start-line="73" selection-start-column="87" selection-end-line="73" selection-end-column="87" />
         </state>
       </provider>
     </entry>
@@ -716,13 +653,6 @@
     <entry file="file://$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/TeamManagementEditDialog.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/TeamManagementEditDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="33" column="57" lean-forward="true" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/newEditDialog/playerManagementDialog.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
@@ -743,6 +673,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/TeamManagementEditDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="33" column="57" lean-forward="true" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/data/teams.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/data/players.dat">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/data/matches.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/data/scores.dat">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -753,13 +714,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/data/matches.dat">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/model/MatchModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="692">
+          <caret line="90" column="28" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="28" />
+          <folding>
+            <element signature="e#1423#1424#0" expanded="true" />
+            <element signature="e#1453#1454#0" expanded="true" />
+            <element signature="e#1499#1500#0" expanded="true" />
+            <element signature="e#1537#1538#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

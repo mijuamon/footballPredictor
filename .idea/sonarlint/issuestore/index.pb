@@ -1,18 +1,18 @@
 
 J
-resources/data/matches.dat,a\c\acb53897c080eb0c296985af877a24e8c2523013
+resources/data/matches.dat,a/c/acb53897c080eb0c296985af877a24e8c2523013
 f
 6src/com/mijuamon/core/exceptions/ConvertException.java,6/b/6b98dfc7674a692af694c71c9f52c67d9dd60ae6
 \
 ,src/com/mijuamon/core/model/PlayerModel.java,c/e/cee51bad05f83d897d2bde3e1d13701089f394ce
 J
-resources/data/players.dat,4\a\4a92e07e518f02500297f8fa543fbfa5cf120566
+resources/data/players.dat,4/a/4a92e07e518f02500297f8fa543fbfa5cf120566
 H
 resources/data/teams.dat,7/f/7f370eb875eb4cccac3c1597fd256a81c3382091
 I
 resources/data/scores.dat,e/e/eef00025803e7307d531a29fddb333bf7da87467
 T
-$src/com/mijuamon/gui/MainScreen.form,e\6\e633d933427a74fd60c917b32db47271fa5a44b5
+$src/com/mijuamon/gui/MainScreen.form,e/6/e633d933427a74fd60c917b32db47271fa5a44b5
 R
 "resources/configuration.properties,f\4\f4c78a7ef8cae9c326be5255dad0677121f3a2a0
 W
@@ -41,8 +41,20 @@ b
 2src/com/mijuamon/gui/TeamManagementEditDialog.java,9/6/96e4c49053680c10022673d7261b6223d16fdc1e
 :
 
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 [
 +src/com/mijuamon/core/model/ScoreModel.java,d/6/d6e063ada18db5df408a3abb8eef1dfed4168197
 [
 +src/com/mijuamon/core/model/MatchModel.java,c/c/cc6df5e06c7a5bbdb625e1422a48f8595f925dec
+{
+Ksrc/com/mijuamon/gui/managementGui/editDialog/TeamManagementEditDialog.form,f/c/fc6cb741108125fd7972f87d1d5d455a3a29c046
+l
+<src/com/mijuamon/gui/managementGui/TeamManagementDialog.java,9/b/9be9a4a20e19506140fe31d6ae25877f93cc4bf4
+l
+<src/com/mijuamon/gui/managementGui/TeamManagementDialog.form,c/e/cedb250103700f041e7e0f94619c9212c7f181cb
+‡
+Wsrc/com/mijuamon/gui/managementGui/editDialog/newEditDialog/playerManagementDialog.form,f/0/f0c48327cd86ff8e70f7c68b2fd1b5076c28b4d2
+‡
+Wsrc/com/mijuamon/gui/managementGui/editDialog/newEditDialog/playerManagementDialog.java,8/e/8e2c0a86f988c2c47e2818c1401644f3bde7c8b3
+{
+Ksrc/com/mijuamon/gui/managementGui/editDialog/TeamManagementEditDialog.java,c/0/c0768a275d86d72f3edcd6522c4b5d13d0446044
