@@ -87,7 +87,7 @@ public class MatchModel extends AbstractItemModel {
     @Override
     public void convert(String data) throws ConvertException {
         String[] lista = data.split(";");
-        if (lista.length == 5) {
+        if (lista.length == 6) {
             this.setMatchId(lista[0]);
             this.setLocalId(lista[1]);
             this.setVisitorId(lista[2]);
@@ -97,5 +97,11 @@ public class MatchModel extends AbstractItemModel {
         } else {
             throw new ConvertException(this.getClass().toString());
         }
+    }
+
+    @Override
+    public String toString()
+    {
+        return local.getName()+" - "+visitor.getName()+"-->"+result;
     }
 }

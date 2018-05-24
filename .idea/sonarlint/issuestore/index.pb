@@ -19,8 +19,6 @@ W
 'src/com/mijuamon/core/test/Starter.java,0\8\085b2c0fbdb7b03d4ed4205ce69b75b4432284a7
 ^
 .src/com/mijuamon/core/constants/Constants.java,d/e/de051a974a911f898c3ef3883c5cb0b9602f4468
-^
-.src/com/mijuamon/gui/TeamManagementDialog.form,0\6\067aaae7f299e1a5a321f2adec7f8d70df83fdb3
 Y
 )src/com/mijuamon/core/loaders/Loader.java,2\b\2b7150b2b16b0459f54819ffa20227b5e56fee7c
 b
@@ -28,17 +26,11 @@ b
 Z
 *src/com/mijuamon/core/model/TeamModel.java,1/a/1a612c9e38362e2b70cbfcabe053e9e92a8692a8
 ]
--src/com/mijuamon/core/loaders/FileLoader.java,1\a\1a44857dc50e54dae1b11d7e611f8ff245eb50c3
+-src/com/mijuamon/core/loaders/FileLoader.java,1/a/1a44857dc50e54dae1b11d7e611f8ff245eb50c3
 T
 $src/com/mijuamon/gui/MainScreen.java,a/a/aa15d8ac2cb69c29e12add67a0e86fd8a20a061e
-^
-.src/com/mijuamon/gui/TeamManagementDialog.java,0\8\086b03c2ad66d7fbb84ac732b106a2f5eddc8ee6
 E
 FootballPredictor.iws,6\2\6284c3ac628d0d8c5c452ca1020d234846a0e19e
-b
-2src/com/mijuamon/gui/TeamManagementEditDialog.form,5/a/5a6294550560b2df3b74233118833c55c366f72f
-b
-2src/com/mijuamon/gui/TeamManagementEditDialog.java,9/6/96e4c49053680c10022673d7261b6223d16fdc1e
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
@@ -52,9 +44,9 @@ l
 <src/com/mijuamon/gui/managementGui/TeamManagementDialog.java,9/b/9be9a4a20e19506140fe31d6ae25877f93cc4bf4
 l
 <src/com/mijuamon/gui/managementGui/TeamManagementDialog.form,c/e/cedb250103700f041e7e0f94619c9212c7f181cb
-‡
-Wsrc/com/mijuamon/gui/managementGui/editDialog/newEditDialog/playerManagementDialog.form,f/0/f0c48327cd86ff8e70f7c68b2fd1b5076c28b4d2
-‡
-Wsrc/com/mijuamon/gui/managementGui/editDialog/newEditDialog/playerManagementDialog.java,8/e/8e2c0a86f988c2c47e2818c1401644f3bde7c8b3
 {
 Ksrc/com/mijuamon/gui/managementGui/editDialog/TeamManagementEditDialog.java,c/0/c0768a275d86d72f3edcd6522c4b5d13d0446044
+‡
+Wsrc/com/mijuamon/gui/managementGui/editDialog/newEditDialog/PlayerManagementDialog.form,c/8/c88ceca97f371fae0646ce0e6104f09c202b2303
+‡
+Wsrc/com/mijuamon/gui/managementGui/editDialog/newEditDialog/PlayerManagementDialog.java,5/f/5fe84f3e08c8df994abf3da9c80740c25ef399b7

@@ -1,6 +1,8 @@
 package com.mijuamon.gui.managementGui.editDialog;
 
+import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.TeamModel;
+import com.mijuamon.gui.managementGui.editDialog.newEditDialog.PlayerManagementDialog;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -69,6 +71,11 @@ public class TeamManagementEditDialog extends JDialog {
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if(playerJList.getSelectedValue()!=null) {
+                    PlayerManagementDialog dialog = new PlayerManagementDialog(team,(PlayerModel)playerJList.getSelectedValue());
+                    dialog.pack();
+                    dialog.setVisible(true);
+                }
 
             }
         });

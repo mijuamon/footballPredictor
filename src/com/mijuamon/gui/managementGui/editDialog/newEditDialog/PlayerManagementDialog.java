@@ -9,33 +9,36 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class playerManagementDialog extends JDialog {
+public class PlayerManagementDialog extends JDialog {
     private JPanel contentPane;
+    private JPanel scoresPanel;
+    private JPanel buttonsPanel;
+    private JPanel playerInfoPanel;
+    private JLabel playeLabel;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JTextField nameTF;
-    private JPanel buttonsPanel;
-    private JPanel listPamel;
-    private JButton addButton;
     private JList scoresJList;
-    private JButton editarButton;
     private JButton eliminarButton;
+    private JButton editButton;
+    private JButton addNewButton;
+    private JButton changeNameButton;
+    private JTextField playerTextF;
 
     List<ScoreModel> scores = new ArrayList<>();
     PlayerModel player = new PlayerModel();
     TeamModel team = new TeamModel();
 
-    public playerManagementDialog(TeamModel team, PlayerModel player) {
-        this.team=team;
-        this.player=player;
-        this.scores=player.getScores();
+    public PlayerManagementDialog(TeamModel team, PlayerModel player) {
+        this.team = team;
+        this.player = player;
+        this.scores = player.getScores();
 
         startDialog();
     }
 
 
-    public playerManagementDialog(TeamModel team) {
-        this.team=team;
+    public PlayerManagementDialog(TeamModel team) {
+        this.team = team;
         startDialog();
     }
 
@@ -49,10 +52,9 @@ public class playerManagementDialog extends JDialog {
         scoresJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         scoresJList.setLayoutOrientation(JList.VERTICAL);
 
-        nameTF.setText(player.getName());
+        playerTextF.setText(player.getName());
         scores.stream().forEach(x -> listModel.addElement(x));
         scoresJList.setModel(listModel);
-
 
 
         buttonOK.addActionListener(new ActionListener() {
@@ -92,4 +94,5 @@ public class playerManagementDialog extends JDialog {
         // add your code here if necessary
         dispose();
     }
+
 }

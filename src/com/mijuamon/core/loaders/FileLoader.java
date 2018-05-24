@@ -75,11 +75,15 @@ public class FileLoader {
         {
             matchs.stream().filter(x->x.getLocalId().equals(team.getId())).forEach(x->x.setLocal(team));
             matchs.stream().filter(x->x.getVisitorId().equals(team.getId())).forEach(x->x.setVisitor(team));
-
+        }
+        for(TeamModel team:teams)
+        {
             List<MatchModel> matchList;
-            matchList=matchs.stream().filter(x->x.getVisitor().equals(team)).collect(Collectors.toList());
-            matchList.addAll(matchs.stream().filter(x->x.getLocal().equals(team)).collect(Collectors.toList()));
-            team.setMatches(matchList);
+            if(matchs!=null && !matchs.isEmpty()) {
+                matchList = matchs.stream().filter(x -> x.getVisitor().equals(team)).collect(Collectors.toList());
+                matchList.addAll(matchs.stream().filter(x -> x.getLocal().equals(team)).collect(Collectors.toList()));
+                team.setMatches(matchList);
+            }
         }
     }
 
