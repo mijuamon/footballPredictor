@@ -61,4 +61,10 @@ public class ScoreModel extends AbstractItemModel{
             throw new ConvertException(this.getClass().toString());
         }
     }
+
+    @Override
+    public String toString()
+    {
+        return match.getLocal().getName()+"---"+match.getVisitor().getName()+": "+match.getResult()+" ---> "+score;
+    }
 }

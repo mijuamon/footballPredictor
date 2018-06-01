@@ -3,6 +3,7 @@ package com.mijuamon.gui.managementGui.editDialog.newEditDialog;
 import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.ScoreModel;
 import com.mijuamon.core.model.TeamModel;
+import com.mijuamon.gui.managementGui.editDialog.newEditDialog.scoreDialogs.ScoreDialog;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -27,18 +28,27 @@ public class PlayerManagementDialog extends JDialog {
     List<ScoreModel> scores = new ArrayList<>();
     PlayerModel player = new PlayerModel();
     TeamModel team = new TeamModel();
+    List<TeamModel> teams;
 
-    public PlayerManagementDialog(TeamModel team, PlayerModel player) {
+    public PlayerManagementDialog(List<TeamModel> teams,TeamModel team, PlayerModel player) {
         this.team = team;
         this.player = player;
         this.scores = player.getScores();
+        this.teams=teams;
 
         startDialog();
+        editButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
     }
 
 
-    public PlayerManagementDialog(TeamModel team) {
+    public PlayerManagementDialog(List<TeamModel> teams,TeamModel team) {
         this.team = team;
+        this.teams=teams;
         startDialog();
     }
 
@@ -52,8 +62,9 @@ public class PlayerManagementDialog extends JDialog {
         scoresJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         scoresJList.setLayoutOrientation(JList.VERTICAL);
 
-        playerTextF.setText(player.getName());
-        scores.stream().forEach(x -> listModel.addElement(x));
+        dialog = new ScoreDialog(teams,player,(ScoreModel)scoresJList.getSelectedValue());
+        dialog.pack();
+        dialog.setVisible(true);        scores.stream().forEach(x -> listModel.addElement(x));
         scoresJList.setModel(listModel);
 
 

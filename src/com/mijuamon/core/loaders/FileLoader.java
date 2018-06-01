@@ -85,6 +85,10 @@ public class FileLoader {
                 team.setMatches(matchList);
             }
         }
+        for(ScoreModel score:scores)
+        {
+            matchs.stream().filter(x->x.getMatchId().equals(score.getMatchID())).forEach(x->score.setMatch(x));
+        }
     }
 
 

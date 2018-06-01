@@ -1,34 +1,47 @@
-package com.mijuamon.gui.managementGui;
+package com.mijuamon.gui.managementGui.editDialog.newEditDialog.scoreDialogs;
 
+import com.mijuamon.core.model.PlayerModel;
+import com.mijuamon.core.model.ScoreModel;
 import com.mijuamon.core.model.TeamModel;
-import com.mijuamon.gui.managementGui.editDialog.TeamManagementEditDialog;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
-public class TeamManagementDialog extends JDialog {
+public class ScoreDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JRadioButton editRadioButon;
-    private JRadioButton newTeamRadioButtton;
-    private JComboBox editTeamCB;
-    private JRadioButton descendRadioButton;
-    private JComboBox descendTeamCB;
-    private JRadioButton asscentionRadioButton;
-    private JComboBox AsscentionCB;
+    private JComboBox localComboBox;
+    private JComboBox visitorComboBox;
+    private JTextField resultTF;
+    private JTextField playerTF;
+    private JSpinner scoreSpinner;
 
-    protected List<TeamModel> teams;
+    public ScoreDialog(List<TeamModel> teams, PlayerModel player, ScoreModel score) {
 
-    public TeamManagementDialog(List<TeamModel> teams) {
-        this.teams = teams;
+        teams.stream().forEach(team -> localComboBox.addItem(team));
+        teams.stream().forEach(team -> visitorComboBox.addItem(team));
+
+        localComboBox.setSelectedItem(score.getMatch().getLocal());
+        visitorComboBox.setSelectedItem(score.getMatch().getVisitor());
+
+        playerTF.setText(player.toString());
+        scoreSpinner.setValue(score.getScore());
+        startDialog();
+    }
+
+    public ScoreDialog(List<TeamModel> teams) {
+        teams.stream().forEach(team -> localComboBox.addItem(team));
+        teams.stream().forEach(team -> visitorComboBox.addItem(team));
+        startDialog();
+    }
+
+    private void startDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
-
-        teams.stream().forEach(team -> editTeamCB.addItem(team));
-
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -60,21 +73,11 @@ public class TeamManagementDialog extends JDialog {
 
     private void onOK() {
         // add your code here
-        TeamManagementEditDialog dialog;
-        if (editRadioButon.isSelected()) {
-
-            TeamModel selTeam = (TeamModel) editTeamCB.getSelectedItem();
-
-            dialog = new TeamManagementEditDialog(selTeam, teams);
-            dialog.pack();
-            dialog.setVisible(true);
-        }
-
+        dispose();
     }
 
     private void onCancel() {
         // add your code here if necessary
         dispose();
     }
-
 }
