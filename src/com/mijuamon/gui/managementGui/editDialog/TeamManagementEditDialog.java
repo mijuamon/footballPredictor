@@ -63,6 +63,9 @@ public class TeamManagementEditDialog extends JDialog {
         newPlayerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                PlayerManagementDialog dialog = new PlayerManagementDialog(teams,team);
+                dialog.pack();
+                dialog.setVisible(true);
 
             }
         });
@@ -72,7 +75,7 @@ public class TeamManagementEditDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if(playerJList.getSelectedValue()!=null) {
-                    PlayerManagementDialog dialog = new PlayerManagementDialog(team,(PlayerModel)playerJList.getSelectedValue());
+                    PlayerManagementDialog dialog = new PlayerManagementDialog(teams,team,(PlayerModel)playerJList.getSelectedValue());
                     dialog.pack();
                     dialog.setVisible(true);
                 }

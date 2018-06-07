@@ -31,6 +31,12 @@ public class FileLoader {
         connectAll(teams, players, scores, matchs);
 
         LOG.info("Carga completada");
+
+        NUM_MATCHES=matchs.size();
+        NUM_PLAYERS=players.size();
+        NUM_SCORES=scores.size();
+        NUM_TEAMS=teams.size();
+
         return teams;
     }
 

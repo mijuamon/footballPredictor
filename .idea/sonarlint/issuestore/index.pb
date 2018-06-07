@@ -50,3 +50,7 @@ Ksrc/com/mijuamon/gui/managementGui/editDialog/TeamManagementEditDialog.java,c/
 Wsrc/com/mijuamon/gui/managementGui/editDialog/newEditDialog/PlayerManagementDialog.form,c/8/c88ceca97f371fae0646ce0e6104f09c202b2303
 ‡
 Wsrc/com/mijuamon/gui/managementGui/editDialog/newEditDialog/PlayerManagementDialog.java,5/f/5fe84f3e08c8df994abf3da9c80740c25ef399b7
+‰
+Ysrc/com/mijuamon/gui/managementGui/editDialog/newEditDialog/scoreDialogs/ScoreDialog.form,e/9/e9776bdc275e64762fb92c8406730c7cc50e4c49
+‰
+Ysrc/com/mijuamon/gui/managementGui/editDialog/newEditDialog/scoreDialogs/ScoreDialog.java,5/9/5959117cbfcd3464fbec8915b1f2aaa87127650f

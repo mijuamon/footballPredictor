@@ -14,6 +14,12 @@ public class Constants {
     public static final String SCORE_DATA = "resources/data/scores.dat";
     public static final String MATCH_DATA = "resources/data/matches.dat";
 
+    public static int NUM_TEAMS=0;
+    public static int NUM_SCORES=0;
+    public static int NUM_MATCHES=0;
+    public static int NUM_PLAYERS=0;
+
+
     public static Properties prop = new Properties();
     private static InputStream input = null;
 

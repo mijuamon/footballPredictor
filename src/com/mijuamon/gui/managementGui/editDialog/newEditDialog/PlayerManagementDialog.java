@@ -30,25 +30,40 @@ public class PlayerManagementDialog extends JDialog {
     TeamModel team = new TeamModel();
     List<TeamModel> teams;
 
-    public PlayerManagementDialog(List<TeamModel> teams,TeamModel team, PlayerModel player) {
+    public PlayerManagementDialog(List<TeamModel> teams, TeamModel team, PlayerModel player) {
         this.team = team;
         this.player = player;
         this.scores = player.getScores();
-        this.teams=teams;
+        this.teams = teams;
 
         startDialog();
+
+        //Edit button
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                ScoreDialog dialog = new ScoreDialog(teams, player, (ScoreModel) scoresJList.getSelectedValue());
+                dialog.pack();
 
+                dialog.setVisible(true);
+
+            }
+        });
+        contentPane.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent focusEvent) {
+                super.focusGained(focusEvent);
+                DefaultListModel listModel = new DefaultListModel();
+                scores.stream().forEach(x -> listModel.addElement(x));
+                scoresJList.setModel(listModel);
             }
         });
     }
 
 
-    public PlayerManagementDialog(List<TeamModel> teams,TeamModel team) {
+    public PlayerManagementDialog(List<TeamModel> teams, TeamModel team) {
         this.team = team;
-        this.teams=teams;
+        this.teams = teams;
         startDialog();
     }
 
@@ -61,10 +76,9 @@ public class PlayerManagementDialog extends JDialog {
         DefaultListModel listModel = new DefaultListModel();
         scoresJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         scoresJList.setLayoutOrientation(JList.VERTICAL);
+        playerTextF.setText(player.toString());
 
-        dialog = new ScoreDialog(teams,player,(ScoreModel)scoresJList.getSelectedValue());
-        dialog.pack();
-        dialog.setVisible(true);        scores.stream().forEach(x -> listModel.addElement(x));
+        scores.stream().forEach(x -> listModel.addElement(x));
         scoresJList.setModel(listModel);
 
 

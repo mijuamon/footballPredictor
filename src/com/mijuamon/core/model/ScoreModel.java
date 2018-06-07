@@ -7,7 +7,7 @@ public class ScoreModel extends AbstractItemModel{
     private MatchModel match;
     private String playerID;
     private PlayerModel player;
-    private double score;
+    private Integer score;
 
     public String getMatchID() {
         return matchID;
@@ -25,11 +25,11 @@ public class ScoreModel extends AbstractItemModel{
         this.playerID = playerID;
     }
 
-    public double getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 
@@ -56,7 +56,7 @@ public class ScoreModel extends AbstractItemModel{
         if (lista.length == 3) {
             this.setMatchID(lista[0]);
             this.setPlayerID(lista[1]);
-            this.setScore(Double.parseDouble(lista[2]));
+            this.setScore(Integer.parseInt(lista[2]));
         } else {
             throw new ConvertException(this.getClass().toString());
         }

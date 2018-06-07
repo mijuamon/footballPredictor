@@ -1,11 +1,11 @@
 package com.mijuamon.gui.managementGui.editDialog.newEditDialog.scoreDialogs;
 
+import com.mijuamon.core.model.MatchModel;
 import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.ScoreModel;
 import com.mijuamon.core.model.TeamModel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 
@@ -13,28 +13,45 @@ public class ScoreDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JComboBox localComboBox;
-    private JComboBox visitorComboBox;
+    private JComboBox matchComboBox;
     private JTextField resultTF;
     private JTextField playerTF;
     private JSpinner scoreSpinner;
 
+    private List<TeamModel>teams;
+    private PlayerModel player;
+    private ScoreModel score;
+
+    private boolean isNew;
+
     public ScoreDialog(List<TeamModel> teams, PlayerModel player, ScoreModel score) {
+        //edit score
+        isNew=false;
+        this.teams=teams;
+        this.player=player;
+        this.score=score;
 
-        teams.stream().forEach(team -> localComboBox.addItem(team));
-        teams.stream().forEach(team -> visitorComboBox.addItem(team));
 
-        localComboBox.setSelectedItem(score.getMatch().getLocal());
-        visitorComboBox.setSelectedItem(score.getMatch().getVisitor());
+        matchComboBox.addItem(score.getMatch());
 
+        matchComboBox.setSelectedItem(score.getMatch().getLocal());
+        matchComboBox.setEnabled(false);
+        resultTF.setEnabled(false);
+        resultTF.setText(score.getMatch().getResult());
         playerTF.setText(player.toString());
         scoreSpinner.setValue(score.getScore());
         startDialog();
     }
 
-    public ScoreDialog(List<TeamModel> teams) {
-        teams.stream().forEach(team -> localComboBox.addItem(team));
-        teams.stream().forEach(team -> visitorComboBox.addItem(team));
+    public ScoreDialog(List<TeamModel> teams, PlayerModel player) {
+        isNew=true;
+        this.teams=teams;
+        this.player=player;
+        matchComboBox.addItem(null);
+        player.getTeam().getMatches().stream().forEach(x->matchComboBox.addItem(x));
+
+        teams.stream().forEach(team -> matchComboBox.addItem(team));
+
         startDialog();
     }
 
@@ -78,6 +95,17 @@ public class ScoreDialog extends JDialog {
 
     private void onCancel() {
         // add your code here if necessary
+        if(isNew) {
+            ScoreModel score = new ScoreModel();
+            score.setScore((Integer)scoreSpinner.getValue());
+            score.setPlayerID(player.getPlayerID());
+            score.setPlayer(player);
+            score.setMatchID(((MatchModel)matchComboBox.getSelectedItem()).getMatchId());
+            score.setMatch(((MatchModel)matchComboBox.getSelectedItem()));
+        }
+        else {
+            score.setScore((Integer) scoreSpinner.getValue());
+        }
         dispose();
     }
 }

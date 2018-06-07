@@ -1,8 +1,20 @@
 
-…"squid:ClassVariableVisibilityCheck"PMake prop a static final constant or non-public and provide accessors if needed.(²×öü8—¨÷à¸,
-;squid:S2386"Make this member "protected".(²×öü8—¨÷à¸,
-Msquid:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8—¨÷à¸,
+Asquid:S1148&"#Use a logger to log this exception.(Ç’Çê8—¨÷à¸,
+Msquid:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8—¨÷à¸,
+"squid:ClassVariableVisibilityCheck"VMake NUM_SCORES a static final constant or non-public and provide accessors if needed.(ê­ùÿÿÿÿ8—®ÖÉ½,
+Ssquid:S1444"0Make this "public static NUM_SCORES" field final(ê­ùÿÿÿÿ8—®ÖÉ½,
+"squid:ClassVariableVisibilityCheck"UMake NUM_TEAMS a static final constant or non-public and provide accessors if needed.(ğ›³úÿÿÿÿ8†éÔÉ½,
+wsquid:S3008"TRename this field "NUM_TEAMS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ›³úÿÿÿÿ8†éÔÉ½,
+xsquid:S3008"URename this field "NUM_SCORES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ê­ùÿÿÿÿ8—®ÖÉ½,
+Tsquid:S1444"1Make this "public static NUM_MATCHES" field final(€®ÿÿÿÿÿ8—®ÖÉ½,
+ysquid:S3008"VRename this field "NUM_MATCHES" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€®ÿÿÿÿÿ8—®ÖÉ½,
+‘"squid:ClassVariableVisibilityCheck"WMake NUM_MATCHES a static final constant or non-public and provide accessors if needed.(€®ÿÿÿÿÿ8—®ÖÉ½,
+tsquid:S3008"VRename this field "NUM_PLAYERS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Óçæ8—®ÖÉ½,
 ]squid:S1118":Add a private constructor to hide the implicit public one.(“³±ûÿÿÿÿ8—¨÷à¸,
-Fsquid:S1148&"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8—¨÷à¸,
-Asquid:S1148 "#Use a logger to log this exception.(Ç’Çê8—¨÷à¸,
-Hsquid:S1444"*Make this "public static prop" field final(²×öü8—¨÷à¸,
+Hsquid:S1444"*Make this "public static prop" field final(²×öü8—¨÷à¸,
+Osquid:S1444"1Make this "public static NUM_PLAYERS" field final(Óçæ8—®ÖÉ½,
+Fsquid:S1148,"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8—¨÷à¸,
+Œ"squid:ClassVariableVisibilityCheck"WMake NUM_PLAYERS a static final constant or non-public and provide accessors if needed.(Óçæ8—®ÖÉ½,
+Rsquid:S1444"/Make this "public static NUM_TEAMS" field final(ğ›³úÿÿÿÿ8†éÔÉ½,
+…"squid:ClassVariableVisibilityCheck"PMake prop a static final constant or non-public and provide accessors if needed.(²×öü8—¨÷à¸,
+;squid:S2386"Make this member "protected".(²×öü8—¨÷à¸,
