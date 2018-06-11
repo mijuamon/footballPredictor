@@ -47,4 +47,10 @@ public class Constants {
         }
         return output;
     }
+
+    public static int nextPlayer()
+    {
+        NUM_PLAYERS++;
+        return NUM_PLAYERS;
+    }
 }

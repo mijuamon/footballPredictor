@@ -22,8 +22,14 @@ public class TeamManagementEditDialog extends JDialog {
     private JButton eliminarButton;
     private JButton traspasarButton;
     private JButton cambiarNombreButton;
+    private JButton actualizarButton;
+
+    private TeamModel team;
+    private List<TeamModel> teams;
 
     public TeamManagementEditDialog(TeamModel team, List<TeamModel> teams) {
+        this.team=team;
+        this.teams=teams;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -33,7 +39,7 @@ public class TeamManagementEditDialog extends JDialog {
         playerJList.setLayoutOrientation(JList.VERTICAL);
 
         teamTF.setText(team.getName());
-        team.getPlayers().stream().forEach(x -> listModel.addElement(x));
+        this.team.getPlayers().stream().forEach(x -> listModel.addElement(x));
         playerJList.setModel(listModel);
 
         buttonOK.addActionListener(new ActionListener() {
@@ -87,7 +93,9 @@ public class TeamManagementEditDialog extends JDialog {
         eliminarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                team.getPlayers().remove(playerJList.getSelectedValue());
 
+                refreshList();
             }
         });
 
@@ -98,6 +106,19 @@ public class TeamManagementEditDialog extends JDialog {
 
             }
         });
+        actualizarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                refreshList();
+            }
+        });
+    }
+
+    private void refreshList() {
+
+        DefaultListModel listModel = new DefaultListModel();
+        team.getPlayers().stream().forEach(x -> listModel.addElement(x));
+        playerJList.setModel(listModel);
     }
 
     private void onOK() {

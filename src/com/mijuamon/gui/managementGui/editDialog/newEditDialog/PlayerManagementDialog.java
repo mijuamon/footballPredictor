@@ -1,5 +1,6 @@
 package com.mijuamon.gui.managementGui.editDialog.newEditDialog;
 
+import static  com.mijuamon.core.constants.Constants.*;
 import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.ScoreModel;
 import com.mijuamon.core.model.TeamModel;
@@ -24,11 +25,13 @@ public class PlayerManagementDialog extends JDialog {
     private JButton addNewButton;
     private JButton changeNameButton;
     private JTextField playerTextF;
+    private JButton actualizarButton;
 
     List<ScoreModel> scores = new ArrayList<>();
     PlayerModel player = new PlayerModel();
-    TeamModel team = new TeamModel();
+    TeamModel team;
     List<TeamModel> teams;
+    private boolean isNew=false;
 
     public PlayerManagementDialog(List<TeamModel> teams, TeamModel team, PlayerModel player) {
         this.team = team;
@@ -42,28 +45,54 @@ public class PlayerManagementDialog extends JDialog {
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                ScoreDialog dialog = new ScoreDialog(teams, player, (ScoreModel) scoresJList.getSelectedValue());
-                dialog.pack();
-
-                dialog.setVisible(true);
-
+                if (scoresJList.getSelectedValue() != null) {
+                    ScoreDialog dialog = new ScoreDialog(teams, player, (ScoreModel) scoresJList.getSelectedValue());
+                    dialog.pack();
+                    dialog.setVisible(true);
+                }
             }
         });
-        contentPane.addFocusListener(new FocusAdapter() {
+        addNewButton.addActionListener(new ActionListener() {
             @Override
-            public void focusGained(FocusEvent focusEvent) {
-                super.focusGained(focusEvent);
-                DefaultListModel listModel = new DefaultListModel();
-                scores.stream().forEach(x -> listModel.addElement(x));
-                scoresJList.setModel(listModel);
+            public void actionPerformed(ActionEvent actionEvent) {
+                ScoreDialog dialog = new ScoreDialog(teams, player);
+                dialog.pack();
+                dialog.setVisible(true);
             }
         });
+        eliminarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                scores.remove(scoresJList.getSelectedValue());
+                refreshList();
+            }
+        });
+        actualizarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                refreshList();
+            }
+        });
+        eliminarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                player.getScores().remove( scoresJList.getSelectedValue());
+                refreshList();
+            }
+        });
+    }
+
+    private void refreshList() {
+        DefaultListModel listModel = new DefaultListModel();
+        scores.stream().forEach(x -> listModel.addElement(x));
+        scoresJList.setModel(listModel);
     }
 
 
     public PlayerManagementDialog(List<TeamModel> teams, TeamModel team) {
         this.team = team;
         this.teams = teams;
+        isNew=true;
         startDialog();
     }
 
@@ -88,12 +117,6 @@ public class PlayerManagementDialog extends JDialog {
             }
         });
 
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
-
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -112,6 +135,16 @@ public class PlayerManagementDialog extends JDialog {
 
     private void onOK() {
         // add your code here
+        if(isNew)
+        {
+            PlayerModel player = new PlayerModel();
+            player.setName(playerTextF.getText());
+            player.setTeamID(team.getId());
+            player.setTeam(team);
+            player.setPlayerID(nextPlayer()+"");
+            player.setScores(new ArrayList<>());
+            team.addPlayer(player);
+        }
         dispose();
     }
 
