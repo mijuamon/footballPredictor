@@ -1,5 +1,6 @@
 package com.mijuamon.gui.managementGui.editDialog;
 
+import static com.mijuamon.core.constants.Constants.*;
 import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.TeamModel;
 import com.mijuamon.gui.managementGui.editDialog.newEditDialog.PlayerManagementDialog;
@@ -94,7 +95,7 @@ public class TeamManagementEditDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 team.getPlayers().remove(playerJList.getSelectedValue());
-
+                deletePlayer();
                 refreshList();
             }
         });

@@ -48,9 +48,24 @@ public class Constants {
         return output;
     }
 
-    public static int nextPlayer()
+    public static String nextPlayerID()
     {
         NUM_PLAYERS++;
-        return NUM_PLAYERS;
+        return NUM_PLAYERS+"";
+    }
+
+    public static void deletePlayerID()
+    {
+        NUM_PLAYERS--;
+    }
+
+    public static String nextScoreID()
+    {
+        NUM_SCORES++;
+        return NUM_SCORES+"";
+    }
+    public static void deleteScoreIO()
+    {
+        NUM_SCORES--;
     }
 }

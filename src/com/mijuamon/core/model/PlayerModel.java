@@ -12,7 +12,17 @@ public class PlayerModel extends AbstractItemModel
     private String teamID;
     private TeamModel team;
     private List<ScoreModel> scores= new ArrayList<>();
-    private double scoreMedian;
+
+    public PlayerModel() {
+    }
+
+    public PlayerModel(String playerID, String name, TeamModel team) {
+        this.playerID = playerID;
+        this.name = name;
+        this.teamID = team.getId();
+        this.team = team;
+        this.scores = new ArrayList<>();
+    }
 
     public String getPlayerID() {
         return playerID;
@@ -28,14 +38,6 @@ public class PlayerModel extends AbstractItemModel
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public double getScoreMedian() {
-        return scoreMedian;
-    }
-
-    public void setScoreMedian(double scoreMedian) {
-        this.scoreMedian = scoreMedian;
     }
 
     public List<ScoreModel> getScores() {
@@ -81,5 +83,27 @@ public class PlayerModel extends AbstractItemModel
     @Override
     public String toString(){
         return getName();
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (obj == null) {
+            return false;
+        }
+        if (!PlayerModel.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+        final PlayerModel other = (PlayerModel) obj;
+        if (this.name != other.name) {
+            return false;
+        }
+        if (this.teamID != other.teamID) {
+            return false;
+        }
+        if (!this.team.equals(other.team)) {
+            return false;
+        }
+        return true;
     }
 }

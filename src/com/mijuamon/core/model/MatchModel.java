@@ -12,6 +12,21 @@ public class MatchModel extends AbstractItemModel {
     private String journey;
     private String year;
 
+
+
+    public MatchModel() {
+        super();
+    }
+    public MatchModel(TeamModel local, TeamModel visitor, String result, String journey, String year) {
+       this.local=local;
+       this.visitor=visitor;
+       this.localId= local.getId();
+       this.visitorId=getVisitorId();
+       this.year=year;
+       this.journey=journey;
+       this.result=result;
+    }
+
     public String getLocalId() {
         return localId;
     }
@@ -76,12 +91,20 @@ public class MatchModel extends AbstractItemModel {
         this.matchId = matchId;
     }
 
-    public boolean equalMatch(TeamModel t1, TeamModel t2, boolean explicit) {
-        if (explicit) {
-            return (t1.equals(localId) && visitorId.equals(t2));
-        } else {
-            return (t1.equals(localId) && visitorId.equals(t2)) || (t1.equals(visitorId) && t2.equals(localId));
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (obj == null) {
+            return false;
         }
+        if (!MatchModel.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+        final MatchModel other = (MatchModel) obj;
+        if (!this.visitor.equals(other.visitor) || !this.local.equals(other.local) || this.year != other.year) {
+            return false;
+        }
+        return true;
     }
 
     @Override

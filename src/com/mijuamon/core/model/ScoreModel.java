@@ -2,12 +2,23 @@ package com.mijuamon.core.model;
 
 import com.mijuamon.core.exceptions.ConvertException;
 
-public class ScoreModel extends AbstractItemModel{
+public class ScoreModel extends AbstractItemModel {
     private String matchID;
     private MatchModel match;
     private String playerID;
     private PlayerModel player;
     private Integer score;
+
+    public ScoreModel() {
+    }
+
+    public ScoreModel(String matchID, MatchModel match, PlayerModel player) {
+        this.matchID = matchID;
+        this.match = match;
+        this.player = player;
+        this.matchID = match.getMatchId();
+        this.playerID = player.getPlayerID();
+    }
 
     public String getMatchID() {
         return matchID;
@@ -63,8 +74,23 @@ public class ScoreModel extends AbstractItemModel{
     }
 
     @Override
-    public String toString()
+    public String toString() {
+        return match.getLocal().getName() + "---" + match.getVisitor().getName() + ": " + match.getResult() + " ---> " + score;
+    }
+
+    @Override
+    public boolean equals(Object obj)
     {
-        return match.getLocal().getName()+"---"+match.getVisitor().getName()+": "+match.getResult()+" ---> "+score;
+        if (obj == null) {
+            return false;
+        }
+        if (!ScoreModel.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+        final ScoreModel other = (ScoreModel) obj;
+        if (!this.match.equals(other.getMatch())) {
+            return false;
+        }
+        return true;
     }
 }

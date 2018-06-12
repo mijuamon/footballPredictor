@@ -1,5 +1,6 @@
 package com.mijuamon.gui.managementGui.editDialog.newEditDialog;
 
+import static  com.mijuamon.core.constants.Controller.*;
 import static  com.mijuamon.core.constants.Constants.*;
 import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.ScoreModel;
@@ -137,13 +138,7 @@ public class PlayerManagementDialog extends JDialog {
         // add your code here
         if(isNew)
         {
-            PlayerModel player = new PlayerModel();
-            player.setName(playerTextF.getText());
-            player.setTeamID(team.getId());
-            player.setTeam(team);
-            player.setPlayerID(nextPlayer()+"");
-            player.setScores(new ArrayList<>());
-            team.addPlayer(player);
+            addPlayer(team, playerTextF.getText());
         }
         dispose();
     }
