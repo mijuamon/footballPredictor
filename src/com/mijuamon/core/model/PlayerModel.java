@@ -4,32 +4,28 @@ import com.mijuamon.core.exceptions.ConvertException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-public class PlayerModel extends AbstractItemModel
+public class PlayerModel  extends AbstractModel
 {
-    private String playerID;
     private String name;
-    private String teamID;
     private TeamModel team;
     private List<ScoreModel> scores= new ArrayList<>();
 
-    public PlayerModel() {
-    }
-
-    public PlayerModel(String playerID, String name, TeamModel team) {
-        this.playerID = playerID;
+    public PlayerModel(String id, String name, TeamModel team) {
+        super(id);
         this.name = name;
-        this.teamID = team.getId();
         this.team = team;
         this.scores = new ArrayList<>();
     }
 
-    public String getPlayerID() {
-        return playerID;
+    public PlayerModel(String id, String name) {
+        super(id);
+        setName(name);
     }
 
-    public void setPlayerID(String playerID) {
-        this.playerID = playerID;
+    public PlayerModel() {
+        super(new Random().nextInt()+"");
     }
 
     public String getName() {
@@ -48,13 +44,6 @@ public class PlayerModel extends AbstractItemModel
         this.scores = scores;
     }
 
-    public String getTeamID() {
-        return teamID;
-    }
-
-    public void setTeamID(String teamID) {
-        this.teamID = teamID;
-    }
 
     public TeamModel getTeam() {
         return team;
@@ -64,21 +53,6 @@ public class PlayerModel extends AbstractItemModel
         this.team = team;
     }
 
-    @Override
-    public void convert(String data) throws ConvertException {
-        String [] lista=data.split(";");
-        if(lista.length==3)
-        {
-            this.setPlayerID(lista[0]);
-            this.setTeamID(lista[1]);
-            this.setName(lista[2]);
-
-        }
-        else
-        {
-            throw new ConvertException(this.getClass().toString());
-        }
-    }
 
     @Override
     public String toString(){
@@ -96,9 +70,6 @@ public class PlayerModel extends AbstractItemModel
         }
         final PlayerModel other = (PlayerModel) obj;
         if (this.name != other.name) {
-            return false;
-        }
-        if (this.teamID != other.teamID) {
             return false;
         }
         if (!this.team.equals(other.team)) {

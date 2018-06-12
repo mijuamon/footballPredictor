@@ -95,7 +95,6 @@ public class TeamManagementEditDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 team.getPlayers().remove(playerJList.getSelectedValue());
-                deletePlayer();
                 refreshList();
             }
         });

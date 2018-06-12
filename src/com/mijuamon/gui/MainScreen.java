@@ -210,7 +210,6 @@ public class MainScreen {
         chanceList.add(chance15);
 
         teams = Loader.loadInitialData();
-        System.out.println();
     }
 
 }

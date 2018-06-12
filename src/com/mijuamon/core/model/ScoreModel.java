@@ -1,39 +1,29 @@
 package com.mijuamon.core.model;
 
 import com.mijuamon.core.exceptions.ConvertException;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 
-public class ScoreModel extends AbstractItemModel {
-    private String matchID;
+import java.util.Random;
+
+public class ScoreModel  extends AbstractModel{
     private MatchModel match;
-    private String playerID;
     private PlayerModel player;
     private Integer score;
 
+    public ScoreModel(String id, Integer score) {
+        super(id);
+        setScore(score);
+    }
+
+    public ScoreModel(String scoreValue, MatchModel match, PlayerModel player) {
+        super(new Random().nextInt()+"");
+        setMatch(match);
+        this.setPlayer(player);
+        setScore(Integer.parseInt(scoreValue));
+    }
+
     public ScoreModel() {
-    }
-
-    public ScoreModel(String matchID, MatchModel match, PlayerModel player) {
-        this.matchID = matchID;
-        this.match = match;
-        this.player = player;
-        this.matchID = match.getMatchId();
-        this.playerID = player.getPlayerID();
-    }
-
-    public String getMatchID() {
-        return matchID;
-    }
-
-    public void setMatchID(String matchID) {
-        this.matchID = matchID;
-    }
-
-    public String getPlayerID() {
-        return playerID;
-    }
-
-    public void setPlayerID(String playerID) {
-        this.playerID = playerID;
+        super(new Random().nextInt()+"");
     }
 
     public Integer getScore() {
@@ -58,19 +48,6 @@ public class ScoreModel extends AbstractItemModel {
 
     public void setPlayer(PlayerModel player) {
         this.player = player;
-    }
-
-    @Override
-    public void convert(String data) throws ConvertException {
-
-        String[] lista = data.split(";");
-        if (lista.length == 3) {
-            this.setMatchID(lista[0]);
-            this.setPlayerID(lista[1]);
-            this.setScore(Integer.parseInt(lista[2]));
-        } else {
-            throw new ConvertException(this.getClass().toString());
-        }
     }
 
     @Override
