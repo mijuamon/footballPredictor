@@ -69,47 +69,44 @@ public class FileLoader {
 
     }
 
-    private static List<TeamModel> connectAll(List<TeamDTO> teamsDTO, List<PlayerDTO> players, List<ScoreDTO> scores, List<MatchDTO> matchs) {
+    private static List<TeamModel> connectAll(List<TeamDTO> teamsDTO, List<PlayerDTO> playersDTO, List<ScoreDTO> scoreDTO, List<MatchDTO> matchsDTO) {
 
-        List<MatchModel> matchModelList=new ArrayList<>();
+        List<MatchModel> matchs=new ArrayList<>();
         List<TeamModel> teams=teamsDTO.stream().map(x->convert(x)).collect(Collectors.toList());
-        List<PlayerModel> playersModel=new ArrayList<>();
+        List<PlayerModel> players=new ArrayList<>();
 
-        for (PlayerDTO player : players) {
+        for (PlayerDTO player : playersDTO) {
             TeamModel t =teams.stream().filter(x -> player.getTeamID().equals(x.getID())).findFirst().get();
-            List<ScoreModel>  scoresList = scores.stream().filter(x->player.getID().equals(x.getPlayerID())).map(x->convert(x)).collect(Collectors.toList());
+            List<ScoreModel>  scoresList = scoreDTO.stream().filter(x->player.getID().equals(x.getPlayerID())).map(x->convert(x)).collect(Collectors.toList());
             PlayerModel playerModel = convert(player);
-            playersModel.add(playerModel);
+            players.add(playerModel);
             scoresList.stream().forEach(x->x.setPlayer(playerModel));
             t.addPlayer(playerModel);
             playerModel.setTeam(t);
             playerModel.setScores(scoresList);
         }
 
-        for(MatchDTO match:matchs)
+        for(MatchDTO match:matchsDTO)
         {
             MatchModel matchModel = convert(match);
             matchModel.setLocal(teams.stream().filter(x->x.getID().equals(match.getLocalId())).findFirst().get());
             matchModel.setVisitor(teams.stream().filter(x->x.getID().equals(match.getVisitorId())).findFirst().get());
-            matchModelList.add(matchModel);
+            matchs.add(matchModel);
 
         }
 
 
         for(TeamModel team:teams)
         {
-            team.setMatches(matchModelList.stream().filter(x->x.getLocal().equals(team) || x.getVisitor().equals(team)).collect(Collectors.toList()));
+            team.setMatches(matchs.stream().filter(x->x.getLocal().equals(team) || x.getVisitor().equals(team)).collect(Collectors.toList()));
         }
 
-        for(PlayerModel player:playersModel)
+        for(ScoreDTO score:scoreDTO)
         {
-            //falta relacionar los scores a los matches
+            PlayerModel currentPlayer= players.stream().filter(p->p.getID().equals(score.getPlayerID())).findFirst().get();
+            MatchModel currentMatch = matchs.stream().filter(m->m.getID().equals(score.getMatchID())).findFirst().get();
 
-
-
-            /*ScoreModel scoreModel = new ScoreModel();
-            players.stream().filter(p->score.getPlayerID().equals(p.getID()))
-            matchs.stream().filter(x->x.getMatchId().equals(score.getMatchID())).forEach(x->score.setMatch(x));*/
+            currentPlayer.getScores().stream().filter(s->s.getID().equals(score.getID())).forEach(s->s.setMatch(currentMatch));
         }
         return  teams;
     }
