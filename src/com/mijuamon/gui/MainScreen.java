@@ -113,7 +113,7 @@ public class MainScreen {
         gestionarEquiposButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TeamManagementDialog dialog = new TeamManagementDialog(teams);
+                final TeamManagementDialog dialog = new TeamManagementDialog(teams);
                 dialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
                 dialog.pack();
                 dialog.setVisible(true);
