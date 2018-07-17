@@ -11,6 +11,9 @@ public class TeamModel extends AbstractModel{
     private List<PlayerModel> players= new ArrayList<>();
     private List<MatchModel> matches= new ArrayList<>();
 
+    public TeamModel(String id) {
+        super(id);
+    }
     public TeamModel(String id, String name) {
         super(id);
         this.name = name;

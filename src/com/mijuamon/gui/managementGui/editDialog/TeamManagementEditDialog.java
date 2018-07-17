@@ -27,7 +27,24 @@ public class TeamManagementEditDialog extends JDialog {
 
     private TeamModel team;
     private List<TeamModel> teams;
+    public TeamManagementEditDialog( List<TeamModel> teams) {
+        this.teams=teams;
+        this.team=new TeamModel(nextTeamID());
+        teams.add(team);
 
+        setContentPane(contentPane);
+        setModal(true);
+        getRootPane().setDefaultButton(buttonOK);
+
+        DefaultListModel listModel = new DefaultListModel();
+        playerJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        playerJList.setLayoutOrientation(JList.VERTICAL);
+
+        teamTF.setText(team.getName());
+        playerJList.setModel(listModel);
+
+        initializeListeners(team, teams);
+    }
     public TeamManagementEditDialog(TeamModel team, List<TeamModel> teams) {
         this.team=team;
         this.teams=teams;
@@ -43,12 +60,15 @@ public class TeamManagementEditDialog extends JDialog {
         this.team.getPlayers().stream().forEach(x -> listModel.addElement(x));
         playerJList.setModel(listModel);
 
+        initializeListeners(team, teams);
+    }
+
+    private void initializeListeners(TeamModel team, List<TeamModel> teams) {
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
             }
         });
-
 
 
         // call onCancel() when cross is clicked
@@ -110,6 +130,12 @@ public class TeamManagementEditDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 refreshList();
+            }
+        });
+        cambiarNombreButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                team.setName(teamTF.getText());
             }
         });
     }

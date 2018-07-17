@@ -41,7 +41,12 @@ public class PlayerManagementDialog extends JDialog {
         this.teams = teams;
 
         startDialog();
+        initializeListeners(teams, player);
 
+
+    }
+
+    private void initializeListeners(List<TeamModel> teams, PlayerModel player) {
         //Edit button
         editButton.addActionListener(new ActionListener() {
             @Override
@@ -81,6 +86,12 @@ public class PlayerManagementDialog extends JDialog {
                 refreshList();
             }
         });
+        changeNameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                player.setName(playerTextF.getText());
+            }
+        });
     }
 
     private void refreshList() {
@@ -95,6 +106,7 @@ public class PlayerManagementDialog extends JDialog {
         this.teams = teams;
         isNew = true;
         startDialog();
+        initializeListeners(teams, player);
     }
 
     private void startDialog() {
