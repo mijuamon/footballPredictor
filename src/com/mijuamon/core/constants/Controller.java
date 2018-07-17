@@ -1,6 +1,7 @@
 package com.mijuamon.core.constants;
 
-import com.mijuamon.core.constants.Constants.*;
+import static com.mijuamon.core.constants.Constants.*;
+
 import com.mijuamon.core.model.MatchModel;
 import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.ScoreModel;

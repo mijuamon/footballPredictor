@@ -23,7 +23,7 @@ public class Loader {
         if (getPropertie("load.fileMode") != null && Boolean.parseBoolean(getPropertie("load.fileMode"))) {
             LOG.warning("Modo Fichero");
 
-            return FileLoader.loadInitialData();
+            return FileLoaderUtil.loadInitialData();
 
 
         } else {

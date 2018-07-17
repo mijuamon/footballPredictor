@@ -5,18 +5,17 @@ import com.mijuamon.core.exceptions.ConvertException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeamModel extends AbstractItemModel {
+public class TeamModel extends AbstractModel{
 
     private String name;
-    private String id;
     private List<PlayerModel> players= new ArrayList<>();
     private List<MatchModel> matches= new ArrayList<>();
 
-    public TeamModel() {
+    public TeamModel(String id) {
+        super(id);
     }
-
     public TeamModel(String id, String name) {
-        this.id = id;
+        super(id);
         this.name = name;
     }
 
@@ -42,31 +41,12 @@ public class TeamModel extends AbstractItemModel {
         this.players = players;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public List<MatchModel> getMatches() {
         return matches;
     }
 
     public void setMatches(List<MatchModel> matches) {
         this.matches = matches;
-    }
-
-    @Override
-    public void convert(String data) throws ConvertException {
-        String[] lista = data.split(";");
-        if (lista.length == 2) {
-            this.setId(lista[0]);
-            this.setName(lista[1]);
-        } else {
-            throw new ConvertException(this.getClass().toString());
-        }
     }
 
     @Override

@@ -2,45 +2,30 @@ package com.mijuamon.core.model;
 
 import com.mijuamon.core.exceptions.ConvertException;
 
-public class MatchModel extends AbstractItemModel {
-    private String matchId;
-    private String localId;
+import java.util.Random;
+
+public class MatchModel extends AbstractModel{
     private TeamModel local;
     private TeamModel visitor;
-    private String visitorId;
     private String result;
     private String journey;
     private String year;
 
 
-
-    public MatchModel() {
-        super();
+    public MatchModel(String id, String year, String journey, String result) {
+        super(id);
+        setYear(year);
+        setJourney(journey);
+        setResult(result);
     }
+
     public MatchModel(TeamModel local, TeamModel visitor, String result, String journey, String year) {
-       this.local=local;
-       this.visitor=visitor;
-       this.localId= local.getId();
-       this.visitorId=getVisitorId();
-       this.year=year;
-       this.journey=journey;
-       this.result=result;
-    }
-
-    public String getLocalId() {
-        return localId;
-    }
-
-    public void setLocalId(String localId) {
-        this.localId = localId;
-    }
-
-    public String getVisitorId() {
-        return visitorId;
-    }
-
-    public void setVisitorId(String visitorId) {
-        this.visitorId = visitorId;
+        super(new Random().nextInt()+"");
+        setLocal(local);
+        setVisitor(visitor);
+        setResult(result);
+        setJourney(journey);
+        setYear(year);
     }
 
     public String getResult() {
@@ -82,15 +67,6 @@ public class MatchModel extends AbstractItemModel {
     public void setVisitor(TeamModel visitor) {
         this.visitor = visitor;
     }
-
-    public String getMatchId() {
-        return matchId;
-    }
-
-    public void setMatchId(String matchId) {
-        this.matchId = matchId;
-    }
-
     @Override
     public boolean equals(Object obj)
     {
@@ -105,21 +81,6 @@ public class MatchModel extends AbstractItemModel {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public void convert(String data) throws ConvertException {
-        String[] lista = data.split(";");
-        if (lista.length == 6) {
-            this.setMatchId(lista[0]);
-            this.setLocalId(lista[1]);
-            this.setVisitorId(lista[2]);
-            this.setResult(lista[3]);
-            this.setJourney(lista[4]);
-            this.setYear(lista[5]);
-        } else {
-            throw new ConvertException(this.getClass().toString());
-        }
     }
 
     @Override

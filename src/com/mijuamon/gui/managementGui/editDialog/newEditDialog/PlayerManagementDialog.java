@@ -1,7 +1,5 @@
 package com.mijuamon.gui.managementGui.editDialog.newEditDialog;
 
-import static  com.mijuamon.core.constants.Controller.*;
-import static  com.mijuamon.core.constants.Constants.*;
 import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.ScoreModel;
 import com.mijuamon.core.model.TeamModel;
@@ -11,6 +9,8 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.mijuamon.core.constants.Controller.addPlayer;
 
 public class PlayerManagementDialog extends JDialog {
     private JPanel contentPane;
@@ -32,7 +32,7 @@ public class PlayerManagementDialog extends JDialog {
     PlayerModel player = new PlayerModel();
     TeamModel team;
     List<TeamModel> teams;
-    private boolean isNew=false;
+    private boolean isNew = false;
 
     public PlayerManagementDialog(List<TeamModel> teams, TeamModel team, PlayerModel player) {
         this.team = team;
@@ -41,7 +41,12 @@ public class PlayerManagementDialog extends JDialog {
         this.teams = teams;
 
         startDialog();
+        initializeListeners(teams, player);
 
+
+    }
+
+    private void initializeListeners(List<TeamModel> teams, PlayerModel player) {
         //Edit button
         editButton.addActionListener(new ActionListener() {
             @Override
@@ -77,8 +82,14 @@ public class PlayerManagementDialog extends JDialog {
         eliminarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                player.getScores().remove( scoresJList.getSelectedValue());
+                player.getScores().remove(scoresJList.getSelectedValue());
                 refreshList();
+            }
+        });
+        changeNameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                player.setName(playerTextF.getText());
             }
         });
     }
@@ -93,8 +104,9 @@ public class PlayerManagementDialog extends JDialog {
     public PlayerManagementDialog(List<TeamModel> teams, TeamModel team) {
         this.team = team;
         this.teams = teams;
-        isNew=true;
+        isNew = true;
         startDialog();
+        initializeListeners(teams, player);
     }
 
     private void startDialog() {
@@ -136,8 +148,7 @@ public class PlayerManagementDialog extends JDialog {
 
     private void onOK() {
         // add your code here
-        if(isNew)
-        {
+        if (isNew) {
             addPlayer(team, playerTextF.getText());
         }
         dispose();

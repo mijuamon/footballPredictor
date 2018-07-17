@@ -68,4 +68,14 @@ public class Constants {
     {
         NUM_SCORES--;
     }
+
+    public static String nextTeamID()
+    {
+        NUM_TEAMS++;
+        return NUM_TEAMS+"";
+    }
+    public static void deleteTeamIO()
+    {
+        NUM_TEAMS--;
+    }
 }

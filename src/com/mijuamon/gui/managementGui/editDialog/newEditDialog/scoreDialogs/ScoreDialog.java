@@ -89,9 +89,7 @@ public class ScoreDialog extends JDialog {
         if(isNew) {
             ScoreModel score = new ScoreModel();
             score.setScore((Integer)scoreSpinner.getValue());
-            score.setPlayerID(player.getPlayerID());
             score.setPlayer(player);
-            score.setMatchID(((MatchModel)matchComboBox.getSelectedItem()).getMatchId());
             score.setMatch(((MatchModel)matchComboBox.getSelectedItem()));
             player.getScores().add(score);
         }
