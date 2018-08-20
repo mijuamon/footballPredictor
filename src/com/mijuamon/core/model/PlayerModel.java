@@ -1,16 +1,14 @@
 package com.mijuamon.core.model;
 
-import com.mijuamon.core.exceptions.ConvertException;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class PlayerModel  extends AbstractModel
-{
+import static com.mijuamon.core.constants.Constants.nextPlayerID;
+
+public class PlayerModel extends AbstractModel {
     private String name;
     private TeamModel team;
-    private List<ScoreModel> scores= new ArrayList<>();
+    private List<ScoreModel> scores = new ArrayList<>();
 
     public PlayerModel(String id, String name, TeamModel team) {
         super(id);
@@ -25,7 +23,12 @@ public class PlayerModel  extends AbstractModel
     }
 
     public PlayerModel() {
-        super(new Random().nextInt()+"");
+        super(nextPlayerID());
+    }
+
+    public PlayerModel(TeamModel team) {
+        super(nextPlayerID());
+        setTeam(team);
     }
 
     public String getName() {
@@ -55,13 +58,12 @@ public class PlayerModel  extends AbstractModel
 
 
     @Override
-    public String toString(){
+    public String toString() {
         return getName();
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         if (obj == null) {
             return false;
         }

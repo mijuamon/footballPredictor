@@ -18,6 +18,7 @@ public class TeamManagementDialog extends JDialog {
     private JComboBox descendTeamCB;
     private JRadioButton asscentionRadioButton;
     private JComboBox AsscentionCB;
+    private JButton updateButton;
 
     protected List<TeamModel> teams;
 
@@ -56,6 +57,18 @@ public class TeamManagementDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                refreshLists();
+            }
+        });
+    }
+
+    private void refreshLists() {
+        editTeamCB.removeAllItems();
+        teams.stream().forEach(team -> editTeamCB.addItem(team));
+
     }
 
     private void onOK() {
@@ -66,6 +79,12 @@ public class TeamManagementDialog extends JDialog {
             TeamModel selTeam = (TeamModel) editTeamCB.getSelectedItem();
 
             dialog = new TeamManagementEditDialog(selTeam, teams);
+            dialog.pack();
+            dialog.setVisible(true);
+        }
+        else if (newTeamRadioButtton.isSelected())
+        {
+            dialog = new TeamManagementEditDialog(teams);
             dialog.pack();
             dialog.setVisible(true);
         }

@@ -1,5 +1,6 @@
 package com.mijuamon.gui.managementGui.editDialog.newEditDialog;
 
+import com.mijuamon.core.model.MatchModel;
 import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.ScoreModel;
 import com.mijuamon.core.model.TeamModel;
@@ -9,6 +10,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.mijuamon.core.constants.Controller.addPlayer;
 
@@ -28,12 +30,13 @@ public class PlayerManagementDialog extends JDialog {
     private JTextField playerTextF;
     private JButton actualizarButton;
 
-    List<ScoreModel> scores = new ArrayList<>();
-    PlayerModel player = new PlayerModel();
-    TeamModel team;
-    List<TeamModel> teams;
+    private List<ScoreModel> scores = new ArrayList<>();
+    private PlayerModel player;
+    private TeamModel team;
+    private List<TeamModel> teams;
     private boolean isNew = false;
 
+    //new player
     public PlayerManagementDialog(List<TeamModel> teams, TeamModel team, PlayerModel player) {
         this.team = team;
         this.player = player;
@@ -41,54 +44,82 @@ public class PlayerManagementDialog extends JDialog {
         this.teams = teams;
 
         startDialog();
-        initializeListeners(teams, player);
-
-
+        initializeListeners(teams);
     }
 
-    private void initializeListeners(List<TeamModel> teams, PlayerModel player) {
-        //Edit button
+    //new player
+    public PlayerManagementDialog(List<TeamModel> teams, TeamModel team) {
+        this.team = team;
+        this.teams = teams;
+        changeNameButton.setText("Guardar jugador");
+        isNew = true;
+        startDialog();
+        initializeListeners(teams);
+    }
+
+    private void initializeListeners(List<TeamModel> teams) {
+        //Edit score
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (scoresJList.getSelectedValue() != null) {
-                    ScoreDialog dialog = new ScoreDialog(teams, player, (ScoreModel) scoresJList.getSelectedValue());
-                    dialog.pack();
-                    dialog.setVisible(true);
+                if (player == null || scoresJList.getSelectedValue() == null) {
+                    return;
                 }
-            }
-        });
-        addNewButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                ScoreDialog dialog = new ScoreDialog(teams, player);
+
+                ScoreDialog dialog = new ScoreDialog(teams, player, (ScoreModel) scoresJList.getSelectedValue());
                 dialog.pack();
                 dialog.setVisible(true);
             }
         });
+        //Nuevo score
+        addNewButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (player == null) {
+                    return;
+                }
+                List<MatchModel> matchs=player.getTeam().getMatches().stream()
+                        .filter(match -> !player.getScores().stream()
+                                .anyMatch(score -> score.getMatch().equals(match)))
+                        .collect(Collectors.toList());
+                if(matchs.size()>0) {
+                    ScoreDialog dialog = new ScoreDialog(teams, player, matchs);
+                    dialog.pack();
+                    dialog.setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,
+                            "No quedan mas partidos sin puntuar",
+                            "Error nueva puntuación",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        //Remove score
         eliminarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if (player == null || scoresJList.getSelectedValue() == null) {
+                    return;
+                }
                 scores.remove(scoresJList.getSelectedValue());
                 refreshList();
             }
         });
+        //Update form
         actualizarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 refreshList();
             }
         });
-        eliminarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                player.getScores().remove(scoresJList.getSelectedValue());
-                refreshList();
-            }
-        });
+        //Update player
         changeNameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if (player == null) {
+                    player = new PlayerModel(team);
+                }
                 player.setName(playerTextF.getText());
             }
         });
@@ -96,18 +127,11 @@ public class PlayerManagementDialog extends JDialog {
 
     private void refreshList() {
         DefaultListModel listModel = new DefaultListModel();
+        scores=player.getScores();
         scores.stream().forEach(x -> listModel.addElement(x));
         scoresJList.setModel(listModel);
     }
 
-
-    public PlayerManagementDialog(List<TeamModel> teams, TeamModel team) {
-        this.team = team;
-        this.teams = teams;
-        isNew = true;
-        startDialog();
-        initializeListeners(teams, player);
-    }
 
     private void startDialog() {
         setContentPane(contentPane);
@@ -118,7 +142,7 @@ public class PlayerManagementDialog extends JDialog {
         DefaultListModel listModel = new DefaultListModel();
         scoresJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         scoresJList.setLayoutOrientation(JList.VERTICAL);
-        playerTextF.setText(player.toString());
+        playerTextF.setText(player != null ? player.toString() : "");
 
         scores.stream().forEach(x -> listModel.addElement(x));
         scoresJList.setModel(listModel);

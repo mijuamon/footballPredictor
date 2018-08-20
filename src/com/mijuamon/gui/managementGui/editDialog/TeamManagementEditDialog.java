@@ -1,6 +1,5 @@
 package com.mijuamon.gui.managementGui.editDialog;
 
-import static com.mijuamon.core.constants.Constants.*;
 import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.TeamModel;
 import com.mijuamon.gui.managementGui.editDialog.newEditDialog.PlayerManagementDialog;
@@ -8,6 +7,10 @@ import com.mijuamon.gui.managementGui.editDialog.newEditDialog.PlayerManagementD
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.List;
+
+import static com.mijuamon.core.constants.Constants.SAVE_LABEL;
+import static com.mijuamon.core.constants.Constants.UPDATE_LABEL;
+import static com.mijuamon.core.constants.Constants.nextTeamID;
 
 
 public class TeamManagementEditDialog extends JDialog {
@@ -22,16 +25,15 @@ public class TeamManagementEditDialog extends JDialog {
     private JButton editButton;
     private JButton eliminarButton;
     private JButton traspasarButton;
-    private JButton cambiarNombreButton;
-    private JButton actualizarButton;
+    private JButton guardarButton;
 
     private TeamModel team;
     private List<TeamModel> teams;
-    public TeamManagementEditDialog( List<TeamModel> teams) {
-        this.teams=teams;
-        this.team=new TeamModel(nextTeamID());
-        teams.add(team);
 
+    //new team
+    public TeamManagementEditDialog(List<TeamModel> teams) {
+        this.teams = teams;
+        guardarButton.setText(SAVE_LABEL);
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -39,15 +41,14 @@ public class TeamManagementEditDialog extends JDialog {
         DefaultListModel listModel = new DefaultListModel();
         playerJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         playerJList.setLayoutOrientation(JList.VERTICAL);
-
-        teamTF.setText(team.getName());
         playerJList.setModel(listModel);
 
-        initializeListeners(team, teams);
+        initializeListeners();
     }
+
     public TeamManagementEditDialog(TeamModel team, List<TeamModel> teams) {
-        this.team=team;
-        this.teams=teams;
+        this.team = team;
+        this.teams = teams;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -60,10 +61,10 @@ public class TeamManagementEditDialog extends JDialog {
         this.team.getPlayers().stream().forEach(x -> listModel.addElement(x));
         playerJList.setModel(listModel);
 
-        initializeListeners(team, teams);
+        initializeListeners();
     }
 
-    private void initializeListeners(TeamModel team, List<TeamModel> teams) {
+    private void initializeListeners() {
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
@@ -90,7 +91,10 @@ public class TeamManagementEditDialog extends JDialog {
         newPlayerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                PlayerManagementDialog dialog = new PlayerManagementDialog(teams,team);
+                if (team == null) {
+                    return;
+                }
+                PlayerManagementDialog dialog = new PlayerManagementDialog(teams, team);
                 dialog.pack();
                 dialog.setVisible(true);
 
@@ -101,11 +105,13 @@ public class TeamManagementEditDialog extends JDialog {
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(playerJList.getSelectedValue()!=null) {
-                    PlayerManagementDialog dialog = new PlayerManagementDialog(teams,team,(PlayerModel)playerJList.getSelectedValue());
-                    dialog.pack();
-                    dialog.setVisible(true);
+                if (team == null || playerJList.getSelectedValue() == null) {
+                    return;
                 }
+
+                PlayerManagementDialog dialog = new PlayerManagementDialog(teams, team, (PlayerModel) playerJList.getSelectedValue());
+                dialog.pack();
+                dialog.setVisible(true);
 
             }
         });
@@ -114,6 +120,9 @@ public class TeamManagementEditDialog extends JDialog {
         eliminarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if (team == null || playerJList.getSelectedValue() == null) {
+                    return;
+                }
                 team.getPlayers().remove(playerJList.getSelectedValue());
                 refreshList();
             }
@@ -126,16 +135,17 @@ public class TeamManagementEditDialog extends JDialog {
 
             }
         });
-        actualizarButton.addActionListener(new ActionListener() {
+        guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                refreshList();
-            }
-        });
-        cambiarNombreButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+                if(team==null && teamTF.getText()!=null || !teamTF.getText().equals(""))
+                {
+                    guardarButton.setText(UPDATE_LABEL);
+                }
+                team = new TeamModel(nextTeamID());
+                teams.add(team);
                 team.setName(teamTF.getText());
+                refreshList();
             }
         });
     }

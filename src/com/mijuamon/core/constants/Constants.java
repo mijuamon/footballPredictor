@@ -7,6 +7,10 @@ import java.util.Properties;
 
 public class Constants {
 
+    public static final String UPDATE_LABEL ="Actualizar";
+    public static final String SAVE_LABEL   =" Guardar ";
+
+
     public static final String CONFIG_FILE = "resources/configuration.properties";
 
     public static final String TEAMS_DATA = "resources/data/teams.dat";

@@ -17,18 +17,19 @@ public class ScoreDialog extends JDialog {
     private JTextField playerTF;
     private JSpinner scoreSpinner;
 
-    private List<TeamModel>teams;
+    private List<TeamModel> teams;
     private PlayerModel player;
     private ScoreModel score;
 
     private boolean isNew;
 
+    //Edit score
     public ScoreDialog(List<TeamModel> teams, PlayerModel player, ScoreModel score) {
         //edit score
-        isNew=false;
-        this.teams=teams;
-        this.player=player;
-        this.score=score;
+        isNew = false;
+        this.teams = teams;
+        this.player = player;
+        this.score = score;
 
 
         matchComboBox.addItem(score.getMatch());
@@ -40,15 +41,24 @@ public class ScoreDialog extends JDialog {
         startDialog();
     }
 
-    public ScoreDialog(List<TeamModel> teams, PlayerModel player) {
-        isNew=true;
-        this.teams=teams;
-        this.player=player;
-        playerTF.setText(player.toString());
-        matchComboBox.addItem(null);
-        player.getTeam().getMatches().stream().forEach(x->matchComboBox.addItem(x));
-
-        startDialog();
+    // New Score
+    public ScoreDialog(List<TeamModel> teams, PlayerModel player, List<MatchModel> matchs) {
+        if (player != null) {
+            isNew = true;
+            this.teams = teams;
+            this.player = player;
+            playerTF.setText(player.toString());
+            matchComboBox.addItem(null);
+            matchs.stream().forEach(match->matchComboBox.addItem(match));
+            if (matchComboBox.getItemCount() > 0) {
+                startDialog();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Este jugador aun no existe",
+                    "Jugador no existente",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void startDialog() {
@@ -86,14 +96,13 @@ public class ScoreDialog extends JDialog {
 
     private void onOK() {
         // add your code here
-        if(isNew) {
+        if (isNew) {
             ScoreModel score = new ScoreModel();
-            score.setScore((Integer)scoreSpinner.getValue());
+            score.setScore((Integer) scoreSpinner.getValue());
             score.setPlayer(player);
-            score.setMatch(((MatchModel)matchComboBox.getSelectedItem()));
+            score.setMatch(((MatchModel) matchComboBox.getSelectedItem()));
             player.getScores().add(score);
-        }
-        else {
+        } else {
             score.setScore((Integer) scoreSpinner.getValue());
         }
         dispose();
