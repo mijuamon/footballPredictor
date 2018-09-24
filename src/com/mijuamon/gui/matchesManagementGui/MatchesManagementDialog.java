@@ -53,11 +53,5 @@ public class MatchesManagementDialog extends JDialog {
         // add your code here if necessary
         dispose();
     }
-
-    public static void main(String[] args) {
-        MatchesManagementDialog dialog = new MatchesManagementDialog(teams);
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
+    
 }
