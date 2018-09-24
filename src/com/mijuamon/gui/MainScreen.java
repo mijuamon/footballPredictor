@@ -2,7 +2,8 @@ package com.mijuamon.gui;
 
 import com.mijuamon.core.loaders.Loader;
 import com.mijuamon.core.model.TeamModel;
-import com.mijuamon.gui.managementGui.TeamManagementDialog;
+import com.mijuamon.gui.matchesManagementGui.MatchesManagementDialog;
+import com.mijuamon.gui.teamsManagementGui.TeamsManagementDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -98,6 +99,7 @@ public class MainScreen {
     private JLabel chance14;
     private JLabel chance15;
     private JComboBox localCB15;
+    private JButton gestionarPartidosButton;
 
     protected List<JLabel> numMatchesList;
     protected List<JComboBox> localList;
@@ -113,13 +115,22 @@ public class MainScreen {
         gestionarEquiposButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                final TeamManagementDialog dialog = new TeamManagementDialog(teams);
+                final TeamsManagementDialog dialog = new TeamsManagementDialog(teams);
                 dialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
                 dialog.pack();
                 dialog.setVisible(true);
             }
         });
 
+        gestionarPartidosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                final MatchesManagementDialog dialog = new MatchesManagementDialog(teams);
+                dialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+                dialog.pack();
+                dialog.setVisible(true);
+            }
+        });
     }
 
     private void initialize() {

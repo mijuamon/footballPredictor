@@ -8,9 +8,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.List;
 
-import static com.mijuamon.core.constants.Constants.SAVE_LABEL;
-import static com.mijuamon.core.constants.Constants.UPDATE_LABEL;
-import static com.mijuamon.core.constants.Constants.nextTeamID;
+import static com.mijuamon.core.constants.Constants.*;
 
 
 public class TeamManagementEditDialog extends JDialog {
@@ -49,6 +47,7 @@ public class TeamManagementEditDialog extends JDialog {
     public TeamManagementEditDialog(TeamModel team, List<TeamModel> teams) {
         this.team = team;
         this.teams = teams;
+        guardarButton.setText(UPDATE_LABEL);
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -138,14 +137,16 @@ public class TeamManagementEditDialog extends JDialog {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(team==null && teamTF.getText()!=null || !teamTF.getText().equals(""))
-                {
+                if (team == null && teamTF.getText() != null && !teamTF.getText().equals("")) {
                     guardarButton.setText(UPDATE_LABEL);
+                    team = new TeamModel(nextTeamID());
+                    teams.add(team);
                 }
-                team = new TeamModel(nextTeamID());
-                teams.add(team);
-                team.setName(teamTF.getText());
-                refreshList();
+                if (!teamTF.getText().equals("")) {
+                    team.setName(teamTF.getText());
+
+                    refreshList();
+                }
             }
         });
     }

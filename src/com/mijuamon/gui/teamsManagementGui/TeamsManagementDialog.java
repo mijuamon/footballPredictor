@@ -1,13 +1,13 @@
-package com.mijuamon.gui.managementGui;
+package com.mijuamon.gui.teamsManagementGui;
 
 import com.mijuamon.core.model.TeamModel;
-import com.mijuamon.gui.managementGui.editDialog.TeamManagementEditDialog;
+import com.mijuamon.gui.teamsManagementGui.editDialog.TeamManagementEditDialog;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.List;
 
-public class TeamManagementDialog extends JDialog {
+public class TeamsManagementDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -22,7 +22,7 @@ public class TeamManagementDialog extends JDialog {
 
     protected List<TeamModel> teams;
 
-    public TeamManagementDialog(List<TeamModel> teams) {
+    public TeamsManagementDialog(List<TeamModel> teams) {
         this.teams = teams;
         setContentPane(contentPane);
         setModal(true);
