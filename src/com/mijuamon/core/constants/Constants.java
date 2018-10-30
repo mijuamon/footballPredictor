@@ -24,6 +24,14 @@ public class Constants {
     public static int NUM_PLAYERS=0;
 
 
+    //Functionality conditionals
+
+    //Use players median for players score
+    //  true -> use Median
+    //  false -> use sum of all players score
+    public static boolean PLAYERS_MEDIAN=true;
+
+
     public static Properties prop = new Properties();
     private static InputStream input = null;
 

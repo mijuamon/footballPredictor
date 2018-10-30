@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="38627576-f043-4230-a2c5-6d71cbea993b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mijuamon/core/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mijuamon/core/constants/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mijuamon/core/predictors/Predictor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mijuamon/core/predictors/Predictor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mijuamon/gui/teamsManagementGui/TeamsManagementDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mijuamon/gui/teamsManagementGui/TeamsManagementDialog.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -86,50 +88,39 @@
     <session id="1192438724">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.18" value="1" />
-          <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.22" value="1" />
+          <entry key="project.open.time.23" value="2" />
           <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="2" />
+          <entry key="java" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="2" />
+          <entry key="JAVA" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1676" />
+          <entry key="java" value="2553" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1676" />
+          <entry key="JAVA" value="2553" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="330">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/mijuamon/gui/teamsManagementGui/editDialog/TeamManagementEditDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2210">
-              <caret line="144" column="51" selection-start-line="144" selection-start-column="51" selection-end-line="144" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/mijuamon/gui/MainScreen.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -163,8 +154,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/mijuamon/gui/teamsManagementGui/TeamsManagementDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+            <state relative-caret-position="289">
+              <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -175,8 +166,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/predictors/Predictor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+            <state relative-caret-position="-1026">
+              <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/constants/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="31" column="40" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -299,12 +302,12 @@
         <option value="$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/newEditDialog/PlayerManagementDialog.java" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/TeamManagementDialog.form" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/TeamManagementDialog.java" />
-        <option value="$PROJECT_DIR$/src/com/mijuamon/core/constants/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/TeamManagementEditDialog.form" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/gui/managementGui/editDialog/TeamManagementEditDialog.java" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/gui/MainScreen.form" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/gui/MainScreen.java" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/gui/teamsManagementGui/TeamsManagementDialog.java" />
+        <option value="$PROJECT_DIR$/src/com/mijuamon/core/constants/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/mijuamon/core/predictors/Predictor.java" />
       </list>
     </option>
@@ -315,7 +318,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -328,7 +331,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -358,6 +360,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="mijuamon" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="footballPredictor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="footballPredictor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mijuamon" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="constants" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="footballPredictor" type="b2602c69:ProjectViewProjectNode" />
@@ -395,6 +405,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -403,7 +414,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="330" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540555460998" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540557381682" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/jgoodies-forms-1.8.0.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -507,18 +518,20 @@
       <workItem from="1540375608947" duration="138000" />
       <workItem from="1540534387978" duration="116000" />
       <workItem from="1540534621281" duration="42000" />
-      <workItem from="1540548126099" duration="5272000" />
+      <workItem from="1540548126099" duration="5906000" />
+      <workItem from="1540886640925" duration="1503000" />
+      <workItem from="1540897994826" duration="2742000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96940000" />
+    <option name="totallyTimeSpent" value="101819000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19669509" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16684435" />
       <window_info id="Web" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="3" />
@@ -540,7 +553,7 @@
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="12" />
       <window_info anchor="bottom" id="SonarLint" order="13" weight="0.32665965" />
-      <window_info anchor="bottom" id="Version Control" order="14" visible="true" weight="0.14533623" />
+      <window_info anchor="bottom" id="Version Control" order="14" visible="true" weight="0.14316703" />
       <window_info anchor="bottom" id="Hybris Console [Experimental]" order="15" />
       <window_info anchor="bottom" id="PMD" order="16" weight="0.32982087" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -734,9 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#209#210#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -841,20 +851,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-9">
           <caret line="2" column="53" lean-forward="true" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
-          <folding>
-            <element signature="e#557#558#0" expanded="true" />
-            <element signature="e#585#586#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/constants/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -949,8 +945,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mijuamon/gui/teamsManagementGui/TeamsManagementDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+        <state relative-caret-position="289">
+          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/constants/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="31" column="40" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -959,8 +965,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/mijuamon/core/predictors/Predictor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+        <state relative-caret-position="-1026">
+          <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

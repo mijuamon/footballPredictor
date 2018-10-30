@@ -6,70 +6,97 @@ import com.mijuamon.core.model.ScoreModel;
 import com.mijuamon.core.model.TeamModel;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import static com.mijuamon.core.constants.Constants.PLAYERS_MEDIAN;
 
 public class Predictor {
 
-    public static double PredictMatch(final TeamModel local, final TeamModel visitor) {
+    public static double PredictMatch(final TeamModel local, final TeamModel visitor, final Map<String, String> conditionalLocal, final Map<String, String> conditionalVisitor) {
         double result = 0;
 
         //Puntuacion de equipo por partidos
-        double localMotivational = CalculateTeamMotivational(local, local.getMatches());
-        double visitorMotivational = CalculateTeamMotivational(visitor, visitor.getMatches());
+        double localMotivational = CalculateTeamScore(local, local.getMatches());
+        double visitorMotivational = CalculateTeamScore(visitor, visitor.getMatches());
 
         //Puntuacion de juegadores
-        double localPlayers = local.getPlayers().stream().mapToDouble(play->CalculatePlayerScore(play)).sum();
-        double visitorPlayers = visitor.getPlayers().stream().mapToDouble(play->CalculatePlayerScore(play)).sum();
+        double localPlayers = local.getPlayers().stream().mapToDouble(play -> CalculatePlayerScore(play)).sum();
+        double visitorPlayers = visitor.getPlayers().stream().mapToDouble(play -> CalculatePlayerScore(play)).sum();
+        if (PLAYERS_MEDIAN) {
+            localPlayers = localPlayers / local.getPlayers().size();
+            visitorPlayers = visitorPlayers / visitor.getPlayers().size();
+        }
 
         //////////////////////////////////
         ///////otros condicionantes///////
 
         //////////////////////////////////
-
-
-
+        double scoreConditionalLocal = calculateConditionals(conditionalLocal);
+        double scoreConditionalVisitor = calculateConditionals(conditionalVisitor);
 
 
         //Total de puntuacion y puntuacion del equipo local
-        double totalScore=localMotivational+visitorMotivational+localPlayers+visitorPlayers;
-        double localScore=localMotivational+localPlayers;
+        double totalScore = localMotivational + visitorMotivational + localPlayers + visitorPlayers;
+        double localScore = localMotivational + localPlayers;
 
 
-        result=localScore*100/totalScore; //Calculamos el porcentaje de victoria del equipo local
+        result = localScore * 100 / totalScore; //Calculamos el porcentaje de victoria del equipo local
         return result;
     }
 
-    private static double CalculatePlayerScore(final PlayerModel player) {
+    private static double calculateConditionals(Map<String, String> conditional) {
+        double score = 0.0;
+        for (String cond : conditional.keySet()) {
+            switch (cond) {
+                case ("derbi"):
+                    break;
+                case ("cambionEntrenador"):
+                    break;
+                case ("rivalidad"):
+                    break;
+                case (""):
+                    break;
+            }
+        }
+        return score;
+    }
 
-        double lastFiveScore =0;
-        double seasonTotalScore=0;
+    private static double causalityRadom() {
+        return -10.0 + new Random().nextDouble() * 20.0;
+
+    }
+
+    private static double CalculatePlayerScore(final PlayerModel player) {
+        double lastFiveScore = 0;
+        double seasonTotalScore = 0;
 
         List<ScoreModel> seasonTotal = player.getScores();
-        seasonTotalScore=seasonTotal.stream().mapToDouble(score->score.getScore()).sum()/seasonTotal.size();
 
-        if(seasonTotal.size()>5) {
+
+        seasonTotalScore = seasonTotal.stream().mapToDouble(score -> score.getScore()).sum() / seasonTotal.size();
+
+        if (seasonTotal.size() > 5) {
             List<ScoreModel> lastFive = seasonTotal.subList(seasonTotal.size() - 6, seasonTotal.size() - 1);
-            lastFiveScore=lastFive.stream().mapToDouble(score->score.getScore()).sum()/5;
+            lastFiveScore = lastFive.stream().mapToDouble(score -> score.getScore()).sum() / 5;
         }
 
-        return lastFiveScore+seasonTotalScore;
+
+        return seasonTotal.size() > 5 ? lastFiveScore * 0.5 + seasonTotalScore * 0.5 : seasonTotalScore;
     }
 
-    private static double CalculateTeamMotivational(final TeamModel team, final List<MatchModel> matches) {
-        return matches.stream().mapToDouble(match->CalculateMatchScore(team,match)).sum();
+    private static double CalculateTeamScore(final TeamModel team, final List<MatchModel> matches) {
+        return matches.stream().mapToDouble(match -> CalculateMatchScore(team, match)).sum();
     }
 
-    private static double CalculateMatchScore(final TeamModel team, final  MatchModel match) {
-        double score=1;
-        boolean isLocal=false;
-        if(match.getLocal().equals(team))
-        {
-            isLocal=true;
-        }
-        else if (match.getVisitor().equals(team))
-        {
-            isLocal=false;
-        }
-        else{
+    private static double CalculateMatchScore(final TeamModel team, final MatchModel match) {
+        double score = 1;
+        boolean isLocal = false;
+        if (match.getLocal().equals(team)) {
+            isLocal = true;
+        } else if (match.getVisitor().equals(team)) {
+            isLocal = false;
+        } else {
             try {
                 throw new Exception("Error inconsistencia de datos - calculateMatchScore - El equipo recibido no esta como visitante ni local");
             } catch (Exception e) {
@@ -77,16 +104,13 @@ public class Predictor {
             }
         }
 
-        int localScore=Integer.parseInt(match.getResult().split("-")[0]);
-        int visitorScore=Integer.parseInt(match.getResult().split("-")[1]);
+        int localScore = Integer.parseInt(match.getResult().split("-")[0]);
+        int visitorScore = Integer.parseInt(match.getResult().split("-")[1]);
 
-        if(isLocal&&localScore>visitorScore || !isLocal&& visitorScore>localScore )
-        {
-            score=3;
-        }
-        else if(localScore!=visitorScore)
-        {
-            score=-1;
+        if (isLocal && localScore > visitorScore || !isLocal && visitorScore > localScore) {
+            score = 3;
+        } else if (localScore != visitorScore) {
+            score = -1;
         }
 
         return score;
