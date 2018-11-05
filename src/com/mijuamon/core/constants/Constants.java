@@ -23,6 +23,21 @@ public class Constants {
     public static int NUM_MATCHES=0;
     public static int NUM_PLAYERS=0;
 
+    //Conditionals
+
+    public static final int DERBI=1;
+    public static final int LOCAL_2_COMPETITIONS=2;
+    public static final int LOCAL_3_COMPETITIONS=3;
+    public static final int VISITOR_2_COMPETITIONS=4;
+    public static final int VISITOR_3_COMPETITIONS=5;
+    public static final int HISTORIC_RIVALITY=6;
+    public static final int MATCHS_OVERLOAD=7;
+    public static final int COMPETITION_ELIMINATION=8;
+    public static final int DIRECT_COMPETITION=9;
+    public static final int INDIRECT_COMPETITION=10;
+    public static final int COACH_CHANGE=11;
+    public static final int ROTATIONS=12;
+
 
     //Functionality conditionals
 

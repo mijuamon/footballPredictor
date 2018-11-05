@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import static com.mijuamon.core.constants.Constants.PLAYERS_MEDIAN;
+import static com.mijuamon.core.constants.Constants.*;
 
 public class Predictor {
 
-    public static double PredictMatch(final TeamModel local, final TeamModel visitor, final Map<String, String> conditionalLocal, final Map<String, String> conditionalVisitor) {
+    public static double PredictMatch(final TeamModel local, final TeamModel visitor, final Map<Integer, String> conditionalLocal, final Map<Integer, String> conditionalVisitor) {
         double result = 0;
 
         //Puntuacion de equipo por partidos
@@ -45,17 +45,33 @@ public class Predictor {
         return result;
     }
 
-    private static double calculateConditionals(Map<String, String> conditional) {
+    private static double calculateConditionals(Map<Integer, String> conditional) {
         double score = 0.0;
-        for (String cond : conditional.keySet()) {
+        for (Integer cond : conditional.keySet()) {
             switch (cond) {
-                case ("derbi"):
+                case (DERBI):
                     break;
-                case ("cambionEntrenador"):
+                case (COACH_CHANGE):
                     break;
-                case ("rivalidad"):
+                case (HISTORIC_RIVALITY):
                     break;
-                case (""):
+                case (LOCAL_2_COMPETITIONS):
+                    break;
+                case (LOCAL_3_COMPETITIONS):
+                    break;
+                case (VISITOR_2_COMPETITIONS):
+                    break;
+                case (VISITOR_3_COMPETITIONS):
+                    break;
+                case (MATCHS_OVERLOAD):
+                    break;
+                case (COMPETITION_ELIMINATION):
+                    break;
+                case (DIRECT_COMPETITION):
+                    break;
+                case (INDIRECT_COMPETITION):
+                    break;
+                case (ROTATIONS):
                     break;
             }
         }
