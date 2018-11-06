@@ -2,17 +2,26 @@ package com.mijuamon.core.model;
 
 public abstract class AbstractModel {
 
-    private String ID;
+    private static String modelName;
+    private int ID;
 
-    public AbstractModel(String id) {
+    public static String getModelName()
+    {
+        return modelName;
+    }
+    public AbstractModel(int id) {
         this.ID=id;
     }
 
-    public String getID() {
+    public AbstractModel() {
+
+    }
+
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 }

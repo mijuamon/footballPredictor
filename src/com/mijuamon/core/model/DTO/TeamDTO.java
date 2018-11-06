@@ -39,7 +39,7 @@ public class TeamDTO extends AbstractItemDTO{
     public void convert(String data) throws ConvertException {
         String[] lista = data.split(";");
         if (lista.length == 2) {
-            this.setID(lista[0]);
+            this.setID(Integer.parseInt(lista[0]));
             this.setName(lista[1]);
         } else {
             throw new ConvertException(this.getClass().toString());

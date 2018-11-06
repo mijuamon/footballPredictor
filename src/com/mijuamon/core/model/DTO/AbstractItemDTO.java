@@ -4,13 +4,13 @@ import com.mijuamon.core.exceptions.ConvertException;
 
 public abstract class AbstractItemDTO {
 
-    private String ID;
+    private int ID;
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 

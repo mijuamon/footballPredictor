@@ -2,20 +2,18 @@ package com.mijuamon.core.constants;
 
 import static com.mijuamon.core.constants.Constants.*;
 
-import com.mijuamon.core.model.MatchModel;
-import com.mijuamon.core.model.PlayerModel;
-import com.mijuamon.core.model.ScoreModel;
-import com.mijuamon.core.model.TeamModel;
+import com.mijuamon.core.model.match.MatchModel;
+import com.mijuamon.core.model.player.PlayerModel;
+import com.mijuamon.core.model.score.ScoreModel;
+import com.mijuamon.core.model.team.TeamModel;
 
 import javax.swing.*;
-
-import static com.mijuamon.core.constants.Constants.*;
 
 public class Controller {
 
     public static void addPlayer(TeamModel team, String name)
     {
-        PlayerModel player = new PlayerModel(nextPlayerID(),name,team);
+        PlayerModel player = new PlayerModel(name,team);
 
         if(team.getPlayers().stream().filter(x->x.equals(player)).findFirst().orElse(null)!=null) {
             deletePlayerID();

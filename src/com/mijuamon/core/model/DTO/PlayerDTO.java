@@ -27,22 +27,14 @@ public class PlayerDTO extends AbstractItemDTO
         this.scores = scores;
     }
 
-    public String getTeamID() {
-        return teamID;
-    }
-
-    public void setTeamID(String teamID) {
-        this.teamID = teamID;
-    }
-
 
     @Override
     public void convert(String data) throws ConvertException {
         String [] lista=data.split(";");
         if(lista.length==3)
         {
-            this.setID(lista[0]);
-            this.setTeamID(lista[1]);
+            this.setID(Integer.parseInt(lista[0]));
+            this.setID(Integer.parseInt(lista[1]));
             this.setName(lista[2]);
 
         }

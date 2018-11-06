@@ -1,0 +1,22 @@
+<hibernate-mapping package="com.mijuamon.core.model">
+    <class name="com.mijuamon.core.model.team.TeamModel" table="team" catalog="predictdb">
+        <id name="ID" column="team_ID">
+            <generator class="native"></generator>
+        </id>
+        <property name="name" type="java.lang.String"/>
+        <bag name="players" table="player"
+             inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="player_ID" not-null="true"/>
+            </key>
+            <one-to-many class="com.mijuamon.core.model.player.PlayerModel"/>
+        </bag>
+        <bag name="matches" table="match"
+             inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="match_ID" not-null="true"/>
+            </key>
+            <one-to-many class="com.mijuamon.core.model.match.MatchModel"/>
+        </bag>
+    </class>
+</hibernate-mapping>

@@ -3,23 +3,23 @@ package com.mijuamon.core.model.DTO;
 import com.mijuamon.core.exceptions.ConvertException;
 
 public class ScoreDTO extends AbstractItemDTO{
-    private String matchID;
-    private String playerID;
+    private int matchID;
+    private int playerID;
     private Integer score;
 
-    public String getMatchID() {
+    public int getMatchID() {
         return matchID;
     }
 
-    public void setMatchID(String matchID) {
+    public void setMatchID(int matchID) {
         this.matchID = matchID;
     }
 
-    public String getPlayerID() {
+    public int getPlayerID() {
         return playerID;
     }
 
-    public void setPlayerID(String playerID) {
+    public void setPlayerID(int playerID) {
         this.playerID = playerID;
     }
 
@@ -36,9 +36,9 @@ public class ScoreDTO extends AbstractItemDTO{
 
         String[] lista = data.split(";");
         if (lista.length == 4) {
-            this.setID(lista[0]);
-            this.setMatchID(lista[1]);
-            this.setPlayerID(lista[2]);
+            this.setID(Integer.parseInt(lista[0]));
+            this.setMatchID(Integer.parseInt(lista[1]));
+            this.setPlayerID(Integer.parseInt(lista[2]));
             this.setScore(Integer.parseInt(lista[3]));
         } else {
             throw new ConvertException(this.getClass().toString());
