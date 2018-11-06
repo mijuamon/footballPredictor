@@ -1,9 +1,9 @@
 package com.mijuamon.gui;
 
 import com.mijuamon.core.loaders.Loader;
-import com.mijuamon.core.model.TeamModel;
-import com.mijuamon.gui.matchesManagementGui.MatchesManagementDialog;
-import com.mijuamon.gui.teamsManagementGui.TeamsManagementDialog;
+import com.mijuamon.core.model.team.TeamModel;
+import com.mijuamon.gui.matches.MatchesManagementDialog;
+import com.mijuamon.gui.teams.TeamsManagementDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -115,7 +115,7 @@ public class MainScreen {
         gestionarEquiposButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                final TeamsManagementDialog dialog = new TeamsManagementDialog(teams);
+                final TeamsManagementDialog dialog = teams!=null?new TeamsManagementDialog(teams):new TeamsManagementDialog();
                 dialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
                 dialog.pack();
                 dialog.setVisible(true);
