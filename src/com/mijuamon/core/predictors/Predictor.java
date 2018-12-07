@@ -5,16 +5,17 @@ import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.ScoreModel;
 import com.mijuamon.core.model.TeamModel;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import static com.mijuamon.core.constants.Constants.*;
+import static com.mijuamon.core.constants.CalculationConstants.*;
+import static com.mijuamon.core.constants.Constants.PLAYERS_MEDIAN;
 
 public class Predictor {
 
-    public static double PredictMatch(final TeamModel local, final TeamModel visitor, final Map<Integer, String> conditionalLocal, final Map<Integer, String> conditionalVisitor) {
-        double result = 0;
+    public static Map<Integer, Double> PredictMatch(final TeamModel local, final TeamModel visitor, final Map<Integer, String> conditionalLocal, final Map<Integer, String> conditionalVisitor) {
 
         //Puntuacion de equipo por partidos
         double localMotivational = CalculateTeamScore(local, local.getMatches());
@@ -32,49 +33,84 @@ public class Predictor {
         ///////otros condicionantes///////
 
         //////////////////////////////////
-        double scoreConditionalLocal = calculateConditionals(conditionalLocal);
-        double scoreConditionalVisitor = calculateConditionals(conditionalVisitor);
+        double scoreConditionalLocal = calculateConditionals(conditionalLocal, true);
+        double scoreConditionalVisitor = calculateConditionals(conditionalVisitor, false);
+        scoreConditionalLocal += calculateIndirect(conditionalLocal.get(INDIRECT_COMPETITION), conditionalVisitor.get(INDIRECT_COMPETITION), conditionalLocal.get(LAST_MATCHS) != null ? true : false);
 
 
         //Total de puntuacion y puntuacion del equipo local
-        double totalScore = localMotivational + visitorMotivational + localPlayers + visitorPlayers;
-        double localScore = localMotivational + localPlayers;
+        //double totalScore = localMotivational + visitorMotivational + localPlayers + visitorPlayers+scoreConditionalLocal+scoreConditionalVisitor;
+        double causalityScore = causalityRadom();
+        Map<Integer, Double> systemsResults = new HashMap<>();
+        for (Integer system : SYSTEM_LIST) {
+            double localScore = getSystemScore(localMotivational, localPlayers, scoreConditionalLocal, causalityScore, system);
+            double visitorScore = getSystemScore(localMotivational, localPlayers, scoreConditionalLocal, visitorMotivational + visitorPlayers + scoreConditionalVisitor + (causalityScore * (-1)), system);
+            systemsResults.put(system, localScore / (localScore + visitorScore));
 
-
-        result = localScore * 100 / totalScore; //Calculamos el porcentaje de victoria del equipo local
-        return result;
+        }
+        return systemsResults;
     }
 
-    private static double calculateConditionals(Map<Integer, String> conditional) {
+    private static double getSystemScore(final double motivational, final double players, final double conditional, final double casuality, final Integer system) {
+        double score=0.0;
+        switch (system)
+        {
+            case (SYSTEM_BASE):
+                score=motivational*SYSTEM_BASE_TEAMS+players*SYSTEM_BASE_PLAYERS+conditional*SYSTEM_BASE_CONDITIONALS+casuality*SYSTEM_BASE_UNCERTAINTY;
+                break;
+            case (SYSTEM_PLAYERS):
+                score=motivational*SYSTEM_PLAYERS_TEAMS+players*SYSTEM_PLAYERS_PLAYERS+conditional*SYSTEM_PLAYERS_CONDITIONALS+casuality*SYSTEM_PLAYERS_UNCERTAINTY;
+                break;
+            case (SYSTEM_TEAMS):
+                score=motivational*SYSTEM_TEAMS_TEAMS+players*SYSTEM_TEAMS_PLAYERS+conditional*SYSTEM_TEAMS_CONDITIONALS+casuality*SYSTEM_TEAMS_UNCERTAINTY;
+                break;
+            case (SYSTEM_UNCERTAINTY):
+                score=motivational*SYSTEM_UNCERTAINTY_TEAMS+players*SYSTEM_UNCERTAINTY_PLAYERS+conditional*SYSTEM_UNCERTAINTY_CONDITIONALS+casuality*SYSTEM_UNCERTAINTY_UNCERTAINTY;
+                break;
+        }
+        return score;
+
+    }
+
+    private static double calculateConditionals(Map<Integer, String> conditional, final boolean isLocal) {
         double score = 0.0;
         for (Integer cond : conditional.keySet()) {
             switch (cond) {
                 case (DERBI):
+                    score += isLocal ? DERBI_LOCAL_VALUE : DERBI_VISITOR_VALUE;
                     break;
                 case (COACH_CHANGE):
+                    score += isLocal ? COACH_CHANGE_LOCAL_VALUE : COACH_CHANGE_VISITOR_VALUE;
                     break;
                 case (HISTORIC_RIVALITY):
+                    score += isLocal ? HISTORIC_RIVALITY_LOCAL_VALUE : HISTORIC_RIVALITY_VISITOR_VALUE;
                     break;
-                case (LOCAL_2_COMPETITIONS):
+                case (COMPETITIONS_2):
+                    score += isLocal ? COMPETITIONS_2_LOCAL_VALUE : COMPETITIONS_2_VISITOR_VALUE;
                     break;
-                case (LOCAL_3_COMPETITIONS):
-                    break;
-                case (VISITOR_2_COMPETITIONS):
-                    break;
-                case (VISITOR_3_COMPETITIONS):
+                case (COMPETITIONS_3):
+                    score += isLocal ? COMPETITIONS_3_LOCAL_VALUE : COMPETITIONS_3_VISITOR_VALUE;
                     break;
                 case (MATCHS_OVERLOAD):
+                    score += isLocal ? MATCHS_OVERLOAD_LOCAL_VALUE : MATCHS_OVERLOAD_VISITOR_VALUE;
                     break;
                 case (COMPETITION_ELIMINATION):
+                    score += isLocal ? COMPETITION_ELIMINATION_LOCAL_VALUE : COMPETITION_ELIMINATION_VISITOR_VALUE;
                     break;
                 case (DIRECT_COMPETITION):
-                    break;
-                case (INDIRECT_COMPETITION):
+                    score += isLocal ? DIRECT_COMPETITION_LOCAL : DIRECT_COMPETITION_VISITOR;
                     break;
                 case (ROTATIONS):
+                    score += isLocal ? ROTATIONS_LOCAL_VALUE : ROTATIONS_VISITOR_VALUE;
                     break;
             }
         }
+        return score;
+    }
+
+    private static double calculateIndirect(final String local, final String visitor, final boolean lastMatchs) {
+        double score = INDIRECT_MATRIX.get(local + "/" + visitor);
+        score += lastMatchs ? INDIRECT_COMPETITION_LAST_MATCHS : 0;
         return score;
     }
 
