@@ -1,7 +1,7 @@
 package com.mijuamon.gui.teamsManagementGui;
 
 import com.mijuamon.core.model.TeamModel;
-import com.mijuamon.gui.teamsManagementGui.editDialog.TeamManagementEditDialog;
+import com.mijuamon.gui.managementGui.editDialog.TeamManagementEditDialog;
 
 import javax.swing.*;
 import java.awt.event.*;
