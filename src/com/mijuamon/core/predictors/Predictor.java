@@ -5,10 +5,7 @@ import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.ScoreModel;
 import com.mijuamon.core.model.TeamModel;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import static com.mijuamon.core.constants.CalculationConstants.*;
 import static com.mijuamon.core.constants.Constants.PLAYERS_MEDIAN;
@@ -52,20 +49,19 @@ public class Predictor {
     }
 
     private static double getSystemScore(final double motivational, final double players, final double conditional, final double casuality, final Integer system) {
-        double score=0.0;
-        switch (system)
-        {
+        double score = 0.0;
+        switch (system) {
             case (SYSTEM_BASE):
-                score=motivational*SYSTEM_BASE_TEAMS+players*SYSTEM_BASE_PLAYERS+conditional*SYSTEM_BASE_CONDITIONALS+casuality*SYSTEM_BASE_UNCERTAINTY;
+                score = motivational * SYSTEM_BASE_TEAMS + players * SYSTEM_BASE_PLAYERS + conditional * SYSTEM_BASE_CONDITIONALS + casuality * SYSTEM_BASE_UNCERTAINTY;
                 break;
             case (SYSTEM_PLAYERS):
-                score=motivational*SYSTEM_PLAYERS_TEAMS+players*SYSTEM_PLAYERS_PLAYERS+conditional*SYSTEM_PLAYERS_CONDITIONALS+casuality*SYSTEM_PLAYERS_UNCERTAINTY;
+                score = motivational * SYSTEM_PLAYERS_TEAMS + players * SYSTEM_PLAYERS_PLAYERS + conditional * SYSTEM_PLAYERS_CONDITIONALS + casuality * SYSTEM_PLAYERS_UNCERTAINTY;
                 break;
             case (SYSTEM_TEAMS):
-                score=motivational*SYSTEM_TEAMS_TEAMS+players*SYSTEM_TEAMS_PLAYERS+conditional*SYSTEM_TEAMS_CONDITIONALS+casuality*SYSTEM_TEAMS_UNCERTAINTY;
+                score = motivational * SYSTEM_TEAMS_TEAMS + players * SYSTEM_TEAMS_PLAYERS + conditional * SYSTEM_TEAMS_CONDITIONALS + casuality * SYSTEM_TEAMS_UNCERTAINTY;
                 break;
             case (SYSTEM_UNCERTAINTY):
-                score=motivational*SYSTEM_UNCERTAINTY_TEAMS+players*SYSTEM_UNCERTAINTY_PLAYERS+conditional*SYSTEM_UNCERTAINTY_CONDITIONALS+casuality*SYSTEM_UNCERTAINTY_UNCERTAINTY;
+                score = motivational * SYSTEM_UNCERTAINTY_TEAMS + players * SYSTEM_UNCERTAINTY_PLAYERS + conditional * SYSTEM_UNCERTAINTY_CONDITIONALS + casuality * SYSTEM_UNCERTAINTY_UNCERTAINTY;
                 break;
         }
         return score;
