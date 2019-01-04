@@ -6,7 +6,7 @@
     <session-factory>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://cadeq.ddns.net:3306/predictdb</property>
-        <property name="connection.username">root</property>
+        <property name="connection.username">app</property>
         <property name="connection.password">atletismo</property>
         <property name="connection.pool_size">100</property>
         <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
@@ -14,16 +14,24 @@
         <property name="show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="format_sql">true</property>
+        <property name="hibernate.connection.autocommit">true</property>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
 
 
-        <mapping resource="com/mijuamon/core/model/player/Player.hbm.xml"/>
+        <mapping class="com.mijuamon.core.model.player.PlayerModel"/>
+
+
+        <!--<mapping resource="com/mijuamon/core/model/player/Player.hbm.xml"/>
         <mapping resource="com/mijuamon/core/model/team/Team.hbm.xml"/>
         <mapping resource="com/mijuamon/core/model/score/Score.hbm.xml"/>
-        <mapping resource="com/mijuamon/core/model/match/Match.hbm.xml"/>
-        <!--<mapping resource="com/mijuamon/core/model/mapping/Match.hbm.xml"/>
-        <mapping resource="com/mijuamon/core/model/mapping/Score.hbm.xml"/>
-        <mapping resource="com/mijuamon/core/model/mapping/Team.hbm.xml"/>-->
+        <mapping resource="com/mijuamon/core/model/match/Match.hbm.xml"/>-->
+        <mapping class="com.mijuamon.core.model.player.PlayerModel"/>
+        <mapping class="com.mijuamon.core.model.match.MatchModel"/>
+        <mapping class="com.mijuamon.core.model.score.ScoreModel"/>
+        <mapping class="com.mijuamon.core.model.team.TeamModel"/>
+
+
+
     </session-factory>
 </hibernate-configuration>
