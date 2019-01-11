@@ -18,6 +18,15 @@ public abstract class AbstractModel {
         this.ID = id;
     }
 
+    public AbstractModel(int id, String modelName) {
+        this.ID = id;
+        this.modelName = modelName;
+    }
+
+    public AbstractModel(String modelName) {
+        this.modelName = modelName;
+    }
+
     public AbstractModel() {
 
     }

@@ -13,6 +13,8 @@ import java.util.List;
 @Entity
 @Table(name = "players")
 public class PlayerModel extends AbstractModel {
+    private static String modelName = "PlayerModel";
+
 
     @Column(name = "name")
     private String name;
@@ -28,12 +30,16 @@ public class PlayerModel extends AbstractModel {
     private List<ScoreModel> scores = new ArrayList<>();
 
     public PlayerModel(String name, TeamModel team) {
+        super(modelName);
+
         this.name = name;
         this.team = team;
         this.scores = new ArrayList<>();
     }
 
     public PlayerModel(String id, String name) {
+
+        super(modelName);
         setName(name);
     }
 

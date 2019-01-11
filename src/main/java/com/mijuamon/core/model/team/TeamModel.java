@@ -31,10 +31,13 @@ public class TeamModel extends AbstractModel {
     private List<MatchModel> matches = new ArrayList<>();
 
     public TeamModel(String name) {
+
+        super(modelName);
         this.name = name;
     }
 
     public TeamModel() {
+        super(modelName);
     }
 
     public void addPlayer(PlayerModel player) {

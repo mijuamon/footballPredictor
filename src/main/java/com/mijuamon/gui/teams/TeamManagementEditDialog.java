@@ -1,8 +1,10 @@
 package com.mijuamon.gui.teams;
 
+import com.mijuamon.core.constants.Controller;
 import com.mijuamon.core.dao.HibernateDao;
 import com.mijuamon.core.model.player.PlayerModel;
 import com.mijuamon.core.model.team.TeamModel;
+import com.mijuamon.core.util.DialogsUtil;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -143,11 +145,15 @@ public class TeamManagementEditDialog extends JDialog {
                 if (team == null && teamTF.getText() != null && !teamTF.getText().equals("")) {
                     guardarButton.setText(UPDATE_LABEL);
                     team = new TeamModel(teamTF.getText());
-                    HibernateDao.getInstance().add(team);
+                    Controller.addTeam(team);
                     teams.add(team);
                     newPlayerButton.setEnabled(true);
-                    JOptionPane.showMessageDialog(null,"Se ha creado un nuevo equipo");
+                    DialogsUtil.infoMessage("Se ha creado un nuevo equipo");
 
+                } else if (teamTF.getText() != null && !teamTF.getText().equals("")) {
+                    team.setName(teamTF.getText());
+                    HibernateDao.getInstance().update(team);
+                    DialogsUtil.infoMessage("Se ha actualizado el equipo");
                 }
                 refreshList();
             }

@@ -4,6 +4,7 @@ import com.mijuamon.core.model.match.MatchModel;
 import com.mijuamon.core.model.player.PlayerModel;
 import com.mijuamon.core.model.score.ScoreModel;
 import com.mijuamon.core.model.team.TeamModel;
+import com.mijuamon.core.util.DialogsUtil;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -54,10 +55,8 @@ public class ScoreDialog extends JDialog {
                 startDialog();
             }
         } else {
-            JOptionPane.showMessageDialog(this,
-                    "Este jugador aun no existe",
-                    "Jugador no existente",
-                    JOptionPane.ERROR_MESSAGE);
+            DialogsUtil.errorMessage("Este jugador aun no existe",
+                    "Jugador no existente");
         }
     }
 

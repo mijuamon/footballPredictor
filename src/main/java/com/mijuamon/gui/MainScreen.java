@@ -1,5 +1,6 @@
 package com.mijuamon.gui;
 
+import com.mijuamon.core.dao.HibernateDao;
 import com.mijuamon.core.loaders.Loader;
 import com.mijuamon.core.model.team.TeamModel;
 import com.mijuamon.gui.matches.MatchesManagementDialog;
@@ -100,6 +101,7 @@ public class MainScreen {
     private JLabel chance15;
     private JComboBox localCB15;
     private JButton gestionarPartidosButton;
+    private JButton dropAllButton;
 
     protected List<JLabel> numMatchesList;
     protected List<JComboBox> localList;
@@ -115,7 +117,7 @@ public class MainScreen {
         gestionarEquiposButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                final TeamsManagementDialog dialog = teams!=null?new TeamsManagementDialog(teams):new TeamsManagementDialog();
+                final TeamsManagementDialog dialog = teams != null ? new TeamsManagementDialog(teams) : new TeamsManagementDialog();
                 dialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
                 dialog.pack();
                 dialog.setVisible(true);

@@ -1,7 +1,6 @@
 package com.mijuamon.core.dao;
 
 import com.mijuamon.core.model.AbstractModel;
-import com.mijuamon.core.model.team.TeamModel;
 import com.mijuamon.core.util.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
@@ -14,11 +13,19 @@ public class HibernateDao {
 
     private static HibernateDao instance;
 
+    protected static final String MODEL_NAME = "<modelName>";
+    protected static final String LOCAL = "<local>";
+    protected static final String VISITOR = "<visitor>";
+    protected static final String YEAR = "<year>";
+    protected static final String WEEK = "<week>";
+
+
 
     private Session session;
     private Transaction tx;
 
-    private HibernateDao() {
+    public HibernateDao() {
+
     }
 
     public static synchronized HibernateDao getInstance() {
@@ -38,8 +45,8 @@ public class HibernateDao {
         throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);
     }
 
-    public List<Object> getAll(String modelName) {
-        List<Object> objects;
+    public List<AbstractModel> getAll(String modelName) {
+        List<AbstractModel> objects;
         try {
             iniciaOperacion();
             objects = session.createQuery("from " + modelName).list();
@@ -53,12 +60,25 @@ public class HibernateDao {
         return objects;
     }
 
-    public Object get(String modelName, int id)
-    {
+    public Object get(String modelName, int id) {
         Object obj;
         try {
             iniciaOperacion();
-            obj = session.createQuery("from " + modelName + " where 'id'="+id);
+            obj = session.createQuery("from " + modelName + " where 'id'=" + id);
+        } catch (
+                HibernateException he) {
+            manejaExcepcion(he);
+            throw he;
+        } finally {
+            session.close();
+        }
+        return obj;
+    }
+    public List<Object> search(String modelName, String sql) {
+        List<Object> obj;
+        try {
+            iniciaOperacion();
+            obj = session.createQuery(sql).list();
         } catch (
                 HibernateException he) {
             manejaExcepcion(he);
@@ -69,13 +89,27 @@ public class HibernateDao {
         return obj;
     }
 
+    public Object get(AbstractModel obj) {
+        Object objAux;
+        try {
+            iniciaOperacion();
+            objAux = session.get(obj.getClass(), obj.getID());
+        } catch (
+                HibernateException he) {
+            manejaExcepcion(he);
+            throw he;
+        } finally {
+            session.close();
+        }
+        return objAux;
+    }
 
 
     public void add(AbstractModel obj) {
         try {
             iniciaOperacion();
 
-            //session.save(obj.get);
+            session.save(obj);
             tx.commit();
 
         } catch (
@@ -93,8 +127,6 @@ public class HibernateDao {
     public void update(AbstractModel obj) {
         try {
             iniciaOperacion();
-
-            session.lock(session.get(obj.get), LockMode.PESSIMISTIC_WRITE);
             session.update(obj);
             tx.commit();
 

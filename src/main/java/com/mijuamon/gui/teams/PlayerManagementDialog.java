@@ -1,10 +1,13 @@
 package com.mijuamon.gui.teams;
 
+import com.mijuamon.core.constants.Controller;
 import com.mijuamon.core.dao.HibernateDao;
 import com.mijuamon.core.model.match.MatchModel;
 import com.mijuamon.core.model.player.PlayerModel;
 import com.mijuamon.core.model.score.ScoreModel;
 import com.mijuamon.core.model.team.TeamModel;
+import com.mijuamon.core.util.DialogsUtil;
+import com.mijuamon.core.util.HibernateUtil;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -55,9 +58,9 @@ public class PlayerManagementDialog extends JDialog {
         this.teams = teams;
         changeNameButton.setText("Guardar jugador");
         isNew = true;
-        addNewButton.setEnabled(true);
-        editButton.setEnabled(true);
-        removeButton.setEnabled(true);
+        addNewButton.setEnabled(false);
+        editButton.setEnabled(false);
+        removeButton.setEnabled(false);
         startDialog();
         initializeListeners(teams);
     }
@@ -94,13 +97,11 @@ public class PlayerManagementDialog extends JDialog {
                     ScoreDialog dialog = new ScoreDialog(teams, player, matchs);
                     dialog.pack();
                     dialog.setVisible(true);
-                    JOptionPane.showMessageDialog(null, "Se ha creado un nuevo jugador");
+                    DialogsUtil.infoMessage("Se ha creado un nuevo jugador");
 
                 } else {
-                    JOptionPane.showMessageDialog(null,
-                            "No quedan mas partidos sin puntuar",
-                            "Error nueva puntuación",
-                            JOptionPane.ERROR_MESSAGE);
+                    DialogsUtil.errorMessage("No quedan mas partidos sin puntuar",
+                            "Error nueva puntuación");
                 }
             }
         });
@@ -127,15 +128,16 @@ public class PlayerManagementDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if (playerTextF.getText() == null || playerTextF.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Es necesario que tenga nombre");
+                    DialogsUtil.infoMessage("Es necesario que tenga nombre");
                 } else {
                     if (player == null) {
                         player = new PlayerModel(team);
                         player.setName(playerTextF.getText());
-                        HibernateDao.getInstance().add(player);
+                        Controller.addPlayer(player);
+
                     } else {
                         player.setName(playerTextF.getText());
-                        HibernateDao.getInstance().update(player);
+                        Controller.updatePlayer(player);
                     }
                 }
             }
@@ -143,8 +145,8 @@ public class PlayerManagementDialog extends JDialog {
     }
 
     private void refreshList() {
-        DefaultListModel listModel = new DefaultListModel();
         scores = player.getScores();
+        DefaultListModel listModel = new DefaultListModel();
         scores.stream().forEach(x -> listModel.addElement(x));
         scoresJList.setModel(listModel);
     }
@@ -159,7 +161,7 @@ public class PlayerManagementDialog extends JDialog {
         DefaultListModel listModel = new DefaultListModel();
         scoresJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         scoresJList.setLayoutOrientation(JList.VERTICAL);
-        playerTextF.setText(player == null ? "":player.toString());
+        playerTextF.setText(player == null ? "" : player.toString());
 
         scores.stream().forEach(x -> listModel.addElement(x));
         scoresJList.setModel(listModel);

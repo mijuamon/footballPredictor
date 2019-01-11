@@ -9,6 +9,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "scores")
 public class ScoreModel extends AbstractModel {
+    private static String modelName = "ScoreModel";
+
     @OneToOne
     @PrimaryKeyJoinColumn
     private MatchModel match;
@@ -21,10 +23,14 @@ public class ScoreModel extends AbstractModel {
     private Integer score;
 
     public ScoreModel(Integer score) {
+
+        super(modelName);
         setScore(score);
     }
 
     public ScoreModel(String scoreValue, MatchModel match, PlayerModel player) {
+        super(modelName);
+
         setMatch(match);
         this.setPlayer(player);
         setScore(Integer.parseInt(scoreValue));

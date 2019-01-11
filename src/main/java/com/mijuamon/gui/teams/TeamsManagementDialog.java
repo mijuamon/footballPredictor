@@ -26,7 +26,7 @@ public class TeamsManagementDialog extends JDialog {
 
     public TeamsManagementDialog() {
         super();
-        this.teams = HibernateDao.getInstance().getAll(TeamModel.getModelName());
+        this.teams = (List<TeamModel>)(List<?>)HibernateDao.getInstance().getAll(TeamModel.getModelName());
         initializeTeamsManagementDialog();
 
     }
@@ -98,7 +98,6 @@ public class TeamsManagementDialog extends JDialog {
             editTeamCB.setEnabled(false);
 
         } else {
-            teams.stream().forEach(team -> editTeamCB.addItem(team));
             editRadioButon.setEnabled(true);
             editTeamCB.setEnabled(true);
         }

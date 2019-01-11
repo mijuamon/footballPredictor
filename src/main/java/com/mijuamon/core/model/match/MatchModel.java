@@ -6,8 +6,10 @@ import com.mijuamon.core.model.team.TeamModel;
 import javax.persistence.*;
 
 @Entity
-@Table(name="matches")
+@Table(name = "matches")
 public class MatchModel extends AbstractModel {
+    private static String modelName = "MatchModel";
+
     @OneToOne
     @PrimaryKeyJoinColumn
     private TeamModel local;
@@ -19,24 +21,28 @@ public class MatchModel extends AbstractModel {
     @Column(name = "result")
     private String result;
 
-    @Column(name = "journey")
-    private String journey;
+    @Column(name = "week")
+    private String week;
 
     @Column(name = "year")
     private String year;
 
 
     public MatchModel(String year, String journey, String result) {
+        super(modelName);
+
         setYear(year);
-        setJourney(journey);
+        setWeek(journey);
         setResult(result);
     }
 
     public MatchModel(TeamModel local, TeamModel visitor, String result, String journey, String year) {
+        super(modelName);
+
         setLocal(local);
         setVisitor(visitor);
         setResult(result);
-        setJourney(journey);
+        setWeek(journey);
         setYear(year);
     }
 
@@ -51,12 +57,12 @@ public class MatchModel extends AbstractModel {
         this.result = result;
     }
 
-    public String getJourney() {
-        return journey;
+    public String getWeek() {
+        return week;
     }
 
-    public void setJourney(String journey) {
-        this.journey = journey;
+    public void setWeek(String journey) {
+        this.week = journey;
     }
 
     public String getYear() {
