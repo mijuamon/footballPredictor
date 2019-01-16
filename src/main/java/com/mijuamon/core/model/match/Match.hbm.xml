@@ -1,0 +1,14 @@
+<hibernate-mapping package="com.mijuamon.core.model">
+
+    <class name="com.mijuamon.core.model.MatchModel" table="match" catalog="predictdb">
+        <id name="ID" column="match_ID">
+            <generator class="native"></generator>
+        </id>
+        <property name="result" type="java.lang.String"/>
+        <property name="journey" type="java.lang.String"/>
+        <property name="year" type="java.lang.String"/>
+        <one-to-one name="local" class="com.mijuamon.core.model.TeamModel" cascade="save-update"/>
+        <one-to-one name="visitor" class="com.mijuamon.core.model.TeamModel" cascade="save-update"/>
+    </class>
+
+</hibernate-mapping>
