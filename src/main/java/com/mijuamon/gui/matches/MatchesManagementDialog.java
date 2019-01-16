@@ -1,13 +1,13 @@
 package com.mijuamon.gui.matches;
 
-import com.mijuamon.core.dao.HibernateDao;
-import com.mijuamon.core.model.match.MatchModel;
-import com.mijuamon.core.model.team.TeamModel;
+import com.mijuamon.core.dao.MatchDao;
+import com.mijuamon.core.dao.TeamDao;
+import com.mijuamon.core.model.MatchModel;
+import com.mijuamon.core.model.TeamModel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MatchesManagementDialog extends JDialog {
@@ -17,11 +17,11 @@ public class MatchesManagementDialog extends JDialog {
     private JButton añadirButton;
     private JButton editarButton;
     private JButton eliminarButton;
-    private ArrayList<MatchModel> matches;
+    private List<MatchModel> matches;
     private List<TeamModel> teams;
 
-    public MatchesManagementDialog(List<TeamModel> teams) {
-        this.teams=teams;
+    public MatchesManagementDialog() {
+        this.teams=(List<TeamModel>)(List<?>) TeamDao.getInstance().getAll(TeamModel.getModelName());
         setContentPane(contentPane);
         setModal(true);
 
@@ -67,7 +67,7 @@ public class MatchesManagementDialog extends JDialog {
     }
 
     private void refreshList() {
-        matches = (ArrayList<MatchModel>) (List<?>) HibernateDao.getInstance().getAll(MatchModel.getModelName());
+        matches = MatchDao.getInstance().getAll(MatchModel.getModelName());
 
         DefaultListModel listModel = new DefaultListModel();
         matches.stream().forEach(x -> listModel.addElement(x));

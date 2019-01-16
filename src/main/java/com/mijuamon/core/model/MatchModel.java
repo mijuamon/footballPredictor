@@ -1,20 +1,18 @@
-package com.mijuamon.core.model.match;
-
-import com.mijuamon.core.model.AbstractModel;
-import com.mijuamon.core.model.team.TeamModel;
+package com.mijuamon.core.model;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "matches")
-public class MatchModel extends AbstractModel {
+public class MatchModel extends Identificable {
     private static String modelName = "MatchModel";
+    private static String tableName = "matches";
 
-    @OneToOne
+    @ManyToOne
     @PrimaryKeyJoinColumn
     private TeamModel local;
 
-    @OneToOne
+    @ManyToOne
     @PrimaryKeyJoinColumn
     private TeamModel visitor;
 
@@ -27,9 +25,17 @@ public class MatchModel extends AbstractModel {
     @Column(name = "year")
     private String year;
 
+    public static String getModelName() {
+        return modelName;
+    }
+
+    public static String getTableName() {
+        return tableName;
+    }
+
 
     public MatchModel(String year, String journey, String result) {
-        super(modelName);
+        super();
 
         setYear(year);
         setWeek(journey);
@@ -37,7 +43,7 @@ public class MatchModel extends AbstractModel {
     }
 
     public MatchModel(TeamModel local, TeamModel visitor, String result, String journey, String year) {
-        super(modelName);
+        super();
 
         setLocal(local);
         setVisitor(visitor);
@@ -98,7 +104,10 @@ public class MatchModel extends AbstractModel {
             return false;
         }
         final MatchModel other = (MatchModel) obj;
-        if (!this.visitor.equals(other.visitor) || !this.local.equals(other.local) || this.year != other.year) {
+        if (this.visitor == null && other.visitor == null && this.local == null && other.local == null) {
+            return true;
+        }
+        if (this.visitor != other.visitor || this.local != other.local || this.year != other.year || this.week != other.week) {
             return false;
         }
         return true;
@@ -106,6 +115,10 @@ public class MatchModel extends AbstractModel {
 
     @Override
     public String toString() {
+        if(local==null || visitor == null)
+        {
+            return "visitor-local--->"+result;
+        }
         return local.getName() + " - " + visitor.getName() + "-->" + result;
     }
 }

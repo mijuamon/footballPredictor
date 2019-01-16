@@ -19,17 +19,17 @@
         <!-- <property name="hbm2ddl.auto">update</property> -->
 
 
-        <mapping class="com.mijuamon.core.model.player.PlayerModel"/>
+        <mapping class="com.mijuamon.core.model.PlayerModel"/>
 
 
         <!--<mapping resource="com/mijuamon/core/model/player/Player.hbm.xml"/>
         <mapping resource="com/mijuamon/core/model/team/Team.hbm.xml"/>
         <mapping resource="com/mijuamon/core/model/score/Score.hbm.xml"/>
         <mapping resource="com/mijuamon/core/model/match/Match.hbm.xml"/>-->
-        <mapping class="com.mijuamon.core.model.player.PlayerModel"/>
-        <mapping class="com.mijuamon.core.model.match.MatchModel"/>
-        <mapping class="com.mijuamon.core.model.score.ScoreModel"/>
-        <mapping class="com.mijuamon.core.model.team.TeamModel"/>
+        <mapping class="com.mijuamon.core.model.PlayerModel"/>
+        <mapping class="com.mijuamon.core.model.MatchModel"/>
+        <mapping class="com.mijuamon.core.model.ScoreModel"/>
+        <mapping class="com.mijuamon.core.model.TeamModel"/>
 
 
 

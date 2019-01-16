@@ -1,14 +1,10 @@
-package com.mijuamon.core.model.score;
-
-import com.mijuamon.core.model.AbstractModel;
-import com.mijuamon.core.model.match.MatchModel;
-import com.mijuamon.core.model.player.PlayerModel;
+package com.mijuamon.core.model;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "scores")
-public class ScoreModel extends AbstractModel {
+public class ScoreModel extends Identificable {
     private static String modelName = "ScoreModel";
 
     @OneToOne
@@ -24,12 +20,12 @@ public class ScoreModel extends AbstractModel {
 
     public ScoreModel(Integer score) {
 
-        super(modelName);
+        super();
         setScore(score);
     }
 
     public ScoreModel(String scoreValue, MatchModel match, PlayerModel player) {
-        super(modelName);
+        super();
 
         setMatch(match);
         this.setPlayer(player);
@@ -37,6 +33,11 @@ public class ScoreModel extends AbstractModel {
     }
 
     public ScoreModel() {
+    }
+
+
+    public static String getModelName() {
+        return modelName;
     }
 
     public Integer getScore() {

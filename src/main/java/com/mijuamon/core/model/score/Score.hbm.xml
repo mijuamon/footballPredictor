@@ -1,16 +1,16 @@
 <hibernate-mapping package="com.mijuamon.core.model">
 
-    <class name="com.mijuamon.core.model.score.ScoreModel"  table="score" catalog="predictdb">
+    <class name="com.mijuamon.core.model.ScoreModel" table="score" catalog="predictdb">
         <id name="ID" column="score_ID">
             <generator class="native"></generator>
         </id>
         <property name="score" type="java.lang.Integer"/>
 
-        <many-to-one name="player" class="com.mijuamon.core.model.player.PlayerModel" fetch="select">
+        <many-to-one name="player" class="com.mijuamon.core.model.PlayerModel" fetch="select">
             <column name="player_ID" not-null="true"/>
         </many-to-one>
 
-        <one-to-one name="match" class="com.mijuamon.core.model.match.MatchModel" cascade="save-update"/>
+        <one-to-one name="match" class="com.mijuamon.core.model.MatchModel" cascade="save-update"/>
     </class>
 
 </hibernate-mapping>

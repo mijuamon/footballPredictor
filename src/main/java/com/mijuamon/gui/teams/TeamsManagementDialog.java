@@ -1,7 +1,7 @@
 package com.mijuamon.gui.teams;
 
-import com.mijuamon.core.dao.HibernateDao;
-import com.mijuamon.core.model.team.TeamModel;
+import com.mijuamon.core.dao.TeamDao;
+import com.mijuamon.core.model.TeamModel;
 import org.apache.commons.collections4.CollectionUtils;
 
 import javax.swing.*;
@@ -26,7 +26,7 @@ public class TeamsManagementDialog extends JDialog {
 
     public TeamsManagementDialog() {
         super();
-        this.teams = (List<TeamModel>)(List<?>)HibernateDao.getInstance().getAll(TeamModel.getModelName());
+        this.teams = TeamDao.getInstance().getAll(TeamModel.getModelName());
         initializeTeamsManagementDialog();
 
     }

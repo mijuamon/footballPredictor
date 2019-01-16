@@ -1,8 +1,5 @@
-package com.mijuamon.core.model.team;
+package com.mijuamon.core.model;
 
-import com.mijuamon.core.model.AbstractModel;
-import com.mijuamon.core.model.match.MatchModel;
-import com.mijuamon.core.model.player.PlayerModel;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -12,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "teams")
-public class TeamModel extends AbstractModel {
+public class TeamModel extends Identificable {
 
     private static String modelName = "TeamModel";
 
@@ -20,24 +17,26 @@ public class TeamModel extends AbstractModel {
     private String name;
 
     @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
+            cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<PlayerModel> players = new ArrayList<>();
     @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
+            cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<MatchModel> matches = new ArrayList<>();
 
     public TeamModel(String name) {
 
-        super(modelName);
+        super();
         this.name = name;
     }
 
     public TeamModel() {
-        super(modelName);
+        super();
+    }
+
+    public static String getModelName() {
+        return modelName;
     }
 
     public void addPlayer(PlayerModel player) {
@@ -86,8 +85,4 @@ public class TeamModel extends AbstractModel {
         return name;
     }
 
-
-    public static String getModelName() {
-        return modelName;
-    }
 }

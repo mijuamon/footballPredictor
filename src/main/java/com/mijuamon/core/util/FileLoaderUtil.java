@@ -2,10 +2,10 @@ package com.mijuamon.core.util;
 
 import com.mijuamon.core.exceptions.ConvertException;
 import com.mijuamon.core.model.DTO.*;
-import com.mijuamon.core.model.match.MatchModel;
-import com.mijuamon.core.model.player.PlayerModel;
-import com.mijuamon.core.model.score.ScoreModel;
-import com.mijuamon.core.model.team.TeamModel;
+import com.mijuamon.core.model.MatchModel;
+import com.mijuamon.core.model.PlayerModel;
+import com.mijuamon.core.model.ScoreModel;
+import com.mijuamon.core.model.TeamModel;
 
 import java.io.File;
 import java.io.IOException;

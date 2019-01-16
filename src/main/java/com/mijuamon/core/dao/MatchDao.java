@@ -1,17 +1,11 @@
 package com.mijuamon.core.dao;
 
-import com.mijuamon.core.model.match.MatchModel;
-import com.mijuamon.core.model.team.TeamModel;
+import com.mijuamon.core.model.MatchModel;
+import org.hibernate.HibernateException;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MatchDao extends HibernateDao{
-
-    private String searchQuery = "from <modelName> where 'local'=<local> " +
-            "AND 'visitor'=<visitor>" +
-            "AND 'year'=<year>" +
-            "AND 'week'=<week>";
+public class MatchDao extends AbstractDao {
 
     private static MatchDao instance;
 
@@ -26,14 +20,30 @@ public class MatchDao extends HibernateDao{
         return instance;
     }
 
-    public boolean exist(final MatchModel model)
-    {
-        String query= searchQuery.replace(MODEL_NAME,model.getModelName())
-                .replace(LOCAL,model.getLocal().getID()+"")
-                .replace(VISITOR, model.getVisitor().getID()+"")
-                .replace(YEAR,model.getYear())
-                .replace(WEEK,model.getWeek());
-        List<MatchModel> list = (List<MatchModel>)(List<?>)search(model.getModelName(),query);
-        return list.size()!=0;
+    public boolean exist(final MatchModel model) {
+        for(MatchModel match:getAll(model.getModelName()))
+        {
+            if(match.equals(model))
+            {
+                return true;
+            }
+        }
+        return false;
     }
+
+    @Override
+    public List<MatchModel> getAll(String modelName) {
+        try {
+            return (List<MatchModel>) (List<?>) super.getAll(modelName);
+
+        } catch (
+                HibernateException he) {
+            handleException(he);
+            throw he;
+        } finally {
+            session.close();
+        }
+
+    }
+
 }

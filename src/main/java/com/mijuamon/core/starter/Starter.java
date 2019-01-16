@@ -1,12 +1,9 @@
 package com.mijuamon.core.starter;
 
-import com.mijuamon.core.model.team.TeamModel;
 import com.mijuamon.core.util.HibernateUtil;
 import com.mijuamon.gui.MainScreen;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-import javax.security.auth.login.Configuration;
 import javax.swing.*;
 
 public class Starter {

@@ -1,6 +1,6 @@
 package com.mijuamon.gui.matches;
 
-import com.mijuamon.core.model.match.MatchModel;
+import com.mijuamon.core.model.MatchModel;
 import com.mijuamon.core.util.DialogsUtil;
 
 import javax.swing.*;

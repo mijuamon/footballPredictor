@@ -1,9 +1,9 @@
 package com.mijuamon.core.loaders;
 
-import com.mijuamon.core.model.match.MatchModel;
-import com.mijuamon.core.model.player.PlayerModel;
-import com.mijuamon.core.model.score.ScoreModel;
-import com.mijuamon.core.model.team.TeamModel;
+import com.mijuamon.core.model.MatchModel;
+import com.mijuamon.core.model.PlayerModel;
+import com.mijuamon.core.model.ScoreModel;
+import com.mijuamon.core.model.TeamModel;
 import com.mijuamon.core.util.FileLoaderUtil;
 
 import java.util.List;

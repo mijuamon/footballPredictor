@@ -1,8 +1,5 @@
-package com.mijuamon.core.model.player;
+package com.mijuamon.core.model;
 
-import com.mijuamon.core.model.AbstractModel;
-import com.mijuamon.core.model.score.ScoreModel;
-import com.mijuamon.core.model.team.TeamModel;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -12,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "players")
-public class PlayerModel extends AbstractModel {
+public class PlayerModel extends Identificable {
     private static String modelName = "PlayerModel";
 
 
@@ -30,8 +27,7 @@ public class PlayerModel extends AbstractModel {
     private List<ScoreModel> scores = new ArrayList<>();
 
     public PlayerModel(String name, TeamModel team) {
-        super(modelName);
-
+        super();
         this.name = name;
         this.team = team;
         this.scores = new ArrayList<>();
@@ -39,11 +35,15 @@ public class PlayerModel extends AbstractModel {
 
     public PlayerModel(String id, String name) {
 
-        super(modelName);
+        super(Integer.parseInt(id));
         setName(name);
     }
 
     public PlayerModel() {
+    }
+
+    public static String getModelName() {
+        return modelName;
     }
 
     public PlayerModel(String name) {

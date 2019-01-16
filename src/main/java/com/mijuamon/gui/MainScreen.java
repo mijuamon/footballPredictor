@@ -1,8 +1,10 @@
 package com.mijuamon.gui;
 
-import com.mijuamon.core.dao.HibernateDao;
+import com.mijuamon.core.dao.MatchDao;
+import com.mijuamon.core.dao.TeamDao;
 import com.mijuamon.core.loaders.Loader;
-import com.mijuamon.core.model.team.TeamModel;
+import com.mijuamon.core.model.MatchModel;
+import com.mijuamon.core.model.TeamModel;
 import com.mijuamon.gui.matches.MatchesManagementDialog;
 import com.mijuamon.gui.teams.TeamsManagementDialog;
 
@@ -114,6 +116,7 @@ public class MainScreen {
 
     public MainScreen() {
         initialize();
+        //Gestionar equipos
         gestionarEquiposButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -124,10 +127,11 @@ public class MainScreen {
             }
         });
 
+        //Gestionar partidos
         gestionarPartidosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                final MatchesManagementDialog dialog = new MatchesManagementDialog(teams);
+                final MatchesManagementDialog dialog = new MatchesManagementDialog();
                 dialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
                 dialog.pack();
                 dialog.setVisible(true);
@@ -223,6 +227,22 @@ public class MainScreen {
         chanceList.add(chance15);
 
         teams = Loader.loadInitialData();
+        initialData();
+    }
+
+    private void initialData()
+    {
+        TeamModel teamA=new TeamModel("TestA");
+        TeamModel teamB=new TeamModel("TestB");
+        TeamModel teamC=new TeamModel("TestC");
+        TeamDao.getInstance().add(teamA);
+        TeamDao.getInstance().add(teamB);
+        TeamDao.getInstance().add(teamC);
+
+        MatchModel matchA=new MatchModel(teamA,teamB,"1-1","1","2019");
+        MatchModel matchB=new MatchModel(teamB,teamC,"2-1","2","2019");
+        MatchDao.getInstance().add(matchA);
+        MatchDao.getInstance().add(matchB);
     }
 
 }

@@ -1,11 +1,11 @@
 <hibernate-mapping package="com.mijuamon.core.model">
 
-    <class name="com.mijuamon.core.model.player.PlayerModel" table="player" catalog="predictdb">
+    <class name="com.mijuamon.core.model.PlayerModel" table="player" catalog="predictdb">
         <id name="ID" column="player_ID">
             <generator class="native"></generator>
         </id>
         <property name="name" type="java.lang.String"/>
-        <many-to-one name="team" class="com.mijuamon.core.model.team.TeamModel" fetch="select">
+        <many-to-one name="team" class="com.mijuamon.core.model.TeamModel" fetch="select">
             <column name="team_ID" not-null="true"/>
         </many-to-one>
 
@@ -14,7 +14,7 @@
             <key>
                 <column name="score_ID" not-null="true"/>
             </key>
-            <one-to-many class="com.mijuamon.core.model.score.ScoreModel"/>
+            <one-to-many class="com.mijuamon.core.model.ScoreModel"/>
         </bag>
     </class>
 

@@ -1,7 +1,7 @@
 package com.mijuamon.gui.matches;
 
 import com.mijuamon.core.constants.Controller;
-import com.mijuamon.core.model.team.TeamModel;
+import com.mijuamon.core.model.TeamModel;
 import com.mijuamon.core.util.DialogsUtil;
 
 import javax.swing.*;
@@ -75,9 +75,8 @@ public class NewMatchDialog extends JDialog {
             DialogsUtil.errorMessage("El formato del resultado es incorrecto. Se espera en formato \"<local>-<visitante>\"");
         } else {
             Controller.addMatch((TeamModel) localBox.getSelectedItem(), (TeamModel) visitorBox.getSelectedItem(), resultTF.getText(), week, season);
+            dispose();
         }
-
-        dispose();
     }
 
     private void onCancel() {

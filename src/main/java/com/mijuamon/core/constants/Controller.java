@@ -1,11 +1,12 @@
 package com.mijuamon.core.constants;
 
-import com.mijuamon.core.dao.HibernateDao;
 import com.mijuamon.core.dao.MatchDao;
-import com.mijuamon.core.model.match.MatchModel;
-import com.mijuamon.core.model.player.PlayerModel;
-import com.mijuamon.core.model.score.ScoreModel;
-import com.mijuamon.core.model.team.TeamModel;
+import com.mijuamon.core.dao.PlayerDao;
+import com.mijuamon.core.dao.TeamDao;
+import com.mijuamon.core.model.MatchModel;
+import com.mijuamon.core.model.PlayerModel;
+import com.mijuamon.core.model.ScoreModel;
+import com.mijuamon.core.model.TeamModel;
 import com.mijuamon.core.util.DialogsUtil;
 
 import static com.mijuamon.core.constants.Constants.deletePlayerID;
@@ -15,11 +16,11 @@ public class Controller {
 
 
     public static void addTeam(TeamModel team) {
-        HibernateDao.getInstance().add(team);
+        TeamDao.getInstance().add(team);
     }
 
     public static void updateTeam(TeamModel team) {
-        HibernateDao.getInstance().update(team);
+        TeamDao.getInstance().update(team);
     }
 
 
@@ -37,11 +38,11 @@ public class Controller {
     }
 
     public static void addPlayer(PlayerModel player) {
-        HibernateDao.getInstance().add(player);
+        PlayerDao.getInstance().add(player);
     }
 
     public static void updatePlayer(PlayerModel player) {
-        HibernateDao.getInstance().update(player);
+        PlayerDao.getInstance().update(player);
     }
 
     public static boolean addScore(PlayerModel player, String scoreValue, MatchModel match) {
@@ -64,7 +65,18 @@ public class Controller {
             DialogsUtil.errorMessage("Ya existe un partido con los mismos valores");
             return false;
         } else {
-            HibernateDao.getInstance().add(match);
+            try {
+                local.getMatches().add(match);
+                visitor.getMatches().add(match);
+
+                MatchDao.getInstance().add(match);
+                // TeamDao.getInstance().update(local);
+                //TeamDao.getInstance().update(visitor);
+
+                System.out.println("test");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return true;
         }
     }
