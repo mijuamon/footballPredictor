@@ -33,25 +33,15 @@ public class PlayerModel extends Identificable {
         this.scores = new ArrayList<>();
     }
 
-    public PlayerModel(String id, String name) {
-
-        super(Integer.parseInt(id));
-        setName(name);
-    }
-
     public PlayerModel() {
-    }
-
-    public static String getModelName() {
-        return modelName;
     }
 
     public PlayerModel(String name) {
         setName(name);
     }
 
-    public PlayerModel(TeamModel team) {
-        setTeam(team);
+    public static String getModelName() {
+        return modelName;
     }
 
     public String getName() {

@@ -2,6 +2,7 @@ package com.mijuamon.core.constants;
 
 import com.mijuamon.core.dao.MatchDao;
 import com.mijuamon.core.dao.PlayerDao;
+import com.mijuamon.core.dao.ScoreDao;
 import com.mijuamon.core.dao.TeamDao;
 import com.mijuamon.core.model.MatchModel;
 import com.mijuamon.core.model.PlayerModel;
@@ -45,6 +46,10 @@ public class Controller {
         PlayerDao.getInstance().update(player);
     }
 
+    public static void addScore(final ScoreModel score) {
+        ScoreDao.getInstance().add(score);
+    }
+
     public static boolean addScore(PlayerModel player, String scoreValue, MatchModel match) {
         ScoreModel score = new ScoreModel(scoreValue, match, player);
 
@@ -56,6 +61,15 @@ public class Controller {
             player.getScores().add(score);
             return true;
         }
+    }
+
+    public static void deleteScore(ScoreModel score) {
+        ScoreDao.getInstance().delete(score);
+    }
+
+    public static void addMatch(MatchModel match) {
+        MatchDao.getInstance().add(match);
+
     }
 
     public static boolean addMatch(TeamModel local, TeamModel visitor, String result, String week, String season) {
@@ -70,8 +84,6 @@ public class Controller {
                 visitor.getMatches().add(match);
 
                 MatchDao.getInstance().add(match);
-                // TeamDao.getInstance().update(local);
-                //TeamDao.getInstance().update(visitor);
 
                 System.out.println("test");
             } catch (Exception e) {
@@ -79,5 +91,20 @@ public class Controller {
             }
             return true;
         }
+    }
+
+    public static void updateMatch(final MatchModel match) {
+        MatchDao.getInstance().update(match);
+    }
+
+    public static void deleteMatch(final MatchModel match) {
+        //Remove the score of all players in that match
+        match.getLocal().getPlayers().stream()
+                .map(player -> player.getScores())
+                .flatMap(scores -> scores.stream())
+                .filter(score -> score.getMatch().equals(match))
+                .forEach(score -> deleteScore(score));
+
+        MatchDao.getInstance().delete(match);
     }
 }

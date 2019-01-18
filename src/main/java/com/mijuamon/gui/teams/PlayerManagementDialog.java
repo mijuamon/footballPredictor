@@ -129,8 +129,7 @@ public class PlayerManagementDialog extends JDialog {
                     DialogsUtil.infoMessage("Es necesario que tenga nombre");
                 } else {
                     if (player == null) {
-                        player = new PlayerModel(team);
-                        player.setName(playerTextF.getText());
+                        player = new PlayerModel(playerTextF.getText(), team);
                         Controller.addPlayer(player);
 
                     } else {

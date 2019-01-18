@@ -1,5 +1,6 @@
 package com.mijuamon.gui.matches;
 
+import com.mijuamon.core.constants.Controller;
 import com.mijuamon.core.model.MatchModel;
 import com.mijuamon.core.util.DialogsUtil;
 
@@ -11,6 +12,8 @@ public class EditMatchDialog extends JDialog {
     private JButton buttonOK;
     private JButton buttonCancel;
     private JTextField resultTF;
+    private JLabel localLabel;
+    private JLabel visitorLabel;
     private MatchModel match;
 
     public EditMatchDialog(final MatchModel match) {
@@ -19,6 +22,10 @@ public class EditMatchDialog extends JDialog {
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
         resultTF.setText(match.getResult());
+        localLabel.setText(match.getLocal().getName());
+        visitorLabel.setText(match.getVisitor().getName());
+
+        initializeListeners();
     }
 
     private void initializeListeners() {
@@ -53,16 +60,15 @@ public class EditMatchDialog extends JDialog {
     private void onOK() {
         if (resultTF.getText().split("-").length != 2) {
             DialogsUtil.errorMessage("El formato del resultado es incorrecto. Se espera en formato \"<local>-<visitante>\"");
-        }
-        else {
+        } else {
             match.setResult(resultTF.getText());
-
+            Controller.updateMatch(match);
+            DialogsUtil.infoMessage("Actualizacion resultado", "Se ha actualizado el resultado");
             dispose();
         }
     }
 
     private void onCancel() {
-        // add your code here if necessary
         dispose();
     }
 }

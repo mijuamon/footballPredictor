@@ -8,37 +8,37 @@ public class DialogsUtil {
     private final static String WARNING_TITLE = "Aviso";
     private final static String QUESTION_TITLE = "Aviso";
 
-
-    public static void questionMessage(final String text) {
-        questionMessage(QUESTION_TITLE, text);
+    public static void warningMessage(final String msg) {
+        warningMessage(WARNING_TITLE, msg);
     }
 
-    public static void questionMessage(final String title, final String text) {
-        showMessage(title, text, JOptionPane.QUESTION_MESSAGE);
+    public static void warningMessage(final String title, final String msg) {
+        showMessage(title, msg, JOptionPane.WARNING_MESSAGE);
     }
 
-    public static void warningMessage(final String text) {
-        warningMessage(WARNING_TITLE, text);
+    public static void infoMessage(final String msg) {
+        infoMessage(INFO_TITLE, msg);
     }
 
-    public static void warningMessage(final String title, final String text) {
-        showMessage(title, text, JOptionPane.WARNING_MESSAGE);
+    public static void infoMessage(final String title, final String msg) {
+        showMessage(title, msg, JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public static void infoMessage(final String text) {
-        infoMessage(INFO_TITLE, text);
+    public static void errorMessage(final String msg) {
+        errorMessage(ERROR_TITLE, msg);
     }
 
-    public static void infoMessage(final String title, final String text) {
-        showMessage(title, text, JOptionPane.INFORMATION_MESSAGE);
+    public static void errorMessage(final String title, final String msg) {
+        showMessage(title, msg, JOptionPane.ERROR_MESSAGE);
     }
 
-    public static void errorMessage(final String text) {
-        errorMessage(ERROR_TITLE, text);
-    }
+    public static boolean questionMessage(final String msg, final String title){
 
-    public static void errorMessage(final String title, final String text) {
-        showMessage(title, text, JOptionPane.ERROR_MESSAGE);
+        int dialogResult = JOptionPane.showConfirmDialog (null, "msg","title",JOptionPane.YES_NO_OPTION);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            return true;
+        }
+        return false;
     }
 
     private static void showMessage(final String title, final String text, int option) {

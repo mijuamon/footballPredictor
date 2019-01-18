@@ -1,9 +1,13 @@
 package com.mijuamon.gui;
 
+import com.mijuamon.core.constants.Controller;
 import com.mijuamon.core.dao.MatchDao;
+import com.mijuamon.core.dao.PlayerDao;
 import com.mijuamon.core.dao.TeamDao;
 import com.mijuamon.core.loaders.Loader;
 import com.mijuamon.core.model.MatchModel;
+import com.mijuamon.core.model.PlayerModel;
+import com.mijuamon.core.model.ScoreModel;
 import com.mijuamon.core.model.TeamModel;
 import com.mijuamon.gui.matches.MatchesManagementDialog;
 import com.mijuamon.gui.teams.TeamsManagementDialog;
@@ -103,6 +107,7 @@ public class MainScreen {
     private JLabel chance15;
     private JComboBox localCB15;
     private JButton gestionarPartidosButton;
+    private JButton refreshButton;
     private JButton dropAllButton;
 
     protected List<JLabel> numMatchesList;
@@ -230,19 +235,33 @@ public class MainScreen {
         initialData();
     }
 
-    private void initialData()
-    {
-        TeamModel teamA=new TeamModel("TestA");
-        TeamModel teamB=new TeamModel("TestB");
-        TeamModel teamC=new TeamModel("TestC");
-        TeamDao.getInstance().add(teamA);
-        TeamDao.getInstance().add(teamB);
-        TeamDao.getInstance().add(teamC);
+    private void initialData() {
+        TeamModel teamA = new TeamModel("TestA");
+        TeamModel teamB = new TeamModel("TestB");
+        TeamModel teamC = new TeamModel("TestC");
+        Controller.addTeam(teamA);
+        Controller.addTeam(teamB);
+        Controller.addTeam(teamC);
 
-        MatchModel matchA=new MatchModel(teamA,teamB,"1-1","1","2019");
-        MatchModel matchB=new MatchModel(teamB,teamC,"2-1","2","2019");
-        MatchDao.getInstance().add(matchA);
-        MatchDao.getInstance().add(matchB);
+
+        PlayerModel playerA = new PlayerModel("playerA", teamA);
+        Controller.addPlayer(playerA);
+
+        MatchModel matchA = new MatchModel(teamA, teamB, "1-1", "1", "2019");
+        MatchModel matchB = new MatchModel(teamB, teamC, "2-1", "2", "2019");
+        Controller.addMatch(matchA);
+        Controller.addMatch(matchB);
+
+        teamA.addMatch(matchA);
+        teamB.addMatch(matchA);
+        teamB.addMatch(matchB);
+        teamC.addMatch(matchB);
+
+        //Controller.updateTeam(teamA);
+        //Controller.updateTeam(teamB);
+        //Controller.updateTeam(teamC);
+
+        ScoreModel scoreA= new ScoreModel("5",matchA,playerA);
+        Controller.addScore(scoreA);
     }
-
 }

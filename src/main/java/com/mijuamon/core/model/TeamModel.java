@@ -69,6 +69,10 @@ public class TeamModel extends Identificable {
         this.matches = matches;
     }
 
+    public void addMatch(final MatchModel match) {
+        matches.add(match);
+    }
+
     @Override
     public boolean equals(Object o) {
 
