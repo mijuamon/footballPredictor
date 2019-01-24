@@ -1,9 +1,6 @@
 package com.mijuamon.gui;
 
 import com.mijuamon.core.constants.Controller;
-import com.mijuamon.core.dao.MatchDao;
-import com.mijuamon.core.dao.PlayerDao;
-import com.mijuamon.core.dao.TeamDao;
 import com.mijuamon.core.loaders.Loader;
 import com.mijuamon.core.model.MatchModel;
 import com.mijuamon.core.model.PlayerModel;
@@ -239,29 +236,40 @@ public class MainScreen {
         TeamModel teamA = new TeamModel("TestA");
         TeamModel teamB = new TeamModel("TestB");
         TeamModel teamC = new TeamModel("TestC");
+
         Controller.addTeam(teamA);
         Controller.addTeam(teamB);
         Controller.addTeam(teamC);
 
-
         PlayerModel playerA = new PlayerModel("playerA", teamA);
+        teamA.addPlayer(playerA);
+
         Controller.addPlayer(playerA);
 
         MatchModel matchA = new MatchModel(teamA, teamB, "1-1", "1", "2019");
         MatchModel matchB = new MatchModel(teamB, teamC, "2-1", "2", "2019");
-        Controller.addMatch(matchA);
-        Controller.addMatch(matchB);
 
         teamA.addMatch(matchA);
         teamB.addMatch(matchA);
         teamB.addMatch(matchB);
         teamC.addMatch(matchB);
 
-        //Controller.updateTeam(teamA);
-        //Controller.updateTeam(teamB);
-        //Controller.updateTeam(teamC);
+        Controller.addMatch(matchA);
+        Controller.addMatch(matchB);
 
-        ScoreModel scoreA= new ScoreModel("5",matchA,playerA);
+        ScoreModel scoreA = new ScoreModel("5", matchA, playerA);
+        playerA.addScore(scoreA);
+        matchA.addScore(scoreA);
+
+
         Controller.addScore(scoreA);
+
+        Controller.updateMatch(matchA);
+        Controller.updatePlayer(playerA);
+        Controller.updateTeam(teamA);
+        Controller.updateTeam(teamB);
+        Controller.updateTeam(teamC);
+
+
     }
 }

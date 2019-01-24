@@ -5,7 +5,9 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "teams")
@@ -16,14 +18,12 @@ public class TeamModel extends Identificable {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(
-            cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<PlayerModel> players = new ArrayList<>();
-    @OneToMany(
-            cascade = CascadeType.ALL)
+    private Set<PlayerModel> players = new HashSet<>();
+    @ManyToMany (cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<MatchModel> matches = new ArrayList<>();
+    private Set<MatchModel> matches = new HashSet<>();
 
     public TeamModel(String name) {
 
@@ -53,19 +53,19 @@ public class TeamModel extends Identificable {
         this.name = name;
     }
 
-    public List<PlayerModel> getPlayers() {
+    public Set<PlayerModel> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<PlayerModel> players) {
+    public void setPlayers(Set<PlayerModel> players) {
         this.players = players;
     }
 
-    public List<MatchModel> getMatches() {
+    public Set<MatchModel> getMatches() {
         return matches;
     }
 
-    public void setMatches(List<MatchModel> matches) {
+    public void setMatches(Set<MatchModel> matches) {
         this.matches = matches;
     }
 

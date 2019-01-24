@@ -10,7 +10,9 @@ import com.mijuamon.core.util.DialogsUtil;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static com.mijuamon.core.constants.Controller.addPlayer;
@@ -31,7 +33,7 @@ public class PlayerManagementDialog extends JDialog {
     private JTextField playerTextF;
     private JButton updateButton;
 
-    private List<ScoreModel> scores = new ArrayList<>();
+    private Set<ScoreModel> scores = new HashSet<>();
     private PlayerModel player;
     private TeamModel team;
     private List<TeamModel> teams;

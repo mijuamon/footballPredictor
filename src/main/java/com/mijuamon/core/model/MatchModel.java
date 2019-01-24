@@ -1,6 +1,13 @@
 package com.mijuamon.core.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "matches")
@@ -8,13 +15,15 @@ public class MatchModel extends Identificable {
     private static String modelName = "MatchModel";
     private static String tableName = "matches";
 
-    @ManyToOne
-    @PrimaryKeyJoinColumn
+    @ManyToOne//(cascade = CascadeType.ALL)
     private TeamModel local;
 
-    @ManyToOne
-    @PrimaryKeyJoinColumn
+    @ManyToOne//(cascade = CascadeType.ALL)
     private TeamModel visitor;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Set<ScoreModel> scores = new HashSet<>();
 
     @Column(name = "result")
     private String result;
@@ -95,6 +104,19 @@ public class MatchModel extends Identificable {
         this.visitor = visitor;
     }
 
+    public Set<ScoreModel> getScores() {
+        return scores;
+    }
+
+    public void setScores(Set<ScoreModel> scores) {
+        this.scores = scores;
+    }
+
+    public void addScore(final ScoreModel score)
+    {
+        scores.add(score);
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -115,9 +137,8 @@ public class MatchModel extends Identificable {
 
     @Override
     public String toString() {
-        if(local==null || visitor == null)
-        {
-            return "visitor-local--->"+result;
+        if (local == null || visitor == null) {
+            return "visitor-local--->" + result;
         }
         return local.getName() + " - " + visitor.getName() + "-->" + result;
     }

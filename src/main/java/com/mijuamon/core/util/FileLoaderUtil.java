@@ -84,7 +84,8 @@ public class FileLoaderUtil {
                 scoresList.stream().forEach(x -> x.setPlayer(playerModel));
                 t.addPlayer(playerModel);
                 playerModel.setTeam(t);
-                playerModel.setScores(scoresList);
+                //TODO: arreglar esto
+               // playerModel.setScores(scoresList);
             }
         }
 
@@ -101,7 +102,9 @@ public class FileLoaderUtil {
 
 
         for (final TeamModel team : teams) {
-            team.setMatches(matchs.stream().filter(x -> x.getLocal().equals(team) || x.getVisitor().equals(team)).collect(Collectors.toList()));
+            //TODO: arreglar esto
+
+            //team.setMatches(matchs.stream().filter(x -> x.getLocal().equals(team) || x.getVisitor().equals(team)).collect(Collectors.toList()));
         }
 
         for (final ScoreDTO score : scoreDTO) {

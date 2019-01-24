@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class ScoreModel extends Identificable {
     private static String modelName = "ScoreModel";
 
-    @OneToOne
+    @OneToOne//(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private MatchModel match;
 

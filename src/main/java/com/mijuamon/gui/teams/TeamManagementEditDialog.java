@@ -10,7 +10,6 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.List;
 
-import static com.mijuamon.core.constants.Constants.SAVE_LABEL;
 import static com.mijuamon.core.constants.Constants.UPDATE_LABEL;
 
 
@@ -27,6 +26,7 @@ public class TeamManagementEditDialog extends JDialog {
     private JButton eliminarButton;
     private JButton traspasarButton;
     private JButton guardarButton;
+    private JButton actualizarButton;
 
     private TeamModel team;
     private List<TeamModel> teams;
@@ -34,7 +34,6 @@ public class TeamManagementEditDialog extends JDialog {
     //new team
     public TeamManagementEditDialog(List<TeamModel> teams) {
         this.teams = teams;
-        guardarButton.setText(SAVE_LABEL);
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -46,12 +45,12 @@ public class TeamManagementEditDialog extends JDialog {
         newPlayerButton.setEnabled(false);
 
         initializeListeners();
+        refreshList();
     }
 
     public TeamManagementEditDialog(TeamModel team, List<TeamModel> teams) {
         this.team = team;
         this.teams = teams;
-        guardarButton.setText(UPDATE_LABEL);
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -65,6 +64,8 @@ public class TeamManagementEditDialog extends JDialog {
         playerJList.setModel(listModel);
         newPlayerButton.setEnabled(true);
         initializeListeners();
+        refreshList();
+
     }
 
     private void initializeListeners() {
@@ -139,6 +140,8 @@ public class TeamManagementEditDialog extends JDialog {
 
             }
         });
+
+        //Save button
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -155,6 +158,14 @@ public class TeamManagementEditDialog extends JDialog {
                     TeamDao.getInstance().update(team);
                     DialogsUtil.infoMessage("Se ha actualizado el equipo");
                 }
+                refreshList();
+            }
+        });
+
+        //Refresh button
+        actualizarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 refreshList();
             }
         });

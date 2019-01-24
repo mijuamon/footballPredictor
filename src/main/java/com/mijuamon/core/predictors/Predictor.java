@@ -5,10 +5,7 @@ import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.ScoreModel;
 import com.mijuamon.core.model.TeamModel;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import static com.mijuamon.core.constants.CalculationConstants.*;
 import static com.mijuamon.core.constants.Constants.PLAYERS_MEDIAN;
@@ -122,7 +119,7 @@ public class Predictor {
         double lastFiveScore = 0;
         double seasonTotalScore = 0;
 
-        List<ScoreModel> seasonTotal = player.getScores();
+        List<ScoreModel> seasonTotal = new ArrayList<>(player.getScores());
 
 
         seasonTotalScore = seasonTotal.stream().mapToDouble(score -> score.getScore()).sum() / seasonTotal.size();
@@ -136,7 +133,7 @@ public class Predictor {
         return seasonTotal.size() > 5 ? lastFiveScore * 0.5 + seasonTotalScore * 0.5 : seasonTotalScore;
     }
 
-    private static double CalculateTeamScore(final TeamModel team, final List<MatchModel> matches) {
+    private static double CalculateTeamScore(final TeamModel team, final Set<MatchModel> matches) {
         return matches.stream().mapToDouble(match -> CalculateMatchScore(team, match)).sum();
     }
 
