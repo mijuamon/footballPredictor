@@ -9,7 +9,6 @@ import com.mijuamon.core.util.DialogsUtil;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -32,6 +31,7 @@ public class PlayerManagementDialog extends JDialog {
     private JButton changeNameButton;
     private JTextField playerTextF;
     private JButton updateButton;
+    private JButton guardarButton;
 
     private Set<ScoreModel> scores = new HashSet<>();
     private PlayerModel player;
@@ -123,22 +123,26 @@ public class PlayerManagementDialog extends JDialog {
                 refreshList();
             }
         });
-        //create/Update player
-        changeNameButton.addActionListener(new ActionListener() {
+
+        guardarButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+            public void actionPerformed(ActionEvent e) {
                 if (playerTextF.getText() == null || playerTextF.getText().equals("")) {
                     DialogsUtil.infoMessage("Es necesario que tenga nombre");
                 } else {
                     if (player == null) {
                         player = new PlayerModel(playerTextF.getText(), team);
                         Controller.addPlayer(player);
+                        DialogsUtil.infoMessage("Crear jugador","Se ha creado el jugador");
 
                     } else {
                         player.setName(playerTextF.getText());
                         Controller.updatePlayer(player);
+                        DialogsUtil.infoMessage("Actualizar jugador","Se ha actualizado el jugador");
                     }
                 }
+                refreshList();
+
             }
         });
     }

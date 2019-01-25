@@ -1,11 +1,13 @@
 package com.mijuamon.gui.teams;
 
+import com.mijuamon.core.constants.Controller;
 import com.mijuamon.core.model.MatchModel;
 import com.mijuamon.core.model.PlayerModel;
 import com.mijuamon.core.model.ScoreModel;
 import com.mijuamon.core.model.TeamModel;
 import com.mijuamon.core.util.DialogsUtil;
 
+import javax.naming.ldap.Control;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.List;
@@ -101,8 +103,14 @@ public class ScoreDialog extends JDialog {
             score.setPlayer(player);
             score.setMatch(((MatchModel) matchComboBox.getSelectedItem()));
             player.getScores().add(score);
+
+            Controller.addScore(score);
+            Controller.updatePlayer(player);
+            DialogsUtil.warningMessage("Se ha creado una puntuación");
         } else {
             score.setScore((Integer) scoreSpinner.getValue());
+            Controller.updateScore(score);
+            DialogsUtil.warningMessage("Se ha actualizado la puntuación");
         }
         dispose();
     }

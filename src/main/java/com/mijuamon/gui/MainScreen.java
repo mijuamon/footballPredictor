@@ -259,11 +259,12 @@ public class MainScreen {
 
         ScoreModel scoreA = new ScoreModel("5", matchA, playerA);
         playerA.addScore(scoreA);
-        matchA.addScore(scoreA);
-
-
         Controller.addScore(scoreA);
 
+        matchA.addScore(scoreA);
+        scoreA.setMatch(matchA);
+
+        Controller.updateScore(scoreA);
         Controller.updateMatch(matchA);
         Controller.updatePlayer(playerA);
         Controller.updateTeam(teamA);
