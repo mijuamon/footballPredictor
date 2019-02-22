@@ -46,6 +46,26 @@ public abstract class AbstractDao<T extends Identificable> {
         return objects;
     }
 
+    public T get(final Class clase, final int id) {
+        T result = null;
+        try {
+            startOperation();
+
+            result = (T) session.load(clase, id);
+
+        } catch (
+                HibernateException he) {
+            handleException(he);
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw he;
+        } finally {
+            session.close();
+        }
+        return result;
+    }
+
     public T get(String modelName, int id) {
         Query query = executeQuery("from " + modelName + " where 'id'=" + id);
         ;
@@ -53,13 +73,13 @@ public abstract class AbstractDao<T extends Identificable> {
     }
 
     public List<T> search(String sql) {
-        Query query = executeQuery("sql");
+        Query query = executeQuery(sql);
         List<T> objects = query == null ? new ArrayList<T>() : query.list();
         return objects;
     }
 
     public boolean exist(String sql) {
-        return (executeQuery("sql").uniqueResult() != null);
+        return (executeQuery(sql).uniqueResult() != null);
 
     }
 

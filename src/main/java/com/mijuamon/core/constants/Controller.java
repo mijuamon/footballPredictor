@@ -11,6 +11,7 @@ import com.mijuamon.core.model.TeamModel;
 import com.mijuamon.core.util.DialogsUtil;
 
 import java.util.List;
+import java.util.Set;
 
 import static com.mijuamon.core.constants.Constants.deletePlayerID;
 import static com.mijuamon.core.constants.Constants.deleteScoreIO;
@@ -22,27 +23,10 @@ public class Controller {
         return TeamDao.getInstance().getAll(TeamModel.getModelName());
     }
 
+    //////////////////
+    //ADD
     public static void addTeam(final TeamModel team) {
         TeamDao.getInstance().add(team);
-    }
-
-    public static void updateTeam(final TeamModel team) {
-        TeamDao.getInstance().update(team);
-    }
-
-    public static void deleteTeam(final TeamModel team) {
-        TeamDao.getInstance().delete(team);
-    }
-
-
-    public static List<PlayerModel> getAllPlayers() {
-        return PlayerDao.getInstance().getAll(PlayerModel.getModelName());
-    }
-
-    public static List<PlayerModel> getAllPlayers(final int teamId) {
-        final String sql = "from " + PlayerModel.getModelName() + " where team=" + teamId;
-
-        return PlayerDao.getInstance().search(sql);
     }
 
     public static boolean addPlayer(final TeamModel team, final String name) {
@@ -62,26 +46,6 @@ public class Controller {
         PlayerDao.getInstance().add(player);
     }
 
-    public static void updatePlayer(final PlayerModel player) {
-        PlayerDao.getInstance().update(player);
-    }
-
-    public static void deletePlayer(final PlayerModel player) {
-        PlayerDao.getInstance().delete(player);
-    }
-
-
-    public static List<ScoreModel> getAllScores() {
-        return ScoreDao.getInstance().getAll(ScoreModel.getModelName());
-
-    }
-
-    public static List<ScoreModel> getAllScores(final int playerId) {
-        final String sql = "from " + ScoreModel.getModelName() + " where player=" + playerId;
-
-        return ScoreDao.getInstance().search(sql);
-    }
-
     public static void addScore(final ScoreModel score) {
         ScoreDao.getInstance().add(score);
     }
@@ -97,26 +61,6 @@ public class Controller {
             player.getScores().add(score);
             return true;
         }
-    }
-
-    public static void deleteScore(final ScoreModel score) {
-        ScoreDao.getInstance().delete(score);
-    }
-
-    public static void updateScore(final ScoreModel score) {
-        ScoreDao.getInstance().update(score);
-    }
-
-
-    public static List<MatchModel> getAllMatches() {
-        return MatchDao.getInstance().getAll(MatchModel.getModelName());
-
-    }
-
-    public static List<MatchModel> getAllMatches(final int teamId) {
-        final String sql = "from " + MatchModel.getModelName() + " where local=" + teamId + " OR visitor=" + teamId;
-
-        return MatchDao.getInstance().search(sql);
     }
 
     public static void addMatch(final MatchModel match) {
@@ -143,9 +87,37 @@ public class Controller {
             return true;
         }
     }
+    ////////////////////
+    //UPDATE
+
+    public static void updateTeam(final TeamModel team) {
+        TeamDao.getInstance().update(team);
+    }
+
+    public static void updatePlayer(final PlayerModel player) {
+        PlayerDao.getInstance().update(player);
+    }
+
+    public static void updateScore(final ScoreModel score) {
+        ScoreDao.getInstance().update(score);
+    }
 
     public static void updateMatch(final MatchModel match) {
         MatchDao.getInstance().update(match);
+    }
+
+    /////////////////////////////
+    //DELETE
+    public static void deleteTeam(final TeamModel team) {
+        TeamDao.getInstance().delete(team);
+    }
+
+    public static void deletePlayer(final PlayerModel player) {
+        PlayerDao.getInstance().delete(player);
+    }
+
+    public static void deleteScore(final ScoreModel score) {
+        ScoreDao.getInstance().delete(score);
     }
 
     public static void deleteMatch(final MatchModel match) {
@@ -156,6 +128,53 @@ public class Controller {
                 .filter(score -> score.getMatch().equals(match))
                 .forEach(score -> deleteScore(score));
 
+        //Remove the score for loval and visitor teams
+        match.getLocal().getMatches().removeIf(teamMatch -> match.equals(teamMatch));
+        match.getVisitor().getMatches().removeIf(teamMatch -> match.equals(teamMatch));
+
         MatchDao.getInstance().delete(match);
     }
+
+    ////////////////
+    //GET BY ID
+    public static TeamModel getTeam(final int id) {
+        return TeamDao.getInstance().get(TeamModel.class, id);
+    }
+
+    ////////////////
+    //GET ALL
+
+    public static List<PlayerModel> getAllPlayers() {
+        return PlayerDao.getInstance().getAll(PlayerModel.getModelName());
+    }
+
+    public static Set<PlayerModel> getAllPlayers(final int teamId) {
+
+        return getTeam(teamId).getPlayers();
+    }
+
+    public static List<ScoreModel> getAllScores() {
+        return ScoreDao.getInstance().getAll(ScoreModel.getModelName());
+
+    }
+
+    public static List<ScoreModel> getAllScores(final int playerId) {
+        final String sql = "from " + ScoreModel.getModelName() + " where player=" + playerId;
+
+        return ScoreDao.getInstance().search(sql);
+    }
+
+
+    public static List<MatchModel> getAllMatches() {
+        return MatchDao.getInstance().getAll(MatchModel.getModelName());
+
+    }
+
+    public static List<MatchModel> getAllMatches(final int teamId) {
+        final String sql = "from " + MatchModel.getModelName() + " where local=" + teamId + " OR visitor=" + teamId;
+
+        return MatchDao.getInstance().search(sql);
+    }
+
+
 }

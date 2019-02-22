@@ -8,7 +8,10 @@ import com.mijuamon.core.util.DialogsUtil;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static com.mijuamon.core.constants.Constants.UPDATE_LABEL;
 
@@ -30,6 +33,7 @@ public class TeamManagementEditDialog extends JDialog {
 
     private TeamModel team;
     private List<TeamModel> teams;
+    private Set<PlayerModel> players = new HashSet<>();
 
     //new team
     public TeamManagementEditDialog(List<TeamModel> teams) {
@@ -129,6 +133,7 @@ public class TeamManagementEditDialog extends JDialog {
                     return;
                 }
                 team.getPlayers().remove(playerJList.getSelectedValue());
+                Controller.deletePlayer((PlayerModel) playerJList.getSelectedValue());
                 refreshList();
             }
         });
@@ -173,8 +178,10 @@ public class TeamManagementEditDialog extends JDialog {
 
     private void refreshList() {
 
+        players=Controller.getAllPlayers(team.getID());
+
         DefaultListModel listModel = new DefaultListModel();
-        team.getPlayers().stream().forEach(x -> listModel.addElement(x));
+        players.stream().forEach(x -> listModel.addElement(x));
         playerJList.setModel(listModel);
     }
 

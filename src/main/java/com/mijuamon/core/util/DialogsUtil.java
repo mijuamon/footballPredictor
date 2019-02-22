@@ -34,7 +34,7 @@ public class DialogsUtil {
 
     public static boolean questionMessage(final String msg, final String title){
 
-        int dialogResult = JOptionPane.showConfirmDialog (null, "msg","title",JOptionPane.YES_NO_OPTION);
+        int dialogResult = JOptionPane.showConfirmDialog (null, msg,title,JOptionPane.YES_NO_OPTION);
         if(dialogResult == JOptionPane.YES_OPTION){
             return true;
         }

@@ -66,7 +66,9 @@ public class MatchesManagementDialog extends JDialog {
             public void actionPerformed(ActionEvent e) {
 
                 if (DialogsUtil.questionMessage("¿estas seguro de borrar el resultado seleccionado?", "Eliminacion de resultado")) {
+                    MatchDao.getInstance().delete((MatchModel) matchList.getSelectedValue());
                     Controller.deleteMatch((MatchModel) matchList.getSelectedValue());
+                    refreshList();
                 }
             }
         });

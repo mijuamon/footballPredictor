@@ -9,6 +9,7 @@ import com.mijuamon.core.util.DialogsUtil;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,12 +29,11 @@ public class PlayerManagementDialog extends JDialog {
     private JButton removeButton;
     private JButton editButton;
     private JButton addNewButton;
-    private JButton changeNameButton;
     private JTextField playerTextF;
     private JButton updateButton;
     private JButton guardarButton;
 
-    private Set<ScoreModel> scores = new HashSet<>();
+    private List<ScoreModel> scores = new ArrayList<>();
     private PlayerModel player;
     private TeamModel team;
     private List<TeamModel> teams;
@@ -44,7 +44,7 @@ public class PlayerManagementDialog extends JDialog {
         super();
         this.team = team;
         this.player = player;
-        this.scores = player.getScores();
+        this.scores =  new ArrayList<>(player.getScores());
         this.teams = teams;
 
         startDialog();
@@ -56,7 +56,6 @@ public class PlayerManagementDialog extends JDialog {
         super();
         this.team = team;
         this.teams = teams;
-        changeNameButton.setText("Guardar jugador");
         isNew = true;
         addNewButton.setEnabled(false);
         editButton.setEnabled(false);
@@ -112,7 +111,9 @@ public class PlayerManagementDialog extends JDialog {
                 if (player == null || scoresJList.getSelectedValue() == null) {
                     return;
                 }
-                scores.remove(scoresJList.getSelectedValue());
+                if (DialogsUtil.questionMessage("¿Esta seguro de eliminar la puntuacion?", "eliminar puntuacion")) {
+                    scores.remove(scoresJList.getSelectedValue());
+                }
                 refreshList();
             }
         });
@@ -132,23 +133,28 @@ public class PlayerManagementDialog extends JDialog {
                 } else {
                     if (player == null) {
                         player = new PlayerModel(playerTextF.getText(), team);
+                        team.addPlayer(player);
                         Controller.addPlayer(player);
-                        DialogsUtil.infoMessage("Crear jugador","Se ha creado el jugador");
+                        Controller.updateTeam(team);
+                        DialogsUtil.infoMessage("Crear jugador", "Se ha creado el jugador");
 
                     } else {
                         player.setName(playerTextF.getText());
                         Controller.updatePlayer(player);
-                        DialogsUtil.infoMessage("Actualizar jugador","Se ha actualizado el jugador");
+                        DialogsUtil.infoMessage("Actualizar jugador", "Se ha actualizado el jugador");
                     }
                 }
                 refreshList();
-
+                addNewButton.setEnabled(true);
+                editButton.setEnabled(true);
+                removeButton.setEnabled(true);
             }
         });
     }
 
     private void refreshList() {
-        scores = player.getScores();
+        scores = Controller.getAllScores(player.getID());
+
         DefaultListModel listModel = new DefaultListModel();
         scores.stream().forEach(x -> listModel.addElement(x));
         scoresJList.setModel(listModel);
