@@ -112,11 +112,11 @@ public class TeamsManagementDialog extends JDialog {
 
             final TeamModel selTeam = (TeamModel) editTeamCB.getSelectedItem();
 
-            dialog = new TeamManagementEditDialog(selTeam, teams);
+            dialog = new TeamManagementEditDialog(selTeam.getID());
             dialog.pack();
             dialog.setVisible(true);
         } else if (newTeamRadioButtton.isSelected()) {
-            dialog = new TeamManagementEditDialog(teams);
+            dialog = new TeamManagementEditDialog();
             dialog.pack();
             dialog.setVisible(true);
         }

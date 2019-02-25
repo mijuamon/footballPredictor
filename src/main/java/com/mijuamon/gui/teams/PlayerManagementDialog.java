@@ -33,38 +33,35 @@ public class PlayerManagementDialog extends JDialog {
     private JButton updateButton;
     private JButton guardarButton;
 
-    private List<ScoreModel> scores = new ArrayList<>();
+    private Set<ScoreModel> scores = new HashSet<>();
     private PlayerModel player;
     private TeamModel team;
-    private List<TeamModel> teams;
     private boolean isNew;
 
     //update player
-    public PlayerManagementDialog(List<TeamModel> teams, TeamModel team, PlayerModel player) {
+    public PlayerManagementDialog(TeamModel team, PlayerModel player) {
         super();
         this.team = team;
         this.player = player;
-        this.scores =  new ArrayList<>(player.getScores());
-        this.teams = teams;
+        this.scores =  new HashSet<>(player.getScores());
 
         startDialog();
-        initializeListeners(teams);
+        initializeListeners();
     }
 
     //new player
-    public PlayerManagementDialog(List<TeamModel> teams, TeamModel team) {
+    public PlayerManagementDialog(TeamModel team) {
         super();
         this.team = team;
-        this.teams = teams;
         isNew = true;
         addNewButton.setEnabled(false);
         editButton.setEnabled(false);
         removeButton.setEnabled(false);
         startDialog();
-        initializeListeners(teams);
+        initializeListeners();
     }
 
-    private void initializeListeners(List<TeamModel> teams) {
+    private void initializeListeners() {
         //Edit score
         editButton.addActionListener(new ActionListener() {
             @Override
@@ -73,7 +70,7 @@ public class PlayerManagementDialog extends JDialog {
                     return;
                 }
 
-                ScoreDialog dialog = new ScoreDialog(teams, player, (ScoreModel) scoresJList.getSelectedValue());
+                ScoreDialog dialog = new ScoreDialog(player, (ScoreModel) scoresJList.getSelectedValue());
                 dialog.pack();
                 dialog.setVisible(true);
             }
@@ -93,11 +90,9 @@ public class PlayerManagementDialog extends JDialog {
                                 .anyMatch(score -> score.getMatch().equals(match)))
                         .collect(Collectors.toList());
                 if (matchs.size() > 0) {
-                    ScoreDialog dialog = new ScoreDialog(teams, player, matchs);
+                    ScoreDialog dialog = new ScoreDialog(player, matchs);
                     dialog.pack();
                     dialog.setVisible(true);
-                    DialogsUtil.infoMessage("Se ha creado un nuevo jugador");
-
                 } else {
                     DialogsUtil.errorMessage("No quedan mas partidos sin puntuar",
                             "Error nueva puntuación");

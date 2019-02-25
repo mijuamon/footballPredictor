@@ -141,6 +141,10 @@ public class Controller {
         return TeamDao.getInstance().get(TeamModel.class, id);
     }
 
+    public static PlayerModel getPlayer(final int id) {
+        return PlayerDao.getInstance().get(PlayerModel.class, id);
+    }
+
     ////////////////
     //GET ALL
 
@@ -158,10 +162,10 @@ public class Controller {
 
     }
 
-    public static List<ScoreModel> getAllScores(final int playerId) {
+    public static Set<ScoreModel> getAllScores(final int playerId) {
         final String sql = "from " + ScoreModel.getModelName() + " where player=" + playerId;
 
-        return ScoreDao.getInstance().search(sql);
+        return getPlayer(playerId).getScores();
     }
 
 

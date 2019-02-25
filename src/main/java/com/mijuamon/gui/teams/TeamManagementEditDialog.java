@@ -8,10 +8,7 @@ import com.mijuamon.core.util.DialogsUtil;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static com.mijuamon.core.constants.Constants.UPDATE_LABEL;
 
@@ -32,12 +29,9 @@ public class TeamManagementEditDialog extends JDialog {
     private JButton actualizarButton;
 
     private TeamModel team;
-    private List<TeamModel> teams;
-    private Set<PlayerModel> players = new HashSet<>();
 
     //new team
-    public TeamManagementEditDialog(List<TeamModel> teams) {
-        this.teams = teams;
+    public TeamManagementEditDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -52,9 +46,8 @@ public class TeamManagementEditDialog extends JDialog {
         refreshList();
     }
 
-    public TeamManagementEditDialog(TeamModel team, List<TeamModel> teams) {
-        this.team = team;
-        this.teams = teams;
+    public TeamManagementEditDialog(int teamId) {
+        this.team = Controller.getTeam(teamId);
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -103,7 +96,7 @@ public class TeamManagementEditDialog extends JDialog {
                 if (team == null) {
                     return;
                 }
-                PlayerManagementDialog dialog = new PlayerManagementDialog(teams, team);
+                PlayerManagementDialog dialog = new PlayerManagementDialog(team);
                 dialog.pack();
                 dialog.setVisible(true);
 
@@ -118,7 +111,7 @@ public class TeamManagementEditDialog extends JDialog {
                     return;
                 }
 
-                PlayerManagementDialog dialog = new PlayerManagementDialog(teams, team, (PlayerModel) playerJList.getSelectedValue());
+                PlayerManagementDialog dialog = new PlayerManagementDialog(team, (PlayerModel) playerJList.getSelectedValue());
                 dialog.pack();
                 dialog.setVisible(true);
 
@@ -154,7 +147,6 @@ public class TeamManagementEditDialog extends JDialog {
                     guardarButton.setText(UPDATE_LABEL);
                     team = new TeamModel(teamTF.getText());
                     Controller.addTeam(team);
-                    teams.add(team);
                     newPlayerButton.setEnabled(true);
                     DialogsUtil.infoMessage("Se ha creado un nuevo equipo");
 
@@ -177,11 +169,14 @@ public class TeamManagementEditDialog extends JDialog {
     }
 
     private void refreshList() {
+        this.team=Controller.getTeam((team.getID()));
 
-        players=Controller.getAllPlayers(team.getID());
+        List<PlayerModel> sortedList=new ArrayList(team.getPlayers());
+
+        Collections.sort(sortedList, (o1, o2) -> o1.getName().compareTo(o2.getName()));
 
         DefaultListModel listModel = new DefaultListModel();
-        players.stream().forEach(x -> listModel.addElement(x));
+        team.getPlayers().stream().forEach(x -> listModel.addElement(x));
         playerJList.setModel(listModel);
     }
 

@@ -20,17 +20,15 @@ public class ScoreDialog extends JDialog {
     private JTextField playerTF;
     private JSpinner scoreSpinner;
 
-    private List<TeamModel> teams;
     private PlayerModel player;
     private ScoreModel score;
 
     private boolean isNew;
 
     //Edit score
-    public ScoreDialog(List<TeamModel> teams, PlayerModel player, ScoreModel score) {
+    public ScoreDialog(PlayerModel player, ScoreModel score) {
         //edit score
         isNew = false;
-        this.teams = teams;
         this.player = player;
         this.score = score;
 
@@ -45,10 +43,9 @@ public class ScoreDialog extends JDialog {
     }
 
     // New Score
-    public ScoreDialog(List<TeamModel> teams, PlayerModel player, List<MatchModel> matchs) {
+    public ScoreDialog(PlayerModel player, List<MatchModel> matchs) {
         if (player != null) {
             isNew = true;
-            this.teams = teams;
             this.player = player;
             playerTF.setText(player.toString());
             matchComboBox.addItem(null);
@@ -106,11 +103,11 @@ public class ScoreDialog extends JDialog {
 
             Controller.addScore(score);
             Controller.updatePlayer(player);
-            DialogsUtil.warningMessage("Se ha creado una puntuación");
+            DialogsUtil.infoMessage("Se ha creado una puntuación");
         } else {
             score.setScore((Integer) scoreSpinner.getValue());
             Controller.updateScore(score);
-            DialogsUtil.warningMessage("Se ha actualizado la puntuación");
+            DialogsUtil.infoMessage("Se ha actualizado la puntuación");
         }
         dispose();
     }
